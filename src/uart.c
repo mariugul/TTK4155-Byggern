@@ -1,5 +1,5 @@
-#include "uart.h" // include header file
-#include <avr/io.h> // include avr library
+#include "uart.h"                     // Include header file
+#include <avr/io.h>                   // Include AVR library
 
 /*_________________________________
   \     Function definitions      /
@@ -15,11 +15,9 @@ bool uart_is_ready()
 void uart_send(unsigned char data)
 {
     // Wait for empty transmit buffer
-    while (!uart_is_ready())
-        ;
+    while (!uart_is_ready());
 
     UDR0 = data; //put data on buffer
-    return 0;
 }
 
 // Return received data
@@ -31,17 +29,17 @@ unsigned char uart_receive()
 // initialize the uart
 void uart_init(unsigned int ubrr)
 {
-    // set baud rate
+    // Set baud rate
     UBRR0H = (unsigned char)(ubrr >> 8);
     UBRR0L = (unsigned char)(ubrr);
 
-    // enable receive and transmitt
+    // Enable receive and transmitt
     UCSR0B = (1 << RXEN0) | (1 << TXEN0);
 
-    // set frame format
+    // Set frame format
     UCSR0C = (1 << URSEL0) | (1 << USBS0) | (3 << UCSZ00);
 
-    // setup stream for printf
+    // Assign printf to UART
     fdevopen(uart_send, uart_receive);
 }
 
