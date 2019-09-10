@@ -32,8 +32,7 @@ void uart_init(unsigned int ubrr)
 	UCSR0C = (1<<URSEL0)|(1<<USBS0)|(3<<UCSZ00);
 	
 	// setup stream for printf
-	FILE uart_stream = FDEV_SETUP_STREAM(uart_printf, NULL, _FDEV_SETUP_WRITE);
-	stdout = &uart_stream;														
+	fdevopen(uart_printf, uart_receive);													
 }
      
 // send data
