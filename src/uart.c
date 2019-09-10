@@ -40,7 +40,7 @@ void uart_init(unsigned int ubrr)
 void uart_send(unsigned char data)               
 {
     //wait for empty transmit buffer
-	while(!uart_isReady());
+	while(!uart_is_ready());
 	
 	//put data on buffer	 
 	UDR0 = data;
@@ -49,34 +49,22 @@ void uart_send(unsigned char data)
 // receive data
 unsigned char uart_receive()            
 {
-	/**************************************** /
-	/*** This check is now done in main ***** /
-	/***   Keeping this for reference   ***** /
-	/**************************************** /
-	/	// wait for data in buff              / 
-	/	//while ( !(UCSR0A & (1<<RXC0)) )	  /	
-	/*---------------------------------------*/
-	
 	// return received data
 	return UDR0;
 }
 
 // check if transmitt buffer is ready
-bool uart_isReady()                     
+bool uart_is_ready()                     
 {
-    if(!(UCSR0A & (1<<UDRE0)))
-        return true;                    // return true if uart is ready to transmitt
-    else 
-        return false;                   // if not, return false
+	// return true if transmitt buffer is not busy
+    return((UCSR0A & (1<<UDRE0)));
 }
 
 // check for data in the HW buffer
-bool uart_hasData()						
+bool uart_has_data()						
 {
-	if (UCSR0A & (1<<RXC0))				
-		return true;					// return true if data in buffer
-	else
-		return false;					// if not, return false
+	// return true if data in buffer
+	return (UCSR0A & (1<<RXC0));
 }
 
 // stream handler for printf

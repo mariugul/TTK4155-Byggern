@@ -30,25 +30,22 @@ int main(void)
 	uart_send('a');
 	uart_send('b');
 	uart_send('c');
-
-    // test printf function
-    printf("Heisann");
+	
+	// test printf function
+	printf("Heisann");
 	
 	// main program
     while (true) 
     {	
 		// poll for received data
-		if(uart_hasData())								
+		if(uart_has_data())								
 		{
-			// hold received data
-			static uchar recv_char;			
-			recv_char = uart_receive();	
+			// read received data
+			uchar recv_char = uart_receive();	
 			
 			// echo back to terminal for verification		
 			uart_send(recv_char);
 		}
-		
-		
 	}		
 }
 
