@@ -68,16 +68,13 @@ int main(void)
 	led_init();
 	xmem_init();
 	uart_init();
-	
-	// Run test
-	pos_t tmp = pos_read();
-	printf("x=%d, y=%d, button=%d\n", tmp.x, tmp.y, tmp.button);
+		
 	
     // Main program loop
     while (1) 
 	{
 		pos_t pos = pos_read();
-		printf("x=%d, y=%d, ch3=%d, ch4=%d\n", pos.x, pos.y, adc_read(SLIDER_L), adc_read(SLIDER_R));
+		printf("JX=%d%%,    JY=%d%%,    SL=%d%%,    SR=%d%%\n", pos.joy_x, pos.joy_y, pos.slider_l, pos.slider_r);
     }
 }
 

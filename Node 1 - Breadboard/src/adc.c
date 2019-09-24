@@ -17,7 +17,6 @@
 
 
 
-
 void adc_test(void)
 {
 	volatile char* ext_ram = (char*)ADC_BASE; // Start address for the SRAM
@@ -36,12 +35,6 @@ void adc_init()
 	// calibrate
 }
 
-// Differential mode:
-// Channel  MA4 MA3 MA2 MA0
-// CH1:     0   1   0   0
-// CH2:     0   1   0   1
-// CH3:     0   1   1   0
-// CH4:     0   1   1   1
 int adc_read(uint8_t channel)
 {
 	// Channel address for channel 1, 2, 3, 4
@@ -51,7 +44,7 @@ int adc_read(uint8_t channel)
 	// Write to channel address mux
 	ext_ram[0] = mux_address[channel]; // Channel start from 1
 	for (volatile uint32_t i = 0; i < 1000; i++)
-	; // wait for conversion
+		; // wait for conversion
 
 	return ext_ram[0]; // return read value
 }
@@ -59,10 +52,47 @@ int adc_read(uint8_t channel)
 pos_t pos_read()
 {
 	return (pos_t){
-		.x = adc_read(JOY_X), // change with read function
-		.y = adc_read(JOY_Y),
-		.button = 69
+		.joy_x    = pos_to_percent( adc_read(JOY_X)    ),				// change with read function
+		.joy_y    = pos_to_percent( adc_read(JOY_Y)    ),
+		.slider_l = pos_to_percent( adc_read(SLIDER_L) ),			    // change with read function
+		.slider_r = pos_to_percent( adc_read(SLIDER_R) ),
+		.button   = 69
 	};
 }
 
+int pos_to_percent(int pos)
+{
+	return  (float)pos / 128 * 100 - 100;
+}
 
+enum direction j_pos(int joy_x, int joy_y)
+{
+	static int threshold = 10;			// the tolerable difference from 0
+	
+	// left
+	if(joy_x < threshold &&  -threshold < joy_y < threshold)
+		return LEFT;
+	
+	// right
+	else if(joy_x > threshold &&  -threshold < joy_y < threshold)
+		return RIGHT;
+	
+	// up
+	else if(-threshold < joy_x < threshold &&  joy_y > threshold)
+		return UP;
+	
+	// down
+	else if(-threshold < joy_x < threshold &&  joy_y < threshold)
+		return DOWN;
+	
+	// neutral
+	else if(-threshold < joy_x < threshold &&  -threshold < joy_y < threshold)
+		return NEUTRAL;
+}
+
+// Differential mode:
+// Channel  MA4 MA3 MA2 MA0
+// CH1:     0   1   0   0
+// CH2:     0   1   0   1
+// CH3:     0   1   1   0
+// CH4:     0   1   1   1
