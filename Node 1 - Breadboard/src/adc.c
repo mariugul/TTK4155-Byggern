@@ -7,12 +7,12 @@
 
 #include "adc.h"
 
-#define OLED_BASE 0x1000
-#define ADC_BASE 0x1400
-#define SRAM_BASE 0x1800
+#define OLED_BASE	   0x1000
+#define ADC_BASE	   0x1400
+#define SRAM_BASE	   0x1800
 
 #define OLED_ADDR_SIZE 0x400
-#define ADC_ADDR_SIZE 0x400
+#define ADC_ADDR_SIZE  0x400
 #define SRAM_ADDR_SIZE 0x800
 
 
@@ -68,25 +68,26 @@ int pos_to_percent(int pos)
 enum direction j_pos(int joy_x, int joy_y)
 {
 	static int threshold = 10;			// the tolerable difference from 0
+	static int angle     = 50;			// the sideways angle
 	
 	// left
-	if(joy_x < threshold &&  -threshold < joy_y < threshold)
+	if(joy_x < -threshold && joy_y > joy_x && joy_y < -joy_x)
 		return LEFT;
 	
 	// right
-	else if(joy_x > threshold &&  -threshold < joy_y < threshold)
+	else if(joy_x > threshold && joy_y < joy_x && joy_y > -joy_x)
 		return RIGHT;
+		
+	// down
+	else if(joy_y < -threshold && joy_x < -joy_y && joy_x > joy_y )
+	return DOWN;
 	
 	// up
-	else if(-threshold < joy_x < threshold &&  joy_y > threshold)
+	else if(joy_y > threshold && joy_x < joy_y && joy_x > -joy_y)
 		return UP;
 	
-	// down
-	else if(-threshold < joy_x < threshold &&  joy_y < threshold)
-		return DOWN;
-	
 	// neutral
-	else if(-threshold < joy_x < threshold &&  -threshold < joy_y < threshold)
+	else if(joy_x < threshold && joy_x > -threshold && joy_y < threshold && joy_y > -threshold )
 		return NEUTRAL;
 }
 
