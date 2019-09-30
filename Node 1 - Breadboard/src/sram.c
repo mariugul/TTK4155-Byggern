@@ -1,16 +1,7 @@
-/*
- * SRAM_test
- *
- * Created: 10.09.2019 21:04:55
- * Author : Marius C. K. Gulbrandsen
- */
+#include "sram.h"
 
-#include <avr/io.h>                     // AVR library for IO
-#include <stdio.h>                      // Standard library
-#include <stdlib.h>
-#include "uart.h"
 
-void SRAM_test(void)
+void sram_test(void)                // Test if the SRAM works
 {
 	volatile char *ext_ram = (char *) 0x1800; // Start address for the SRAM
 	uint16_t ext_ram_size = 0x800;
@@ -45,23 +36,4 @@ void SRAM_test(void)
 	}
 	printf("SRAM test completed with \n%4d errors in write phase and \n%4d errors in retrieval phase\n\n", 
 			write_errors, retrieval_errors);
-}
-
-int main(void)
-{
-    // Setup pins
-    DDRB  |= (1 << PB0);              // Port B0 is an output
-    PORTB |= (1 << PB0);              // Port B0 is HIGH: Turn on LED
-	MCUCR =  (1 << SRE);	     	  // Activate external memory
-	SFIOR =  (1 << XMM2);			  // Mask JTAG pins
-	
-	// Run test
-	uart_init();
-	SRAM_test();
-	
-    // Main program loop
-    while (1) 
-	{
-		// main body
-    }
 }

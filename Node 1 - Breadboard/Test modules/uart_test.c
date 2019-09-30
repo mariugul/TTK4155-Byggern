@@ -8,21 +8,14 @@
 #include <avr/io.h>                     // AVR library for IO
 #include <stdio.h>                      // Standard library
 #include "uart.h"                       // UART driver
-
-// UART macros
-#define FOSC   4915200                  // Clock speed
-#define BAUD   9600                     // Baud rate for uart
-#define MYUBRR FOSC / 16 / BAUD - 1     // Calculate the uart init 
+#include "led.h"
 
 
 int main(void)
 {
-    // Setup pins
-    DDRB    |= (1 << PB0);              // Port B0 is an output
-    PORTB   |= (1 << PB0);              // Port B0 is HIGH: Turn on LED
-
-    // Initialize UART
-    uart_init(MYUBRR);
+    // Initialize
+    led_init();
+    uart_init();
 
     // Send UART test
     uart_send('a');
