@@ -15,7 +15,7 @@
 // Initialize oled
 void oled_init()
 {
-    static FILE mystdout = FDEV_SETUP_STREAM(oled_put_char, NULL, _FDEV_SETUP_WRITE);
+    // static FILE mystdout = FDEV_SETUP_STREAM(oled_put_char, NULL, _FDEV_SETUP_WRITE);
 }
 
 // Reset display
@@ -64,13 +64,13 @@ void oled_put_char(char c)
 // Write text to screen
 void oled_print(char* string)
 {
-	volatile char* ext_oled_data = (char *) OLED_DATA_ADR;		// Start address for OLED data
-	ext_oled_data = string;									    // Write to screen
+	//volatile char* ext_oled_data = (char *) OLED_DATA_ADR;		// Start address for OLED data
+	//ext_oled_data = string;									    // Write to screen
 }
 
 // Write command
-void oled_command(int command)
+void oled_command(int cmd)
 {
-    volatile char* ext_oled_cmd = (char *) OLED_DATA_CMD;		// Start address for OLED command
-	ext_oled_cmd = command;		                                    // write command
+    //volatile char* ext_oled_cmd = (char *) OLED_CMD_ADR;		// Start address for OLED command
+	//ext_oled_cmd = cmd;		                                    // write command
 }

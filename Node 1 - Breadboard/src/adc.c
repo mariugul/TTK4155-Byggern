@@ -19,8 +19,8 @@
 
 void adc_test(void)
 {
-	volatile char* ext_ram = (char*)ADC_BASE; // Start address for the SRAM
-	uint16_t ext_ram_size = ADC_ADDR_SIZE;
+	volatile char* ext_ram      = (char*)ADC_BASE; // Start address for the SRAM
+	uint16_t       ext_ram_size = ADC_ADDR_SIZE;
 
 	for (uint16_t i = 0; i < ext_ram_size; i++) {
 		uint8_t retreived_value = ext_ram[i];

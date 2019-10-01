@@ -19,7 +19,7 @@ void oled_goto_column(int column);			// Go to specific column
 void oled_clear_line(int line);				// Clear specific line
 void oled_pos(int row, int column);			// Go to position
 void oled_put_char(char c);                 // Write char to screen
-void oled_print(char* ptr);					// Write text to screen
+void oled_print(char* string);					// Write text to screen
 void oled_command(int cmd);                 // Write command
 
 #endif

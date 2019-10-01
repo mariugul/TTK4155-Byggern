@@ -3,6 +3,6 @@
 
 #include <avr/io.h>
 
-void xmem_init()                // Initialize external memory
+void xmem_init();               // Initialize external memory
 
 #endif 
