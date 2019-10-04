@@ -24,7 +24,7 @@ int main(void)
 	
 	// Initialize
 	led_init();
-    gpio_init();
+	gpio_init();
 	xmem_init();
 	uart_init();
 	oled_init();
