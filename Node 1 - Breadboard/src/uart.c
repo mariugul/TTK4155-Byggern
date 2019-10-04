@@ -1,6 +1,10 @@
 #include "uart.h"                     // Include header file
 #include <avr/io.h>                   // Include AVR library
 
+// UART macros
+#define FOSC 4915200 // clock speed
+#define BAUDRATE 9600 // baud rate for uart
+#define MYUBRR FOSC / 16 / BAUDRATE - 1 // calculate the uart init
 /*_________________________________
   \     Function definitions      /
    \____________________________*/
@@ -27,11 +31,11 @@ unsigned char uart_receive()
 }
 
 // initialize the uart
-void uart_init(unsigned int ubrr)
+void uart_init()
 {
     // Set baud rate
-    UBRR0H = (unsigned char)(ubrr >> 8);
-    UBRR0L = (unsigned char)(ubrr);
+    UBRR0H = (unsigned char)(MYUBRR >> 8);
+    UBRR0L = (unsigned char)(MYUBRR);
 
     // Enable receive and transmitt
     UCSR0B = (1 << RXEN0) | (1 << TXEN0);
