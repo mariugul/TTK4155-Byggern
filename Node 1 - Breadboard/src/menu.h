@@ -15,9 +15,10 @@ typedef enum {
     NOTHING
 } menu_state;
 
+void menu_init();
 void menu_print();
 void menu_highlight(menu_state selection);
 menu_state menu_highlight_handler(enum direction dir);
-void do_menu_selection(menu_state selection);
+void menu_selection(menu_state selection);
 
 #endif

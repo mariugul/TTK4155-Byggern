@@ -5,7 +5,7 @@
  *  Author: Marius
  */ 
 
-#ifndef __OLED_H__                           // HEADER GUARD
+#ifndef __OLED_H__                          // HEADER GUARD
 #define __OLED_H__
 
 #include <avr/io.h>							// Include AVR library

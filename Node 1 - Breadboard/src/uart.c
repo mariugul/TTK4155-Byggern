@@ -2,9 +2,10 @@
 #include <avr/io.h>                   // Include AVR library
 
 // UART macros
-#define FOSC 4915200 // clock speed
-#define BAUDRATE 9600 // baud rate for uart
-#define MYUBRR FOSC / 16 / BAUDRATE - 1 // calculate the uart init
+#define FOSC   4915200                  // Clock speed
+#define BAUD   9600                     // Baud rate for uart
+#define MYUBRR FOSC / 16 / BAUD - 1     // Calculate the uart init 
+
 /*_________________________________
   \     Function definitions      /
    \____________________________*/

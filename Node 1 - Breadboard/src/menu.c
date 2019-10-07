@@ -3,13 +3,28 @@
  *  Created: 14.10.2019 11:04
  *  Author: Daniel
  */ 
+#define F_CPU 4915200                 // Clock speed, util/delay needs this
+#include <util/delay.h>
 #include "adc.h"
 #include "menu.h"
 #include "oled.h"
 
+void menu_init()
+{
+	oled_print("WELCOME!");
+	oled_pos(4, 0);
+	oled_print_inv("*ENTER GAME*");
+	
+	// Wait to display welcome screen
+	//oled_print_logo();
+	_delay_ms(3000);
+	
+	menu_print();
+}
 
 void menu_print()
-{
+{	
+	oled_reset();
 	oled_goto_line(0);
 	oled_print("--- Home ---");
 	
@@ -62,7 +77,7 @@ menu_state menu_highlight_handler(enum direction dir)
     return states[pos];
 }
 
-void do_menu_selection(menu_state selection)
+void menu_selection(menu_state selection)
 {
     if (selection == PLAY) {
         // Execute play

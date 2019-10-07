@@ -5,7 +5,7 @@
 #include <stdio.h>                              // Standard library
 
 // Function declarations
-void	      uart_init();              // Initialize the uart
+void	      uart_init();								 // Initialize the uart
 void		  uart_send(unsigned char data);             // Send data over uart
 unsigned char uart_receive();                            // Receive data from uart
 bool		  uart_is_ready();                           // Check if uart is ready for transmitt
