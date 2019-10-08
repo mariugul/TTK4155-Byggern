@@ -17,18 +17,14 @@
 #include "joystick.h"
 #include "menu.h"
 
-//unsigned char A [8] = {0b01111100,0b01111110,0b00010011,0b00010011,0b01111110,0b01111100,0b00000000,0b00000000};    // A
-
 
 int main(void)
 {
-	
 	// Initialize
     gpio_init();
 	xmem_init();
 	uart_init();
 	oled_init();
-	//oled_menu_init();
     DDRB  &= ~(1 << PB3);              // Port B3 is an input
     int read_pin = PORTB & (1 << 3);              // Port B0 is HIGH: Turn on LED
 		
@@ -45,6 +41,7 @@ int main(void)
         menu_highlight_handler(UP);
     }
     
+    // Fake selection and button press
     const int fake_button_pressed = 1;
     if (fake_button_pressed) {
         const menu_state current_state = menu_highlight_handler(NEUTRAL);
@@ -54,16 +51,14 @@ int main(void)
     // Main program loop
     while (1) 
 	{
-        // TODO: Read joystick pos
         const joy_t joy = get_joystick();
-        const menu_state current_highlight = menu_highlight_handler(joy.direction);
+        const menu_state current_selection = menu_highlight_handler(joy.dir_y);
 
-        // Button press not working
-        //volatile const int button_press = gpio_read_button(3); // Port B0 is HIGH: Turn on LED
         if (joy.button_pressed) {
-            const menu_state current_highlight = menu_highlight_handler(NEUTRAL);
-            menu_selection(current_highlight);
+            menu_selection(current_selection);
         }
+
+        _delay_ms(400);
     }
 }
 

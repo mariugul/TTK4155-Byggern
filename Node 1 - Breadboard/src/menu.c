@@ -1,7 +1,7 @@
 /* * menu.h
  *
  *  Created: 14.10.2019 11:04
- *  Author: Daniel
+ *  Author: Daniel Rahme
  */ 
 #define F_CPU 4915200                 // Clock speed, util/delay needs this
 #include <util/delay.h>
