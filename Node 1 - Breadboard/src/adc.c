@@ -56,7 +56,7 @@ pos_t pos_read()
 		.joy_y    = pos_to_percent( adc_read(JOY_Y)    ),
 		.slider_l = pos_to_percent( adc_read(SLIDER_L) ),			    // change with read function
 		.slider_r = pos_to_percent( adc_read(SLIDER_R) ),
-		.button   = 69
+		.button   = gpio_read_button(3)
 	};
 }
 

@@ -54,10 +54,13 @@ int main(void)
     while (1) 
 	{
         // TODO: Read joystick pos
+		const pos_t pos = pos_read();
+		const enum direction joy_dir = j_pos(pos.joy_x, pos.joy_y);
+        const menu_state current_highlight = menu_highlight_handler(joy_dir);
 
         // Button press not working
-        volatile const int button_press = gpio_read_button(3); // Port B0 is HIGH: Turn on LED
-        if (!button_press) {
+        //volatile const int button_press = gpio_read_button(3); // Port B0 is HIGH: Turn on LED
+        if (!pos.button) {
             const menu_state current_highlight = menu_highlight_handler(NEUTRAL);
             menu_selection(current_highlight);
         }
