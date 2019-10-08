@@ -8,13 +8,13 @@
 
 ..\..\..\src\joystick.c
 
-..\..\..\src\led.c
-
 ..\..\..\src\main.c
 
 ..\..\..\src\menu.c
 
 ..\..\..\src\oled.c
+
+..\..\..\src\spi.c
 
 ..\..\..\src\sram.c
 

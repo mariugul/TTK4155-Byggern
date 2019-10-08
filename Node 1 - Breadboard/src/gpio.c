@@ -1,15 +1,14 @@
 #include "gpio.h"
 
 
-void gpio_init()                // Initialize gpio pins
+void gpio_init()                                        /** Initialize gpio pins */
 {
     DDRB  |= (1 << PB0);                                // Port B0 is an output
-    PORTB |= (1 << PB0);                                // Port B0 is HIGH: Turn on status LED
-	DDRB  &= ~(0 << PB1) | (0 << PB2) | (0 << PB3);		// Set Port B 1,2,3 to input
-		
+    DDRB  &= ~(0 << PB1) | (0 << PB2) | (0 << PB3);		// Set Port B1, B2, B3 to input
+    PORTB |= (1 << PB0);                                // Port B0 is HIGH: Turn on status LED		
 }
 
-bool gpio_read_button(uint8_t button)   // Read button values
+bool gpio_read_button(uint8_t button)                   /** Read button values */
 {
     bool read_button;
 

@@ -19,7 +19,8 @@ main.d main.o: ../../../../src/main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  ../../../../src/uart.h ../../../../src/adc.h ../../../../src/oled.h \
- ../../../../src/menu.h ../../../../src/xmem.h ../../../../src/gpio.h
+ ../../../../src/menu.h ../../../../src/xmem.h ../../../../src/gpio.h \
+ ../../../../src/spi.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -70,3 +71,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../../../../src/xmem.h:
 
 ../../../../src/gpio.h:
+
+../../../../src/spi.h:

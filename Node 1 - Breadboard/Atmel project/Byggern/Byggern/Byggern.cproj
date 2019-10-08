@@ -187,14 +187,6 @@
       <SubType>compile</SubType>
       <Link>Drivers\joystick.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\led.c">
-      <SubType>compile</SubType>
-      <Link>Drivers\led.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\led.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\led.h</Link>
-    </Compile>
     <Compile Include="..\..\..\src\logo.h">
       <SubType>compile</SubType>
       <Link>Drivers\logo.h</Link>
@@ -218,6 +210,14 @@
     <Compile Include="..\..\..\src\oled.h">
       <SubType>compile</SubType>
       <Link>Drivers\oled.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\spi.c">
+      <SubType>compile</SubType>
+      <Link>Drivers\spi.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\spi.h">
+      <SubType>compile</SubType>
+      <Link>Drivers\spi.h</Link>
     </Compile>
     <Compile Include="..\..\..\src\sram.c">
       <SubType>compile</SubType>
