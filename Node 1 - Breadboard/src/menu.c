@@ -6,6 +6,7 @@
 #define F_CPU 4915200                 // Clock speed, util/delay needs this
 #include <util/delay.h>
 #include "adc.h"
+#include "joystick.h"
 #include "menu.h"
 #include "oled.h"
 
@@ -55,7 +56,7 @@ void menu_highlight(menu_state selection)
 }
 
 // Highlight and return chosen selection state 
-menu_state menu_highlight_handler(enum direction dir)
+menu_state menu_highlight_handler(direction_t dir)
 {
     static uint8_t pos = 0; // TODO: Needs a clear
     const uint8_t num_of_states = 3;

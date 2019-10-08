@@ -3,8 +3,21 @@
 
 #include <avr/io.h>
 
+typedef enum  {
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+	NEUTRAL
+} direction_t;
 
-// PUT THE JOYSTICK CODE HERE FROM THE ADC??
 
+typedef struct {
+    direction_t direction;
+    uint8_t button_pressed;
+} joy_t;
+
+
+joy_t get_joystick();
 
 #endif 

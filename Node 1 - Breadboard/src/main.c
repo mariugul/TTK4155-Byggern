@@ -11,9 +11,10 @@
 #include <stdio.h>                      // Standard library
 #include <stdlib.h>
 #include "uart.h"
-#include "adc.h"
+//#include "adc.h"
 #include "xmem.h"
 #include "gpio.h"
+#include "joystick.h"
 #include "menu.h"
 
 //unsigned char A [8] = {0b01111100,0b01111110,0b00010011,0b00010011,0b01111110,0b01111100,0b00000000,0b00000000};    // A
@@ -54,13 +55,12 @@ int main(void)
     while (1) 
 	{
         // TODO: Read joystick pos
-		const pos_t pos = pos_read();
-		const enum direction joy_dir = j_pos(pos.joy_x, pos.joy_y);
-        const menu_state current_highlight = menu_highlight_handler(joy_dir);
+        const joy_t joy = get_joystick();
+        const menu_state current_highlight = menu_highlight_handler(joy.direction);
 
         // Button press not working
         //volatile const int button_press = gpio_read_button(3); // Port B0 is HIGH: Turn on LED
-        if (!pos.button) {
+        if (joy.button_pressed) {
             const menu_state current_highlight = menu_highlight_handler(NEUTRAL);
             menu_selection(current_highlight);
         }
