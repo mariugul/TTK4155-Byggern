@@ -3,25 +3,24 @@
  *
  * Created: 10.09.2019 21:04:55
  * Author : Marius C. K. Gulbrandsen
+ *          Daniel Rahme
  */
 
 #include <util/delay.h>
 #include <avr/io.h>                     // AVR library for IO
 #include <stdio.h>                      // Standard library
 #include <stdlib.h>
-#include <stdbool.h>
 #include "uart.h"
-#include "adc.h"
-#include "oled.h"
-#include "menu.h"
+//#include "adc.h"
 #include "xmem.h"
 #include "gpio.h"
 #include "spi.h"
+#include "joystick.h"
+#include "menu.h"
 
 
 int main(void)
 {
-	
 	// Initialize
     gpio_init();
 	xmem_init();
