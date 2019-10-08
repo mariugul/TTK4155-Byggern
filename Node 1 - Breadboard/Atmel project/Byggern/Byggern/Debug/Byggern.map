@@ -1,15 +1,15 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
-                              Drivers/adc.o (__subsf3)
+                              Drivers/joystick.o (__subsf3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o) (__addsf3x)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
-                              Drivers/adc.o (__fixsfsi)
+                              Drivers/joystick.o (__fixsfsi)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixsfsi.o) (__fixunssfsi)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
-                              Drivers/adc.o (__floatsisf)
+                              Drivers/joystick.o (__floatsisf)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_inf.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_inf)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_nan.o)
@@ -25,7 +25,7 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_zero.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_zero)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o)
-                              Drivers/adc.o (__mulsf3)
+                              Drivers/joystick.o (__mulsf3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(mulsf3.o) (__mulsf3x)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
@@ -103,37 +103,62 @@ Discarded input sections
                 0x00000000        0x2 Drivers/adc.o
  .text.adc_read
                 0x00000000       0x8a Drivers/adc.o
- .text.pos_to_percent
-                0x00000000       0x38 Drivers/adc.o
  .text.pos_read
-                0x00000000       0x68 Drivers/adc.o
- .text.j_pos    0x00000000       0x92 Drivers/adc.o
- .debug_info    0x00000000      0x3aa Drivers/adc.o
- .debug_abbrev  0x00000000      0x221 Drivers/adc.o
- .debug_loc     0x00000000      0x251 Drivers/adc.o
+                0x00000000       0x78 Drivers/adc.o
+ .debug_info    0x00000000      0x335 Drivers/adc.o
+ .debug_abbrev  0x00000000      0x1e7 Drivers/adc.o
+ .debug_loc     0x00000000      0x12f Drivers/adc.o
  .debug_aranges
-                0x00000000       0x48 Drivers/adc.o
- .debug_ranges  0x00000000       0x38 Drivers/adc.o
- .debug_line    0x00000000      0x239 Drivers/adc.o
- .debug_str     0x00000000      0x312 Drivers/adc.o
+                0x00000000       0x38 Drivers/adc.o
+ .debug_ranges  0x00000000       0x28 Drivers/adc.o
+ .debug_line    0x00000000      0x166 Drivers/adc.o
+ .debug_str     0x00000000      0x2eb Drivers/adc.o
  .comment       0x00000000       0x31 Drivers/adc.o
- .debug_frame   0x00000000       0xac Drivers/adc.o
+ .debug_frame   0x00000000       0x98 Drivers/adc.o
+ .text          0x00000000        0x0 Drivers/can.o
+ .data          0x00000000        0x0 Drivers/can.o
+ .bss           0x00000000        0x0 Drivers/can.o
+ .text.can_send
+                0x00000000        0x2 Drivers/can.o
+ .text.can_receive
+                0x00000000        0x2 Drivers/can.o
  .text          0x00000000        0x0 Drivers/gpio.o
  .data          0x00000000        0x0 Drivers/gpio.o
  .bss           0x00000000        0x0 Drivers/gpio.o
  .text          0x00000000        0x0 Drivers/joystick.o
  .data          0x00000000        0x0 Drivers/joystick.o
  .bss           0x00000000        0x0 Drivers/joystick.o
- .debug_info    0x00000000       0x56 Drivers/joystick.o
- .debug_abbrev  0x00000000       0x26 Drivers/joystick.o
+ .text.pos_to_percent
+                0x00000000       0x38 Drivers/joystick.o
+ .text.joystick_read_direction
+                0x00000000       0x4e Drivers/joystick.o
+ .text.get_joystick
+                0x00000000       0x20 Drivers/joystick.o
+ .debug_info    0x00000000      0x22a Drivers/joystick.o
+ .debug_abbrev  0x00000000      0x141 Drivers/joystick.o
+ .debug_loc     0x00000000      0x10e Drivers/joystick.o
  .debug_aranges
-                0x00000000       0x18 Drivers/joystick.o
- .debug_line    0x00000000       0x1a Drivers/joystick.o
- .debug_str     0x00000000      0x1da Drivers/joystick.o
+                0x00000000       0x30 Drivers/joystick.o
+ .debug_ranges  0x00000000       0x20 Drivers/joystick.o
+ .debug_line    0x00000000      0x157 Drivers/joystick.o
+ .debug_str     0x00000000      0x2b6 Drivers/joystick.o
  .comment       0x00000000       0x31 Drivers/joystick.o
+ .debug_frame   0x00000000       0x5c Drivers/joystick.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 Drivers/mcp2515.o
+ .data          0x00000000        0x0 Drivers/mcp2515.o
+ .bss           0x00000000        0x0 Drivers/mcp2515.o
+ .text.mcp_read
+                0x00000000       0x24 Drivers/mcp2515.o
+ .text.mcp_write
+                0x00000000       0x28 Drivers/mcp2515.o
+ .text.mcp_rts  0x00000000       0x16 Drivers/mcp2515.o
+ .text.mcp_read_status
+                0x00000000       0x1c Drivers/mcp2515.o
+ .text.mcp_bit_mod
+                0x00000000       0x34 Drivers/mcp2515.o
  .text          0x00000000        0x0 Drivers/menu.o
  .data          0x00000000        0x0 Drivers/menu.o
  .bss           0x00000000        0x0 Drivers/menu.o
@@ -143,7 +168,7 @@ Discarded input sections
                 0x00000000       0x96 Drivers/menu.o
  .text.menu_selection
                 0x00000000       0x34 Drivers/menu.o
- .bss.pos.1810  0x00000000        0x1 Drivers/menu.o
+ .bss.pos.1818  0x00000000        0x1 Drivers/menu.o
  .text          0x00000000        0x0 Drivers/oled.o
  .data          0x00000000        0x0 Drivers/oled.o
  .bss           0x00000000        0x0 Drivers/oled.o
@@ -169,9 +194,7 @@ Discarded input sections
  .data          0x00000000        0x0 Drivers/spi.o
  .bss           0x00000000        0x0 Drivers/spi.o
  .text.spi_read
-                0x00000000        0x2 Drivers/spi.o
- .text.spi_write
-                0x00000000        0x2 Drivers/spi.o
+                0x00000000        0x8 Drivers/spi.o
  .text          0x00000000        0x0 Drivers/sram.o
  .data          0x00000000        0x0 Drivers/sram.o
  .bss           0x00000000        0x0 Drivers/sram.o
@@ -555,9 +578,11 @@ Linker script and memory map
 Address of section .data set to 0x800100
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega162/avr5/crtatmega162.o
 LOAD Drivers/adc.o
+LOAD Drivers/can.o
 LOAD Drivers/gpio.o
 LOAD Drivers/joystick.o
 LOAD main.o
+LOAD Drivers/mcp2515.o
 LOAD Drivers/menu.o
 LOAD Drivers/oled.o
 LOAD Drivers/spi.o
@@ -672,7 +697,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xfc2
+.text           0x00000000      0xffe
  *(.vectors)
  .vectors       0x00000000       0x70 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega162/avr5/crtatmega162.o
                 0x00000000                __vector_default
@@ -764,113 +789,131 @@ END GROUP
                 0x000003a2                __vector_20
                 0x000003a6                . = ALIGN (0x2)
  *(.text.*)
+ .text.can_init
+                0x000003a6        0x2 Drivers/can.o
+                0x000003a6                can_init
  .text.gpio_init
-                0x000003a6        0xa Drivers/gpio.o
-                0x000003a6                gpio_init
+                0x000003a8        0xa Drivers/gpio.o
+                0x000003a8                gpio_init
  .text.gpio_read_button
-                0x000003b0       0x2c Drivers/gpio.o
-                0x000003b0                gpio_read_button
- .text.main     0x000003dc       0x58 main.o
-                0x000003dc                main
+                0x000003b2       0x2c Drivers/gpio.o
+                0x000003b2                gpio_read_button
+ .text.main     0x000003de       0x60 main.o
+                0x000003de                main
+ .text.mcp_activate
+                0x0000043e        0x6 Drivers/mcp2515.o
+                0x0000043e                mcp_activate
+ .text.mcp_deactivate
+                0x00000444        0x4 Drivers/mcp2515.o
+                0x00000444                mcp_deactivate
+ .text.mcp_reset
+                0x00000448       0x10 Drivers/mcp2515.o
+                0x00000448                mcp_reset
+ .text.mcp_init
+                0x00000458        0x6 Drivers/mcp2515.o
+                0x00000458                mcp_init
  .text.menu_print
-                0x00000434       0x46 Drivers/menu.o
-                0x00000434                menu_print
+                0x0000045e       0x46 Drivers/menu.o
+                0x0000045e                menu_print
  .text.menu_init
-                0x0000047a       0x34 Drivers/menu.o
-                0x0000047a                menu_init
+                0x000004a4       0x34 Drivers/menu.o
+                0x000004a4                menu_init
  .text.oled_goto_column
-                0x000004ae       0x14 Drivers/oled.o
-                0x000004ae                oled_goto_column
+                0x000004d8       0x14 Drivers/oled.o
+                0x000004d8                oled_goto_column
  .text.oled_goto_line
-                0x000004c2        0xe Drivers/oled.o
-                0x000004c2                oled_goto_line
+                0x000004ec        0xe Drivers/oled.o
+                0x000004ec                oled_goto_line
  .text.oled_home
-                0x000004d0        0xa Drivers/oled.o
-                0x000004d0                oled_home
+                0x000004fa        0xa Drivers/oled.o
+                0x000004fa                oled_home
  .text.oled_pos
-                0x000004da       0x12 Drivers/oled.o
-                0x000004da                oled_pos
+                0x00000504       0x12 Drivers/oled.o
+                0x00000504                oled_pos
  .text.oled_clear_line
-                0x000004ec       0x28 Drivers/oled.o
-                0x000004ec                oled_clear_line
+                0x00000516       0x28 Drivers/oled.o
+                0x00000516                oled_clear_line
  .text.oled_reset
-                0x00000514       0x20 Drivers/oled.o
-                0x00000514                oled_reset
+                0x0000053e       0x20 Drivers/oled.o
+                0x0000053e                oled_reset
  .text.oled_init
-                0x00000534       0x60 Drivers/oled.o
-                0x00000534                oled_init
+                0x0000055e       0x60 Drivers/oled.o
+                0x0000055e                oled_init
  .text.oled_put_char
-                0x00000594       0x3e Drivers/oled.o
-                0x00000594                oled_put_char
+                0x000005be       0x3e Drivers/oled.o
+                0x000005be                oled_put_char
  .text.oled_put_char_inv
-                0x000005d2       0x40 Drivers/oled.o
-                0x000005d2                oled_put_char_inv
+                0x000005fc       0x40 Drivers/oled.o
+                0x000005fc                oled_put_char_inv
  .text.oled_print
-                0x00000612       0x44 Drivers/oled.o
-                0x00000612                oled_print
+                0x0000063c       0x44 Drivers/oled.o
+                0x0000063c                oled_print
  .text.oled_print_inv
-                0x00000656       0x44 Drivers/oled.o
-                0x00000656                oled_print_inv
+                0x00000680       0x44 Drivers/oled.o
+                0x00000680                oled_print_inv
  .text.spi_init
-                0x0000069a        0x4 Drivers/spi.o
-                0x0000069a                spi_init
+                0x000006c4        0xe Drivers/spi.o
+                0x000006c4                spi_init
+ .text.spi_write
+                0x000006d2        0x8 Drivers/spi.o
+                0x000006d2                spi_write
  .text.uart_receive
-                0x0000069e        0x4 Drivers/uart.o
-                0x0000069e                uart_receive
+                0x000006da        0x4 Drivers/uart.o
+                0x000006da                uart_receive
  .text.uart_is_ready
-                0x000006a2        0xa Drivers/uart.o
-                0x000006a2                uart_is_ready
+                0x000006de        0xa Drivers/uart.o
+                0x000006de                uart_is_ready
  .text.uart_send
-                0x000006ac       0x12 Drivers/uart.o
-                0x000006ac                uart_send
+                0x000006e8       0x12 Drivers/uart.o
+                0x000006e8                uart_send
  .text.uart_init
-                0x000006be       0x1c Drivers/uart.o
-                0x000006be                uart_init
+                0x000006fa       0x1c Drivers/uart.o
+                0x000006fa                uart_init
  .text.xmem_init
-                0x000006da        0xa Drivers/xmem.o
-                0x000006da                xmem_init
+                0x00000716        0xa Drivers/xmem.o
+                0x00000716                xmem_init
  .text.avr-libc
-                0x000006e4       0x96 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fdevopen.o)
-                0x000006e4                fdevopen
+                0x00000720       0x96 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fdevopen.o)
+                0x00000720                fdevopen
  .text.avr-libc
-                0x0000077a       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(printf.o)
-                0x0000077a                printf
+                0x000007b6       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(printf.o)
+                0x000007b6                printf
  .text.avr-libc
-                0x000007a6      0x3c2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
-                0x000007a6                vfprintf
+                0x000007e2      0x3c2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
+                0x000007e2                vfprintf
  .text.avr-libc
-                0x00000b68       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(calloc.o)
-                0x00000b68                calloc
+                0x00000ba4       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(calloc.o)
+                0x00000ba4                calloc
  .text.avr-libc
-                0x00000ba0      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(malloc.o)
-                0x00000ba0                malloc
-                0x00000cd0                free
+                0x00000bdc      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(malloc.o)
+                0x00000bdc                malloc
+                0x00000d0c                free
  .text.avr-libc
-                0x00000de2       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
-                0x00000de2                strnlen_P
+                0x00000e1e       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
+                0x00000e1e                strnlen_P
  .text.avr-libc
-                0x00000df8        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(memset.o)
-                0x00000df8                memset
+                0x00000e34        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(memset.o)
+                0x00000e34                memset
  .text.avr-libc
-                0x00000e06       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen.o)
-                0x00000e06                strnlen
+                0x00000e42       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strnlen.o)
+                0x00000e42                strnlen
  .text.avr-libc
-                0x00000e1c       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fputc.o)
-                0x00000e1c                fputc
+                0x00000e58       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(fputc.o)
+                0x00000e58                fputc
  .text.avr-libc
-                0x00000e94       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
-                0x00000e94                __ultoa_invert
+                0x00000ed0       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
+                0x00000ed0                __ultoa_invert
  .text.libgcc.prologue
-                0x00000f50       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
-                0x00000f50                __prologue_saves__
+                0x00000f8c       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_prologue.o)
+                0x00000f8c                __prologue_saves__
  .text.libgcc.prologue
-                0x00000f88       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
-                0x00000f88                __epilogue_restores__
-                0x00000fbe                . = ALIGN (0x2)
+                0x00000fc4       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_epilogue.o)
+                0x00000fc4                __epilogue_restores__
+                0x00000ffa                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000fbe        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000fbe                _exit
-                0x00000fbe                exit
+ .fini9         0x00000ffa        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000ffa                _exit
+                0x00000ffa                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -889,11 +932,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000fbe        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000ffa        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000fc2                _etext = .
+                0x00000ffe                _etext = .
 
-.data           0x00800100       0xa2 load address 0x00000fc2
+.data           0x00800100       0xa2 load address 0x00000ffe
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(malloc.o)
@@ -924,8 +967,8 @@ END GROUP
                 0x008001a8                __brkval
                 0x008001aa                __flp
                 0x008001ac                PROVIDE (__bss_end, .)
-                0x00000fc2                __data_load_start = LOADADDR (.data)
-                0x00001064                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000ffe                __data_load_start = LOADADDR (.data)
+                0x000010a0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008001ac        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -973,9 +1016,11 @@ END GROUP
 
 .comment        0x00000000       0x5c
  *(.comment)
- .comment       0x00000000       0x30 Drivers/gpio.o
+ .comment       0x00000000       0x30 Drivers/can.o
                                  0x31 (size before relaxing)
+ .comment       0x00000030       0x31 Drivers/gpio.o
  .comment       0x00000030       0x31 main.o
+ .comment       0x00000030       0x31 Drivers/mcp2515.o
  .comment       0x00000030       0x31 Drivers/menu.o
  .comment       0x00000030       0x31 Drivers/oled.o
  .comment       0x00000030       0x31 Drivers/spi.o
@@ -1010,94 +1055,111 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x1b0
+.debug_aranges  0x00000000      0x240
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x28 Drivers/gpio.o
+                0x00000000       0x30 Drivers/can.o
  .debug_aranges
-                0x00000028       0x20 main.o
+                0x00000030       0x28 Drivers/gpio.o
  .debug_aranges
-                0x00000048       0x40 Drivers/menu.o
+                0x00000058       0x20 main.o
  .debug_aranges
-                0x00000088       0x98 Drivers/oled.o
+                0x00000078       0x60 Drivers/mcp2515.o
  .debug_aranges
-                0x00000120       0x30 Drivers/spi.o
+                0x000000d8       0x40 Drivers/menu.o
  .debug_aranges
-                0x00000150       0x40 Drivers/uart.o
+                0x00000118       0x98 Drivers/oled.o
  .debug_aranges
-                0x00000190       0x20 Drivers/xmem.o
+                0x000001b0       0x30 Drivers/spi.o
+ .debug_aranges
+                0x000001e0       0x40 Drivers/uart.o
+ .debug_aranges
+                0x00000220       0x20 Drivers/xmem.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1c06
+.debug_info     0x00000000     0x20c8
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5d0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega162/avr5/crtatmega162.o
- .debug_info    0x000005d0       0xc2 Drivers/gpio.o
- .debug_info    0x00000692       0x84 main.o
- .debug_info    0x00000716      0x59a Drivers/menu.o
- .debug_info    0x00000cb0      0xcc9 Drivers/oled.o
- .debug_info    0x00001979       0xc4 Drivers/spi.o
- .debug_info    0x00001a3d      0x147 Drivers/uart.o
- .debug_info    0x00001b84       0x82 Drivers/xmem.o
+ .debug_info    0x000005d0      0x134 Drivers/can.o
+ .debug_info    0x00000704       0xc2 Drivers/gpio.o
+ .debug_info    0x000007c6       0x9a main.o
+ .debug_info    0x00000860      0x36f Drivers/mcp2515.o
+ .debug_info    0x00000bcf      0x5a1 Drivers/menu.o
+ .debug_info    0x00001170      0xcc9 Drivers/oled.o
+ .debug_info    0x00001e39       0xc6 Drivers/spi.o
+ .debug_info    0x00001eff      0x147 Drivers/uart.o
+ .debug_info    0x00002046       0x82 Drivers/xmem.o
 
-.debug_abbrev   0x00000000      0xc37
+.debug_abbrev   0x00000000      0xe1b
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x580 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega162/avr5/crtatmega162.o
- .debug_abbrev  0x00000580       0x87 Drivers/gpio.o
- .debug_abbrev  0x00000607       0x49 main.o
- .debug_abbrev  0x00000650      0x210 Drivers/menu.o
- .debug_abbrev  0x00000860      0x234 Drivers/oled.o
- .debug_abbrev  0x00000a94       0x8e Drivers/spi.o
- .debug_abbrev  0x00000b22       0xc6 Drivers/uart.o
- .debug_abbrev  0x00000be8       0x4f Drivers/xmem.o
+ .debug_abbrev  0x00000580       0xd6 Drivers/can.o
+ .debug_abbrev  0x00000656       0x87 Drivers/gpio.o
+ .debug_abbrev  0x000006dd       0x5d main.o
+ .debug_abbrev  0x0000073a      0x10b Drivers/mcp2515.o
+ .debug_abbrev  0x00000845      0x1ff Drivers/menu.o
+ .debug_abbrev  0x00000a44      0x234 Drivers/oled.o
+ .debug_abbrev  0x00000c78       0x8e Drivers/spi.o
+ .debug_abbrev  0x00000d06       0xc6 Drivers/uart.o
+ .debug_abbrev  0x00000dcc       0x4f Drivers/xmem.o
 
-.debug_line     0x00000000      0xb53
+.debug_line     0x00000000      0xe69
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x13f C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega162/avr5/crtatmega162.o
- .debug_line    0x0000013f       0xf6 Drivers/gpio.o
- .debug_line    0x00000235       0x79 main.o
- .debug_line    0x000002ae      0x27a Drivers/menu.o
- .debug_line    0x00000528      0x363 Drivers/oled.o
- .debug_line    0x0000088b       0xcf Drivers/spi.o
- .debug_line    0x0000095a      0x149 Drivers/uart.o
- .debug_line    0x00000aa3       0xb0 Drivers/xmem.o
+ .debug_line    0x0000013f       0xd2 Drivers/can.o
+ .debug_line    0x00000211       0xf6 Drivers/gpio.o
+ .debug_line    0x00000307       0x85 main.o
+ .debug_line    0x0000038c      0x201 Drivers/mcp2515.o
+ .debug_line    0x0000058d      0x27f Drivers/menu.o
+ .debug_line    0x0000080c      0x363 Drivers/oled.o
+ .debug_line    0x00000b6f      0x101 Drivers/spi.o
+ .debug_line    0x00000c70      0x149 Drivers/uart.o
+ .debug_line    0x00000db9       0xb0 Drivers/xmem.o
 
-.debug_frame    0x00000000      0x33c
+.debug_frame    0x00000000      0x458
  *(.debug_frame)
- .debug_frame   0x00000000       0x34 Drivers/gpio.o
- .debug_frame   0x00000034       0x40 main.o
- .debug_frame   0x00000074       0x74 Drivers/menu.o
- .debug_frame   0x000000e8      0x180 Drivers/oled.o
- .debug_frame   0x00000268       0x44 Drivers/spi.o
- .debug_frame   0x000002ac       0x6c Drivers/uart.o
- .debug_frame   0x00000318       0x24 Drivers/xmem.o
+ .debug_frame   0x00000000       0x44 Drivers/can.o
+ .debug_frame   0x00000044       0x34 Drivers/gpio.o
+ .debug_frame   0x00000078       0x40 main.o
+ .debug_frame   0x000000b8       0xd8 Drivers/mcp2515.o
+ .debug_frame   0x00000190       0x74 Drivers/menu.o
+ .debug_frame   0x00000204      0x180 Drivers/oled.o
+ .debug_frame   0x00000384       0x44 Drivers/spi.o
+ .debug_frame   0x000003c8       0x6c Drivers/uart.o
+ .debug_frame   0x00000434       0x24 Drivers/xmem.o
 
-.debug_str      0x00000000      0x728
+.debug_str      0x00000000      0x80f
  *(.debug_str)
  .debug_str     0x00000000      0x1f6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega162/avr5/crtatmega162.o
- .debug_str     0x000001f6      0x1cb Drivers/gpio.o
+ .debug_str     0x000001f6      0x1ec Drivers/can.o
+                                0x232 (size before relaxing)
+ .debug_str     0x000003e2       0x38 Drivers/gpio.o
                                 0x212 (size before relaxing)
- .debug_str     0x000003c1       0x1c main.o
-                                0x1e0 (size before relaxing)
- .debug_str     0x000003dd      0x165 Drivers/menu.o
-                                0x347 (size before relaxing)
- .debug_str     0x00000542      0x136 Drivers/oled.o
+ .debug_str     0x0000041a       0x26 main.o
+                                0x1f3 (size before relaxing)
+ .debug_str     0x00000440       0xb1 Drivers/mcp2515.o
+                                0x282 (size before relaxing)
+ .debug_str     0x000004f1      0x15e Drivers/menu.o
+                                0x349 (size before relaxing)
+ .debug_str     0x0000064f      0x123 Drivers/oled.o
                                 0x363 (size before relaxing)
- .debug_str     0x00000678       0x32 Drivers/spi.o
+ .debug_str     0x00000772       0x1f Drivers/spi.o
                                 0x1fe (size before relaxing)
- .debug_str     0x000006aa       0x5d Drivers/uart.o
+ .debug_str     0x00000791       0x5d Drivers/uart.o
                                 0x234 (size before relaxing)
- .debug_str     0x00000707       0x21 Drivers/xmem.o
+ .debug_str     0x000007ee       0x21 Drivers/xmem.o
                                 0x1e8 (size before relaxing)
 
-.debug_loc      0x00000000      0xc64
+.debug_loc      0x00000000      0xebb
  *(.debug_loc)
  .debug_loc     0x00000000       0x6c Drivers/gpio.o
  .debug_loc     0x0000006c       0x8a main.o
- .debug_loc     0x000000f6      0x1a2 Drivers/menu.o
- .debug_loc     0x00000298      0x980 Drivers/oled.o
- .debug_loc     0x00000c18       0x4c Drivers/uart.o
+ .debug_loc     0x000000f6      0x257 Drivers/mcp2515.o
+ .debug_loc     0x0000034d      0x1a2 Drivers/menu.o
+ .debug_loc     0x000004ef      0x980 Drivers/oled.o
+ .debug_loc     0x00000e6f       0x4c Drivers/uart.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1117,15 +1179,17 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x188
+.debug_ranges   0x00000000      0x1f8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x18 Drivers/gpio.o
- .debug_ranges  0x00000018       0x10 main.o
- .debug_ranges  0x00000028       0x30 Drivers/menu.o
- .debug_ranges  0x00000058       0xd0 Drivers/oled.o
- .debug_ranges  0x00000128       0x20 Drivers/spi.o
- .debug_ranges  0x00000148       0x30 Drivers/uart.o
- .debug_ranges  0x00000178       0x10 Drivers/xmem.o
+ .debug_ranges  0x00000000       0x20 Drivers/can.o
+ .debug_ranges  0x00000020       0x18 Drivers/gpio.o
+ .debug_ranges  0x00000038       0x10 main.o
+ .debug_ranges  0x00000048       0x50 Drivers/mcp2515.o
+ .debug_ranges  0x00000098       0x30 Drivers/menu.o
+ .debug_ranges  0x000000c8       0xd0 Drivers/oled.o
+ .debug_ranges  0x00000198       0x20 Drivers/spi.o
+ .debug_ranges  0x000001b8       0x30 Drivers/uart.o
+ .debug_ranges  0x000001e8       0x10 Drivers/xmem.o
 
 .debug_macro
  *(.debug_macro)

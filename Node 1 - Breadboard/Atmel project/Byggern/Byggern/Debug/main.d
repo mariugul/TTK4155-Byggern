@@ -17,10 +17,11 @@ main.d main.o: ../../../../src/main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
+ ../../../../src/uart.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
- ../../../../src/uart.h ../../../../src/adc.h ../../../../src/oled.h \
- ../../../../src/menu.h ../../../../src/xmem.h ../../../../src/gpio.h \
- ../../../../src/spi.h
+ ../../../../src/adc.h ../../../../src/xmem.h ../../../../src/gpio.h \
+ ../../../../src/joystick.h ../../../../src/menu.h ../../../../src/spi.h \
+ ../../../../src/mcp2515.h ../../../../src/can.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -58,18 +59,22 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
-
 ../../../../src/uart.h:
 
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
+
 ../../../../src/adc.h:
-
-../../../../src/oled.h:
-
-../../../../src/menu.h:
 
 ../../../../src/xmem.h:
 
 ../../../../src/gpio.h:
 
+../../../../src/joystick.h:
+
+../../../../src/menu.h:
+
 ../../../../src/spi.h:
+
+../../../../src/mcp2515.h:
+
+../../../../src/can.h:

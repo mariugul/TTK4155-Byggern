@@ -167,6 +167,14 @@
       <SubType>compile</SubType>
       <Link>Drivers\adc.h</Link>
     </Compile>
+    <Compile Include="..\..\..\src\can.c">
+      <SubType>compile</SubType>
+      <Link>Drivers\can.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\can.h">
+      <SubType>compile</SubType>
+      <Link>Drivers\can.h</Link>
+    </Compile>
     <Compile Include="..\..\..\src\fonts.h">
       <SubType>compile</SubType>
       <Link>Drivers\fonts.h</Link>
@@ -194,6 +202,14 @@
     <Compile Include="..\..\..\src\main.c">
       <SubType>compile</SubType>
       <Link>main.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mcp2515.c">
+      <SubType>compile</SubType>
+      <Link>Drivers\mcp2515.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\mcp2515.h">
+      <SubType>compile</SubType>
+      <Link>Drivers\mcp2515.h</Link>
     </Compile>
     <Compile Include="..\..\..\src\menu.c">
       <SubType>compile</SubType>

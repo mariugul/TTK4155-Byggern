@@ -11,15 +11,16 @@
 #include <stdio.h>                      // Standard library
 #include <stdlib.h>
 #include "uart.h"
-//#include "adc.h"
+#include "adc.h"
 #include "xmem.h"
 #include "gpio.h"
-#include "spi.h"
 #include "joystick.h"
 #include "menu.h"
+#include "spi.h"
+#include "mcp2515.h"
+#include "can.h"
 
-
-int main(void)
+int main()
 {
 	// Initialize
     gpio_init();
@@ -27,10 +28,11 @@ int main(void)
 	uart_init();
 	oled_init();
 	menu_init();
-	//menu_print();
 	spi_init();
+	mcp_init();     // Relies on spi_init() to be initialized first
+	can_init();     // Relies on mcp_init() to be initialized first
     
-	
+
     // Main program loop
     while (1) 
 	{	

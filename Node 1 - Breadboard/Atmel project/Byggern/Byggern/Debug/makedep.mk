@@ -4,11 +4,15 @@
 
 ..\..\..\src\adc.c
 
+..\..\..\src\can.c
+
 ..\..\..\src\gpio.c
 
 ..\..\..\src\joystick.c
 
 ..\..\..\src\main.c
+
+..\..\..\src\mcp2515.c
 
 ..\..\..\src\menu.c
 

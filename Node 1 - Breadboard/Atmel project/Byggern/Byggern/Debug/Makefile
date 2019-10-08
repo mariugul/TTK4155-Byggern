@@ -39,9 +39,11 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../../../../src/adc.c \
+../../../../src/can.c \
 ../../../../src/gpio.c \
 ../../../../src/joystick.c \
 ../../../../src/main.c \
+../../../../src/mcp2515.c \
 ../../../../src/menu.c \
 ../../../../src/oled.c \
 ../../../../src/spi.c \
@@ -59,9 +61,11 @@ ASM_SRCS +=
 
 OBJS +=  \
 Drivers/adc.o \
+Drivers/can.o \
 Drivers/gpio.o \
 Drivers/joystick.o \
 main.o \
+Drivers/mcp2515.o \
 Drivers/menu.o \
 Drivers/oled.o \
 Drivers/spi.o \
@@ -72,9 +76,11 @@ Drivers/xmem.o
 
 OBJS_AS_ARGS +=  \
 Drivers/adc.o \
+Drivers/can.o \
 Drivers/gpio.o \
 Drivers/joystick.o \
 main.o \
+Drivers/mcp2515.o \
 Drivers/menu.o \
 Drivers/oled.o \
 Drivers/spi.o \
@@ -85,9 +91,11 @@ Drivers/xmem.o
 
 C_DEPS +=  \
 Drivers/adc.d \
+Drivers/can.d \
 Drivers/gpio.d \
 Drivers/joystick.d \
 main.d \
+Drivers/mcp2515.d \
 Drivers/menu.d \
 Drivers/oled.d \
 Drivers/spi.d \
@@ -98,9 +106,11 @@ Drivers/xmem.d
 
 C_DEPS_AS_ARGS +=  \
 Drivers/adc.d \
+Drivers/can.d \
 Drivers/gpio.d \
 Drivers/joystick.d \
 main.d \
+Drivers/mcp2515.d \
 Drivers/menu.d \
 Drivers/oled.d \
 Drivers/spi.d \
@@ -130,6 +140,13 @@ Drivers/adc.o: ../../../../src/adc.c
 	@echo Finished building: $<
 	
 
+Drivers/can.o: ../../../../src/can.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"..\..\..\..\..\..\Dropbox\NTNU\Høst 2019\Industustrial and embedded computer systems design\Term-project-Ping-pong-game\src"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega162 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega162" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 Drivers/gpio.o: ../../../../src/gpio.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -145,6 +162,13 @@ Drivers/joystick.o: ../../../../src/joystick.c
 	
 
 ./main.o: ../../../../src/main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"..\..\..\..\..\..\Dropbox\NTNU\Høst 2019\Industustrial and embedded computer systems design\Term-project-Ping-pong-game\src"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega162 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega162" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Drivers/mcp2515.o: ../../../../src/mcp2515.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"..\..\..\..\..\..\Dropbox\NTNU\Høst 2019\Industustrial and embedded computer systems design\Term-project-Ping-pong-game\src"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega162 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega162" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
