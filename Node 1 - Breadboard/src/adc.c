@@ -56,44 +56,6 @@ pos_t pos_read()
 		.joy_y    = pos_to_percent( adc_read(JOY_Y)    ),
 		.slider_l = pos_to_percent( adc_read(SLIDER_L) ),			    // change with read function
 		.slider_r = pos_to_percent( adc_read(SLIDER_R) ),
-		.button   = 69
+		.button   = gpio_read_button(3)
 	};
 }
-
-int pos_to_percent(int pos)
-{
-	return  (float)pos / 128 * 100 - 100;
-}
-
-enum direction j_pos(int joy_x, int joy_y)
-{
-	static int threshold = 10;			// the tolerable difference from 0
-	static int angle     = 50;			// the sideways angle
-	
-	// left
-	if(joy_x < -threshold && joy_y > joy_x && joy_y < -joy_x)
-		return LEFT;
-	
-	// right
-	else if(joy_x > threshold && joy_y < joy_x && joy_y > -joy_x)
-		return RIGHT;
-		
-	// down
-	else if(joy_y < -threshold && joy_x < -joy_y && joy_x > joy_y )
-	return DOWN;
-	
-	// up
-	else if(joy_y > threshold && joy_x < joy_y && joy_x > -joy_y)
-		return UP;
-	
-	// neutral
-	else if(joy_x < threshold && joy_x > -threshold && joy_y < threshold && joy_y > -threshold )
-		return NEUTRAL;
-}
-
-// Differential mode:
-// Channel  MA4 MA3 MA2 MA0
-// CH1:     0   1   0   0
-// CH2:     0   1   0   1
-// CH3:     0   1   1   0
-// CH4:     0   1   1   1

@@ -28,13 +28,6 @@ enum adc_channels {
 	SLIDER_R = 3
 };
 
-enum direction {
-	LEFT    = 1,
-	RIGHT   = 2,
-	UP      = 3,
-	DOWN    = 4,
-	NEUTRAL	= 5
-};
 
 void  adc_test();
 void  adc_init();
