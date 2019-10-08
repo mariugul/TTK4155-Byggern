@@ -24,6 +24,5 @@ bool gpio_read_button(uint8_t button)   // Read button values
     else
         return 0;
         
-	
 	return read_button;
 }

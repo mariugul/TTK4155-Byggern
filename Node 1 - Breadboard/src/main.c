@@ -46,7 +46,7 @@ int main(void)
     
     const int fake_button_pressed = 1;
     if (fake_button_pressed) {
-        const menu_state current_state = menu_highlight_handler(NOTHING);
+        const menu_state current_state = menu_highlight_handler(NEUTRAL);
         menu_selection(current_state);
     }
 
@@ -56,10 +56,10 @@ int main(void)
         // TODO: Read joystick pos
 
         // Button press not working
-        volatile const int button_press = PORTB & (1 << 3); // Port B0 is HIGH: Turn on LED
-        if (button_press) {
-            const menu_state current_state = menu_highlight_handler(NOTHING);
-            menu_selection(current_state);
+        volatile const int button_press = gpio_read_button(3); // Port B0 is HIGH: Turn on LED
+        if (!button_press) {
+            const menu_state current_highlight = menu_highlight_handler(NEUTRAL);
+            menu_selection(current_highlight);
         }
     }
 }
