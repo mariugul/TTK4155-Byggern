@@ -9,7 +9,7 @@
 #include <stdbool.h>
 
 
-void    mcp_init();
+uint8_t mcp_init();
 void    mcp_reset();
 uint8_t mcp_read(uint8_t address);
 void    mcp_write(uint8_t address, uint8_t data); 

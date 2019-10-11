@@ -12,8 +12,7 @@ main.d main.o: ../../../../main.c ../../../../inc/adc.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  ../../../../inc/can.h ../../../../inc/gpio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
- ../../../../inc/joystick.h ../../../../inc/mcp2515.h \
- ../../../../inc/menu.h ../../../../inc/spi.h ../../../../inc/uart.h \
+ ../../../../inc/joystick.h ../../../../inc/menu.h ../../../../inc/uart.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
@@ -55,11 +54,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 ../../../../inc/joystick.h:
 
-../../../../inc/mcp2515.h:
-
 ../../../../inc/menu.h:
-
-../../../../inc/spi.h:
 
 ../../../../inc/uart.h:
 

@@ -12,10 +12,24 @@
 
 
 
-void mcp_init()
+uint8_t mcp_init()
 {
+    uint8_t value;
+
     spi_init();
     mcp_reset();
+
+    // Self test
+    mcp_read(MCP_CANSTAT, &value);
+    if ((value & MODE_MASK) != MODE_CONFIG) {
+        printf(”MCP2515 is NOT in configuration mode after reset!\n”);
+        return 1;
+    }
+    // More inits
+
+    return 0;
+
+}
 
     // More functionality coming
 }
