@@ -2,6 +2,7 @@
 #include "../inc/spi.h"
 
 
+
 /** INSTRUCTIONS **/
 #define MCP_READ        0b00000011
 #define MCP_RESET       0b11000000
@@ -13,6 +14,7 @@
 
 void mcp_init()
 {
+    spi_init();
     mcp_reset();
 
     // More functionality coming

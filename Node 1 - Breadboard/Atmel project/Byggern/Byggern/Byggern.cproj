@@ -191,6 +191,10 @@
       <SubType>compile</SubType>
       <Link>inc\mcp2515.h</Link>
     </Compile>
+    <Compile Include="..\..\..\inc\mcp_defines.h">
+      <SubType>compile</SubType>
+      <Link>inc\mcp_defines.h</Link>
+    </Compile>
     <Compile Include="..\..\..\inc\menu.h">
       <SubType>compile</SubType>
       <Link>inc\menu.h</Link>
