@@ -10,9 +10,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "oled.h"
-#include "fonts.h"
-#include "logo.h"
+#include "../inc/oled.h"
+#include "../inc/fonts.h"
+#include "../inc/logo.h"
+
 
 #define OLED_CMD_ADR      0x1000
 #define OLED_DATA_ADR     0x1200

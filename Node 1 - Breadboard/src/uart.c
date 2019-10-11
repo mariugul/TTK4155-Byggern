@@ -1,4 +1,4 @@
-#include "uart.h"                     // Include header file
+#include "../inc/uart.h"                     // Include header file
 #include <avr/io.h>                   // Include AVR library
 
 // UART macros

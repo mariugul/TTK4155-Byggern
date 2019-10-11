@@ -1,4 +1,4 @@
-main.d main.o: ../../../../src/main.c \
+main.d main.o: ../../../../main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -17,11 +17,11 @@ main.d main.o: ../../../../src/main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
- ../../../../src/uart.h \
+ ../../../../inc/uart.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
- ../../../../src/adc.h ../../../../src/xmem.h ../../../../src/gpio.h \
- ../../../../src/joystick.h ../../../../src/menu.h ../../../../src/spi.h \
- ../../../../src/mcp2515.h ../../../../src/can.h
+ ../../../../inc/adc.h ../../../../inc/xmem.h ../../../../inc/gpio.h \
+ ../../../../inc/joystick.h ../../../../inc/menu.h ../../../../inc/spi.h \
+ ../../../../inc/mcp2515.h ../../../../inc/can.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -59,22 +59,22 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
-../../../../src/uart.h:
+../../../../inc/uart.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
-../../../../src/adc.h:
+../../../../inc/adc.h:
 
-../../../../src/xmem.h:
+../../../../inc/xmem.h:
 
-../../../../src/gpio.h:
+../../../../inc/gpio.h:
 
-../../../../src/joystick.h:
+../../../../inc/joystick.h:
 
-../../../../src/menu.h:
+../../../../inc/menu.h:
 
-../../../../src/spi.h:
+../../../../inc/spi.h:
 
-../../../../src/mcp2515.h:
+../../../../inc/mcp2515.h:
 
-../../../../src/can.h:
+../../../../inc/can.h:

@@ -159,117 +159,118 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\src\adc.c">
+    <Folder Include="inc" />
+    <Folder Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\inc\adc.h">
       <SubType>compile</SubType>
-      <Link>Drivers\adc.c</Link>
+      <Link>inc\adc.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\adc.h">
+    <Compile Include="..\..\..\inc\can.h">
       <SubType>compile</SubType>
-      <Link>Drivers\adc.h</Link>
+      <Link>inc\can.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\can.c">
+    <Compile Include="..\..\..\inc\fonts.h">
       <SubType>compile</SubType>
-      <Link>Drivers\can.c</Link>
+      <Link>inc\fonts.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\can.h">
+    <Compile Include="..\..\..\inc\gpio.h">
       <SubType>compile</SubType>
-      <Link>Drivers\can.h</Link>
+      <Link>inc\gpio.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\fonts.h">
+    <Compile Include="..\..\..\inc\joystick.h">
       <SubType>compile</SubType>
-      <Link>Drivers\fonts.h</Link>
+      <Link>inc\joystick.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\gpio.c">
+    <Compile Include="..\..\..\inc\logo.h">
       <SubType>compile</SubType>
-      <Link>Drivers\gpio.c</Link>
+      <Link>inc\logo.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\gpio.h">
+    <Compile Include="..\..\..\inc\mcp2515.h">
       <SubType>compile</SubType>
-      <Link>Drivers\gpio.h</Link>
+      <Link>inc\mcp2515.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\joystick.c">
+    <Compile Include="..\..\..\inc\menu.h">
       <SubType>compile</SubType>
-      <Link>Drivers\joystick.c</Link>
+      <Link>inc\menu.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\joystick.h">
+    <Compile Include="..\..\..\inc\oled.h">
       <SubType>compile</SubType>
-      <Link>Drivers\joystick.h</Link>
+      <Link>inc\oled.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\logo.h">
+    <Compile Include="..\..\..\inc\spi.h">
       <SubType>compile</SubType>
-      <Link>Drivers\logo.h</Link>
+      <Link>inc\spi.h</Link>
     </Compile>
-    <Compile Include="..\..\..\src\main.c">
+    <Compile Include="..\..\..\inc\sram.h">
+      <SubType>compile</SubType>
+      <Link>inc\sram.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\timer.h">
+      <SubType>compile</SubType>
+      <Link>inc\timer.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\uart.h">
+      <SubType>compile</SubType>
+      <Link>inc\uart.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\xmem.h">
+      <SubType>compile</SubType>
+      <Link>inc\xmem.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\main.c">
       <SubType>compile</SubType>
       <Link>main.c</Link>
     </Compile>
+    <Compile Include="..\..\..\src\adc.c">
+      <SubType>compile</SubType>
+      <Link>src\adc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\can.c">
+      <SubType>compile</SubType>
+      <Link>src\can.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\gpio.c">
+      <SubType>compile</SubType>
+      <Link>src\gpio.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\joystick.c">
+      <SubType>compile</SubType>
+      <Link>src\joystick.c</Link>
+    </Compile>
     <Compile Include="..\..\..\src\mcp2515.c">
       <SubType>compile</SubType>
-      <Link>Drivers\mcp2515.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\mcp2515.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\mcp2515.h</Link>
+      <Link>src\mcp2515.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\menu.c">
       <SubType>compile</SubType>
-      <Link>Drivers\menu.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\menu.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\menu.h</Link>
+      <Link>src\menu.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\oled.c">
       <SubType>compile</SubType>
-      <Link>Drivers\oled.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\oled.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\oled.h</Link>
+      <Link>src\oled.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\spi.c">
       <SubType>compile</SubType>
-      <Link>Drivers\spi.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\spi.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\spi.h</Link>
+      <Link>src\spi.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\sram.c">
       <SubType>compile</SubType>
-      <Link>Drivers\sram.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\sram.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\sram.h</Link>
+      <Link>src\sram.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\timer.c">
       <SubType>compile</SubType>
-      <Link>Drivers\timer.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\timer.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\timer.h</Link>
+      <Link>src\timer.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\uart.c">
       <SubType>compile</SubType>
-      <Link>Drivers\uart.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\uart.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\uart.h</Link>
+      <Link>src\uart.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\xmem.c">
       <SubType>compile</SubType>
-      <Link>Drivers\xmem.c</Link>
+      <Link>src\xmem.c</Link>
     </Compile>
-    <Compile Include="..\..\..\src\xmem.h">
-      <SubType>compile</SubType>
-      <Link>Drivers\xmem.h</Link>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Drivers" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

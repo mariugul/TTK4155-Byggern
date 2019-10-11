@@ -1,4 +1,4 @@
-#include "sram.h"
+#include "../inc/sram.h"
 
 
 void sram_test(void)                // Test if the SRAM works

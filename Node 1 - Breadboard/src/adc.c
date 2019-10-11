@@ -5,7 +5,7 @@
  *  Author: Marius
  */ 
 
-#include "adc.h"
+#include "../inc/adc.h"
 
 #define OLED_BASE	   0x1000
 #define ADC_BASE	   0x1400

@@ -5,10 +5,10 @@
  */ 
 #define F_CPU 4915200                 // Clock speed, util/delay needs this
 #include <util/delay.h>
-#include "adc.h"
-#include "joystick.h"
-#include "menu.h"
-#include "oled.h"
+#include "../inc/adc.h"
+#include "../inc/joystick.h"
+#include "../inc/menu.h"
+#include "../inc/oled.h"
 
 void menu_init()
 {

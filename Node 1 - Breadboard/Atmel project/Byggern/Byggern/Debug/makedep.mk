@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+..\..\..\main.c
+
 ..\..\..\src\adc.c
 
 ..\..\..\src\can.c
@@ -9,8 +11,6 @@
 ..\..\..\src\gpio.c
 
 ..\..\..\src\joystick.c
-
-..\..\..\src\main.c
 
 ..\..\..\src\mcp2515.c
 

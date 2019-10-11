@@ -10,15 +10,15 @@
 #include <avr/io.h>                     // AVR library for IO
 #include <stdio.h>                      // Standard library
 #include <stdlib.h>
-#include "uart.h"
-#include "adc.h"
-#include "xmem.h"
-#include "gpio.h"
-#include "joystick.h"
-#include "menu.h"
-#include "spi.h"
-#include "mcp2515.h"
-#include "can.h"
+#include "inc/uart.h"
+#include "inc/adc.h"
+#include "inc/xmem.h"
+#include "inc/gpio.h"
+#include "inc/joystick.h"
+#include "inc/menu.h"
+#include "inc/spi.h"
+#include "inc/mcp2515.h"
+#include "inc/can.h"
 
 int main()
 {
@@ -36,7 +36,7 @@ int main()
     // Main program loop
     while (1) 
 	{	
-		 
+		printf("hei");
 		printf("B1: %d,   B2: %d   B3: %d\n", gpio_read_button(1), gpio_read_button(2), gpio_read_button(3));
 		
     }

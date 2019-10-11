@@ -3,9 +3,9 @@
  *  Created: 08.10.2019
  *  Author: Daniel Rahme
  */
-#include "joystick.h"
-#include "adc.h"
-#include "gpio.h"
+#include "../inc/joystick.h"
+#include "../inc/adc.h"
+#include "../inc/gpio.h"
 
 int pos_to_percent(int pos)
 {

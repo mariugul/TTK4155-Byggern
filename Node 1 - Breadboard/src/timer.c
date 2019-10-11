@@ -4,7 +4,7 @@
  * Created: 01.10.2019 18:56:57
  *  Author: Marius
  */ 
-#include "timer.h"
+#include "../inc/timer.h"
 
 int overflow_count = 0;
 

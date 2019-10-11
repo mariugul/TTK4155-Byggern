@@ -1,4 +1,4 @@
-#include "xmem.h"
+#include "../inc/xmem.h"
 
 void xmem_init()                      // Initialize external memory
 {

@@ -1,4 +1,4 @@
-#include "gpio.h"
+#include "../inc/gpio.h"
 
 
 void gpio_init()                                        /** Initialize gpio pins */

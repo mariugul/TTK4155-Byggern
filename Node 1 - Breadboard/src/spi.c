@@ -1,4 +1,4 @@
-#include "spi.h"
+#include "../inc/spi.h"
 
 
 void spi_init()                             /* Enable SPI */

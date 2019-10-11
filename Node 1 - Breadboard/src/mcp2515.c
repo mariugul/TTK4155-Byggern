@@ -1,5 +1,5 @@
-#include "mcp2515.h"
-#include "spi.h"
+#include "../inc/mcp2515.h"
+#include "../inc/spi.h"
 
 
 /** INSTRUCTIONS **/
