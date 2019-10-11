@@ -1,5 +1,5 @@
 /*
- * OLED
+ * MAIN
  *
  * Created: 10.09.2019 21:04:55
  * Author : Marius C. K. Gulbrandsen
@@ -10,6 +10,7 @@
 #include "inc/can.h"
 #include "inc/gpio.h"
 #include "inc/joystick.h"
+#include "inc/mcp_defines.h"
 #include "inc/menu.h"
 #include "inc/uart.h"
 #include "inc/xmem.h"
@@ -17,6 +18,7 @@
 #include <stdio.h> // Standard library
 #include <stdlib.h>
 #include <util/delay.h>
+
 
 int main()
 {
@@ -26,10 +28,17 @@ int main()
     uart_init();
     oled_init();
     menu_init();
-    can_init(); // Init after mcp
+    can_init();
+
+    // Try to send a message
+    can_message message;
+    message.id = 3;
+    message.length = 1;
+    message.data[0] = (uint8_t)'U';
+    can_send(&message);
 
     // Main program loop
     while (1) {
-        printf("B1: %d,   B2: %d   B3: %d\n", gpio_read_button(1), gpio_read_button(2), gpio_read_button(3));
+        // Loop
     }
 }

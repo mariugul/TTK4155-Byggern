@@ -10,7 +10,8 @@ void spi_init()                             /* Enable SPI */
 }
 
 char spi_read()                              /* Read from the SPI */
-{
+{   
+    spi_write(0x00);                        // Delay one clk
     while(!(SPSR & (1<<SPIF)))              // Wait for reception complete 
         ;
 

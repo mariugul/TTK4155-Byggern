@@ -5,21 +5,25 @@
 
 void can_init()
 {
-    mcp_init();
     // -Initialize loop back mode
-    mcp_write(MCP_CANCTRL ,MODE_LOOPBACK);
-
-    // -Enable interrupts
-
+    mcp_init(MODE_LOOPBACK);
+    printf("<CAN is ready>");
 }
 
 void can_send(can_message* message)
 {
     // -Send a message with ID and Data
-    mcp_rts(message);
+    uint8_t i;
+    for (i = 0; i < message->length; i++)
+        mcp_rts(message->data[i]);
 }
 
 char can_receive()
 {
     // -Receive a message
 }
+
+// In development
+void can_error() {}
+void can_transmit_complete(){}
+void can_int_vect() {}
