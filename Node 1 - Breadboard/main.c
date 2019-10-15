@@ -35,10 +35,13 @@ int main()
     message.id = 3;
     message.length = 1;
     message.data[0] = (uint8_t)'U';
-    can_send(&message);
+    
+	
 
     // Main program loop
     while (1) {
-        // Loop
+        //can_send(&message);
+        //_delay_ms(100);
+        //printf("CAN receive: %c\n", can_receive(3));
     }
 }

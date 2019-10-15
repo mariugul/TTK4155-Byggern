@@ -2,12 +2,6 @@
 #include "../inc/mcp_defines.h"
 #include "../inc/spi.h"
 
-/** INSTRUCTIONS **/ // defined in mcp_defines
-//#define MCP_READ        0b00000011
-//#define MCP_RESET       0b11000000
-//#define MCP_READ_STATUS 0b10100000
-//#define MCP_BITMOD      0b00000101
-//#define MCP_WRITE       0b10010010
 
 uint8_t mcp_init(uint8_t mode)
 {
@@ -23,13 +17,20 @@ uint8_t mcp_init(uint8_t mode)
         return 1; // Exit
     }
 
+    // ************************************
+    // INITIALIZE STUFF HERE IN CONFIG MODE
+    // ************************************
+
     // Set mode
     mcp_write(MCP_CANCTRL, mode);
 
-    if ((value & MODE_MASK) != MODE_CONFIG) {
-        printf("<MCP2515 is NOT in configuration mode after reset!>\n");
+     // Self test
+    value = mcp_read(MCP_CANSTAT);
+    if ((value & MODE_MASK) != mode) {
+        printf("<MCP2515 is NOT in the selected mode!>\n");
         return 1; // Exit
     }
+
 
     // Print which mode was selected
     if (mode == MODE_NORMAL)
@@ -126,4 +127,10 @@ void mcp_activate()
 void mcp_deactivate()
 {
     PORTB |= (1 << PB4); // Higher 'CS
+}
+
+void mcp_prepare_message(uint8_t id, uint8_t data_lenght)
+{
+    mcp_write(MCP_TXB0SIDH, id);    // Set the ID (high)
+    mcp_write(MCP_TXB0DLC, data_lenght); // Set the length
 }

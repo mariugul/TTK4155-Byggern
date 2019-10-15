@@ -14,6 +14,9 @@ Copyright 2003 Kimberly Otten Software Consulting
 */
 
 // Define MCP2515 register addresses
+#define MCP_TXB0SIDL	0x32
+#define MCP_TXB0SIDH	0x31
+#define MCP_TXB0DLC	    0x35
 
 #define MCP_RXF0SIDH	0x00
 #define MCP_RXF0SIDL	0x01
@@ -73,6 +76,12 @@ Copyright 2003 Kimberly Otten Software Consulting
 
 #define MCP_TX01_MASK	0x14
 #define MCP_TX_MASK		0x54
+
+// TXB CTRL bitmasks
+#define MCP_TXREQ_MASK  (1 << 3)
+#define MCP_ATBF_MASK   (1 << 6)
+#define MCP_MLOA_MASK   (1 << 5)
+#define MCP_TXERR_MASK  (1 << 4)
 
 // Define SPI Instruction Set
 
