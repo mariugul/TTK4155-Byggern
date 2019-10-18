@@ -16,18 +16,20 @@ void can_init()
 
 void can_send(can_message* message)
 {
-    mcp_prepare_message(message->id, message->length);
-
     // Check that we can send
     if (!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
-        printf("Transmitt not ready\n");
+        //printf("Transmitt not ready\n");
         return;
     }
 
+    // Set ID and data-length
+    mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, message->id << 5);    // Set the ID (high)
+    mcp_write(MCP_TXB0DLC, message->length); // Set the length
+
     // Clear bits ATBF, MLOA, TXERR in TXB0CTRL register
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_ATBF_MASK, 0);
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_MLOA_MASK, 0);
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXERR_MASK, 0);
+    //mcp_bit_mod(MCP_TXB0CTRL, MCP_ATBF_MASK, 0);
+    //mcp_bit_mod(MCP_TXB0CTRL, MCP_MLOA_MASK, 0);
+    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXERR_MASK, 0);
     
     const uint8_t buffer_addr[8] = {0x36, 0x37, 0x38, 0x39, 
                                     0x3A, 0x3B, 0x3C, 0x3D};
@@ -37,7 +39,17 @@ void can_send(can_message* message)
         mcp_write(buffer_addr[i], message->data[i]);
     }
 
-    printf("Message has been transmitted\n");
+    // Set bit to start transmission, may be removed?
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
+    
+    while ( !(!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK) && (mcp_read(MCP_CANINTF) & MCP_RX0IF)) );
+    
+    printf("Message has been transmitted (maybe)\n");
+
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
+    //mcp_rts(); // Request to send
+    //can_transmit_complete(); // Sets transmit as complete
+
 }
 
 char can_receive(uint8_t id)

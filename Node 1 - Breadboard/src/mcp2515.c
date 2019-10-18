@@ -128,9 +128,3 @@ void mcp_deactivate()
 {
     PORTB |= (1 << PB4); // Higher 'CS
 }
-
-void mcp_prepare_message(uint8_t id, uint8_t data_lenght)
-{
-    mcp_write(MCP_TXB0SIDH, id);    // Set the ID (high)
-    mcp_write(MCP_TXB0DLC, data_lenght); // Set the length
-}
