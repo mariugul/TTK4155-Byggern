@@ -1,2 +1,7 @@
 
 *.ini
+*.elf
+*.o
+*.lss
+*.map
+*.srec
