@@ -35,6 +35,8 @@ int main()
     message.id = 3;
     message.length = 1;
     message.data[0] = (uint8_t)'U';
+	
+	printf("Guten tag\n");
     
 	
 

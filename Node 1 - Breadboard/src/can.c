@@ -6,11 +6,9 @@
 void can_init()
 {
     // -Initialize loop back mode
-    mcp_init (MODE_LOOPBACK);            // Set MCP2515 mode
-    mcp_write(MCP_CANINTE, MCP_RX_INT);  // Set interrupt enable
-    mcp_write(MCP_CANINTE, MCP_TX_INT);  // Set interrupt enable
-
-
+    mcp_init(MODE_LOOPBACK);            // Set MCP2515 mode
+    mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, MCP_RX_INT);  // Set interrupt enable
+    mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, MCP_TX_INT);  // Set interrupt enable
     printf("<CAN is ready>");
 }
 
@@ -24,12 +22,11 @@ void can_send(can_message* message)
 
     // Set ID and data-length
     mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, message->id << 5);    // Set the ID (high)
+    mcp_write(MCP_TXB0SIDH, 0x00);
     mcp_write(MCP_TXB0DLC, message->length); // Set the length
 
-    // Clear bits ATBF, MLOA, TXERR in TXB0CTRL register
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_ATBF_MASK, 0);
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_MLOA_MASK, 0);
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXERR_MASK, 0);
+    // Set priority TXP, Highest=3
+    mcp_mod_bit(MCP_TXB0CTRL, MCP_TXERR_MASK, 3);
     
     const uint8_t buffer_addr[8] = {0x36, 0x37, 0x38, 0x39, 
                                     0x3A, 0x3B, 0x3C, 0x3D};
@@ -42,14 +39,10 @@ void can_send(can_message* message)
     // Set bit to start transmission, may be removed?
     mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
     
-    while ( !(!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK) && (mcp_read(MCP_CANINTF) & MCP_RX0IF)) );
     
+    mcp_rts(1);
     printf("Message has been transmitted (maybe)\n");
-
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
-    //mcp_rts(); // Request to send
     //can_transmit_complete(); // Sets transmit as complete
-
 }
 
 char can_receive(uint8_t id)

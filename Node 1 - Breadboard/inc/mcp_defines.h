@@ -82,6 +82,7 @@ Copyright 2003 Kimberly Otten Software Consulting
 #define MCP_ATBF_MASK   (1 << 6)
 #define MCP_MLOA_MASK   (1 << 5)
 #define MCP_TXERR_MASK  (1 << 4)
+#define MCP_TXP_MASK  (1 << 4)
 
 // Define SPI Instruction Set
 
