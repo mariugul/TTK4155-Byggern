@@ -119,7 +119,8 @@ Copyright 2003 Kimberly Otten Software Consulting
 
 #define MODE_NORMAL     0x00
 #define MODE_SLEEP      0x20
-#define MODE_LOOPBACK   0x40
+//#define MODE_LOOPBACK   0x40
+#define MODE_LOOPBACK   (1 << 6)
 #define MODE_LISTENONLY 0x60
 #define MODE_CONFIG     0x80
 #define MODE_POWERUP	0xE0

@@ -7,13 +7,19 @@ void can_init()
 {
     // -Initialize loop back mode
     mcp_init(MODE_LOOPBACK);            // Set MCP2515 mode
-    mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, MCP_RX_INT);  // Set interrupt enable
-    mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, MCP_TX_INT);  // Set interrupt enable
+    //mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, MCP_RX_INT);  // Set interrupt enable
+    //mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, MCP_TX_INT);  // Set interrupt enable
+    mcp_write(MCP_CANINTE, MCP_RX_INT);
+    mcp_write(MCP_CANINTE, MCP_TX_INT);
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
     printf("<CAN is ready>");
 }
 
 void can_send(can_message* message)
 {
+    mcp_write(MCP_CANINTE, MCP_TX_INT);
+    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
+
     // Check that we can send
     if (!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
         //printf("Transmitt not ready\n");
@@ -21,8 +27,8 @@ void can_send(can_message* message)
     }
 
     // Set ID and data-length
-    mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, message->id << 5);    // Set the ID (high)
-    mcp_write(MCP_TXB0SIDH, 0x00);
+    mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, (message->id) << 5);    // Set the ID (high)
+    mcp_write(MCP_TXB0SIDH, (message->id) >> 3);
     mcp_write(MCP_TXB0DLC, message->length); // Set the length
 
     // Set priority TXP, Highest=3
@@ -47,8 +53,10 @@ void can_send(can_message* message)
 
 can_message can_receive()
 {
+    mcp_write(MCP_CANINTE, MCP_RX_INT);
     // Read from rx intrerrupt FLAG register
-    if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF)) {
+    if (mcp_read(MCP_CANINTF) == 0x00) {
+    //if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF)) {
         return (can_message){0}; // Early exit
     }
 

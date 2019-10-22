@@ -32,23 +32,27 @@ int main()
 
     // Try to send a message
     can_message message = {0};
-    message.id = 5;
-    message.length = 1;
-    message.data[0] = (uint8_t)'U';
-	
-	printf("Guten tag\n");
-    
-	
+    message.id = 93;
+    message.length = 4;
+    message.data[0] = (uint8_t)'J';
+    message.data[1] = (uint8_t)'A';
+    message.data[2] = (uint8_t)'A';
+    message.data[3] = (uint8_t)'A';
+    can_send(&message);
 
     // Main program loop
     while (1) {
-        can_send(&message);
-        _delay_ms(1000);
         const can_message rx = can_receive();
         if (rx.length > 0) {
-            printf("--- ID: %d\tLength: %d\n", rx.id, rx.length);
-            printf("D%d: %c", 1, rx.data[0]);
+            printf("--- ID: %d\tLength: %d ---\n", rx.id, rx.length);
+            printf("Message: ");
+            for (int i = 0; i < rx.length; i++) {
+                printf("%c", rx.data[i]);
+            }
+            printf("\n\n");
         }
-        //printf("CAN receive: %c\n", can_receive(3));
+
+        _delay_ms(100);
+        can_send(&message);
     }
 }

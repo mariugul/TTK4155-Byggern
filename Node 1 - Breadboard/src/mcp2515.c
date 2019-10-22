@@ -88,7 +88,9 @@ void mcp_write(uint8_t address, uint8_t data)
 
 void mcp_rts(uint8_t transmitt)
 {
+    if (transmitt > 7 || transmitt == 0) return;
     mcp_activate();
+    transmitt |= (1 << 7); // MSB must be set
     spi_write(transmitt);
     mcp_deactivate();
 }
