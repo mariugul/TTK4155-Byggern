@@ -121,7 +121,7 @@ void mcp_bit_mod(uint8_t address, uint8_t mask, uint8_t data)
 // PROTOTYPE
 void mcp_activate()
 {
-    PORTB &= ~(0 << PB4); // Lower 'CS
+    PORTB &= ~(1 << PB4); // Lower 'CS
 }
 
 void mcp_deactivate()

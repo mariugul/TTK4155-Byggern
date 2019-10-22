@@ -10,7 +10,7 @@
 #define PIN_LBUT PB1    // Left push button on board
 #define PIN_RBUT PB2    // Right push button on board
 #define PIN_JBUT PB3    // Joystick push button on board
-#define PIN_MCP_INT PB4 // MCP2515 output interrupt pin
+#define PIN_MCP_CS PB4 // MCP2515 output interrupt pin
 
 #define OUTPUT 1 // Decides to define pin as OUTPUT
 #define INPUT 0  // Decides to define pin as INPUT

@@ -26,7 +26,7 @@ void can_send(can_message* message)
     mcp_write(MCP_TXB0DLC, message->length); // Set the length
 
     // Set priority TXP, Highest=3
-    mcp_mod_bit(MCP_TXB0CTRL, MCP_TXERR_MASK, 3);
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXERR_MASK, 3);
     
     const uint8_t buffer_addr[8] = {0x36, 0x37, 0x38, 0x39, 
                                     0x3A, 0x3B, 0x3C, 0x3D};
@@ -45,22 +45,36 @@ void can_send(can_message* message)
     //can_transmit_complete(); // Sets transmit as complete
 }
 
-char can_receive(uint8_t id)
+can_message can_receive()
 {
     // Read from rx intrerrupt FLAG register
-    // if (!rx_interrupt_occured) return 0; // Early exit
+    if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF)) {
+        return (can_message){0}; // Early exit
+    }
 
-    // Check from which register and return value
-    // if (int_from_rx0) return rxb0;
-    // else if (int_from_rx1) return rxb1;
-    // else return 0;    // no interrupt from rx
+    can_message rx = {0};
 
+    // Get ID
+    const uint8_t id_high = mcp_read(MCP_RXB0SIDH);
+    const uint8_t id_low = mcp_read(MCP_RXB0SIDL) >> 5;
+    rx.id = (id_high << 3) + id_low;
 
-    // -Receive a message
-    if(mcp_read(id) == MCP_RX0IF)
-        printf("Message received!\n");
-    
-    return mcp_read(id);
+    // Get code length
+    const uint8_t length = mcp_read(MCP_RXB0DLC) & 0x0f;
+    rx.length = (length > 8 ? 8 : length);
+
+    // Get data
+    const uint8_t rx0_buffer_addr[8] = {0x66, 0x67, 0x68, 0x69,
+                                        0x6a, 0x6b, 0x6c, 0x6d};
+
+    for (int i = 0; i < rx.length; i++) {
+        rx.data[i] = mcp_read(rx0_buffer_addr[i]);
+    }
+
+    // CLEAR FLAG!
+    mcp_bit_mod(MCP_CANINTF, MCP_RX0IF, 0);
+
+    return rx;
 }
 
 // In development

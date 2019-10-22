@@ -31,8 +31,8 @@ int main()
     can_init();
 
     // Try to send a message
-    can_message message;
-    message.id = 3;
+    can_message message = {0};
+    message.id = 5;
     message.length = 1;
     message.data[0] = (uint8_t)'U';
 	
@@ -42,8 +42,13 @@ int main()
 
     // Main program loop
     while (1) {
-        //can_send(&message);
-        //_delay_ms(100);
+        can_send(&message);
+        _delay_ms(1000);
+        const can_message rx = can_receive();
+        if (rx.length > 0) {
+            printf("--- ID: %d\tLength: %d\n", rx.id, rx.length);
+            printf("D%d: %c", 1, rx.data[0]);
+        }
         //printf("CAN receive: %c\n", can_receive(3));
     }
 }
