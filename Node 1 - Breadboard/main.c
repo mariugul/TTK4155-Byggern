@@ -18,6 +18,7 @@
 #include <stdio.h> // Standard library
 #include <stdlib.h>
 #include <util/delay.h>
+#include <stdbool.h>
 
 
 int main()
@@ -33,15 +34,28 @@ int main()
     // Try to send a message
     can_message message;
     message.id = 3;
-    message.length = 1;
-    message.data[0] = (uint8_t)'U';
-    
-	
+    message.length = 2;
+    message.data[0] = 'U';
+    message.data[1] = 'X';
 
     // Main program loop
-    while (1) {
-        //can_send(&message);
-        //_delay_ms(100);
-        //printf("CAN receive: %c\n", can_receive(3));
+    while (true) {
+        // Send message
+        can_send(&message);
+
+        // Received message
+        const can_message can_msg = can_receive();
+
+        // Print received message
+        if (can_msg.length > 0) {
+            printf("--- Message Received ---\n");
+            printf("ID: %d   -   Length: %d\n", can_msg.id, can_msg.length);
+            for (int i = 0; i < can_msg.length; i++) {
+                printf("D%d: %c\n", i, can_msg.data[i]);
+            }
+            printf("\n");
+        }
+
+        _delay_ms(500); 
     }
 }

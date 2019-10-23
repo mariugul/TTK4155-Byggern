@@ -179,6 +179,10 @@
       <SubType>compile</SubType>
       <Link>inc\gpio.h</Link>
     </Compile>
+    <Compile Include="..\..\..\inc\gpio_defines.h">
+      <SubType>compile</SubType>
+      <Link>inc\gpio_defines.h</Link>
+    </Compile>
     <Compile Include="..\..\..\inc\joystick.h">
       <SubType>compile</SubType>
       <Link>inc\joystick.h</Link>

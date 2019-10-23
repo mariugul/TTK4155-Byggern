@@ -63,7 +63,7 @@ void mcp_reset()
 
 uint8_t mcp_read(uint8_t address)
 {
-    uint8_t read;
+    uint8_t read = 0;
     mcp_activate(); // Set 'CS LOW
 
     spi_write(MCP_READ); // Write READ command

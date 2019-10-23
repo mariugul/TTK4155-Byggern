@@ -65,8 +65,10 @@ Copyright 2003 Kimberly Otten Software Consulting
 #define MCP_TXB2CTRL	0x50
 #define MCP_RXB0CTRL	0x60
 #define MCP_RXB0SIDH	0x61
+#define MCP_RXB0SIDL	0x62
 #define MCP_RXB1CTRL	0x70
 #define MCP_RXB1SIDH	0x71
+#define MCP_RXB0DLC 	0x65
 
 
 #define MCP_TX_INT		0x1C		// Enable all transmit interrupts
@@ -82,6 +84,14 @@ Copyright 2003 Kimberly Otten Software Consulting
 #define MCP_ATBF_MASK   (1 << 6)
 #define MCP_MLOA_MASK   (1 << 5)
 #define MCP_TXERR_MASK  (1 << 4)
+
+// CAN INT Flag bitmasks
+//#define MCP_RX0IF   (1 << 0)
+//#define MCP_RX1IF   (1 << 1)
+//#define MCP_TX0IF   (1 << 2)
+//#define MCP_TX1IF   (1 << 3)
+//#define MCP_ERRIF   (1 << 5)
+//#define MCP_MERRF   (1 << 7)
 
 // Define SPI Instruction Set
 
