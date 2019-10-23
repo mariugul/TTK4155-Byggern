@@ -6,15 +6,20 @@
 void can_init()
 {
     // -Initialize loop back mode
-    mcp_init(MODE_LOOPBACK); // Set MCP2515 mode
-    mcp_write(MCP_CANINTE, MCP_RX_INT); // Set interrupt enable
-    mcp_write(MCP_CANINTE, MCP_TX_INT); // Set interrupt enable
-
+    mcp_init(MODE_LOOPBACK);            // Set MCP2515 mode
+    //mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, MCP_RX_INT);  // Set interrupt enable
+    //mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, MCP_TX_INT);  // Set interrupt enable
+    mcp_write(MCP_CANINTE, MCP_RX_INT);
+    mcp_write(MCP_CANINTE, MCP_TX_INT);
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
     printf("<CAN is ready>");
 }
 
 void can_send(can_message* message)
 {
+    mcp_write(MCP_CANINTE, MCP_TX_INT);
+    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
+
     // Check that we can send
     if (!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
         //printf("Transmitt not ready\n");
@@ -22,16 +27,15 @@ void can_send(can_message* message)
     }
 
     // Set ID and data-length
-    mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, message->id << 5); // Set the ID (high)
+    mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, (message->id) << 5);    // Set the ID (high)
+    mcp_write(MCP_TXB0SIDH, (message->id) >> 3);
     mcp_write(MCP_TXB0DLC, message->length); // Set the length
 
-    // Clear bits ATBF, MLOA, TXERR in TXB0CTRL register
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_ATBF_MASK, 0);
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_MLOA_MASK, 0);
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXERR_MASK, 0);
-
-    const uint8_t buffer_addr[8] = { 0x36, 0x37, 0x38, 0x39,
-        0x3A, 0x3B, 0x3C, 0x3D };
+    // Set priority TXP, Highest=3
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXERR_MASK, 3);
+    
+    const uint8_t buffer_addr[8] = {0x36, 0x37, 0x38, 0x39, 
+                                    0x3A, 0x3B, 0x3C, 0x3D};
 
     // Load the transmitt data buffer with data
     for (int i = 0; i < message->length; i++) {
@@ -40,39 +44,45 @@ void can_send(can_message* message)
 
     // Set bit to start transmission, may be removed?
     mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
-
-    while (!(!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK) && (mcp_read(MCP_CANINTF) & MCP_RX0IF)))
-        ;
-
-    printf("Message has been transmitted!\n");
-
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
-    //mcp_rts(); // Request to send
+    
+    
+    mcp_rts(1);
+    printf("Message has been transmitted (maybe)\n");
     //can_transmit_complete(); // Sets transmit as complete
 }
 
 can_message can_receive()
 {
-    // Proceed only if RXB0 or RX1 interrupt
-    if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF))
-        return (can_message) { 0 };
-    //else if (!(mcp_read(MCP_CANINTF) & MCP_RX1IF))  return {0};
-
-    can_message rx_msg = { 0 };
-    rx_msg.id = mcp_read(MCP_RXB0SIDL) >> 5;
-    rx_msg.length = mcp_read(MCP_RXB0DLC) & 0x0f;
-
-    // Addresses of data receive buffer. Where the rx data is stored
-    const uint8_t rx_data_buff_addr[8] = { 0x66, 0x67, 0x68, 0x69,
-        0x6A, 0x6B, 0x6C, 0x6D };
-
-    // Protect against extended length and out of array index
-    const int length = (rx_msg.length > 8 ? 8 : rx_msg.length);
-    for (int i = 0; i < length; i++) {
-        rx_msg.data[i] = mcp_read(rx_data_buff_addr[i]);
+    mcp_write(MCP_CANINTE, MCP_RX_INT);
+    // Read from rx intrerrupt FLAG register
+    if (mcp_read(MCP_CANINTF) == 0x00) {
+    //if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF)) {
+        return (can_message){0}; // Early exit
     }
 
-    return rx_msg;
+    can_message rx = {0};
+
+    // Get ID
+    const uint8_t id_high = mcp_read(MCP_RXB0SIDH);
+    const uint8_t id_low = mcp_read(MCP_RXB0SIDL) >> 5;
+    rx.id = (id_high << 3) + id_low;
+
+    // Get code length
+    const uint8_t length = mcp_read(MCP_RXB0DLC) & 0x0f;
+    rx.length = (length > 8 ? 8 : length);
+
+    // Get data
+    const uint8_t rx0_buffer_addr[8] = {0x66, 0x67, 0x68, 0x69,
+                                        0x6a, 0x6b, 0x6c, 0x6d};
+
+    for (int i = 0; i < rx.length; i++) {
+        rx.data[i] = mcp_read(rx0_buffer_addr[i]);
+    }
+
+    // CLEAR FLAG!
+    mcp_bit_mod(MCP_CANINTF, MCP_RX0IF, 0);
+
+    return rx;
 }
 
 // In development

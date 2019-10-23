@@ -71,6 +71,7 @@ Copyright 2003 Kimberly Otten Software Consulting
 #define MCP_RXB0DLC 	0x65
 
 
+
 #define MCP_TX_INT		0x1C		// Enable all transmit interrupts
 #define MCP_TX01_INT	0x0C		// Enable TXB0 and TXB1 interrupts
 #define MCP_RX_INT		0x03		// Enable receive interrupts
@@ -84,6 +85,8 @@ Copyright 2003 Kimberly Otten Software Consulting
 #define MCP_ATBF_MASK   (1 << 6)
 #define MCP_MLOA_MASK   (1 << 5)
 #define MCP_TXERR_MASK  (1 << 4)
+#define MCP_TXP_MASK  (1 << 4)
+
 
 // CAN INT Flag bitmasks
 //#define MCP_RX0IF   (1 << 0)
@@ -124,7 +127,8 @@ Copyright 2003 Kimberly Otten Software Consulting
 
 #define MODE_NORMAL     0x00
 #define MODE_SLEEP      0x20
-#define MODE_LOOPBACK   0x40
+//#define MODE_LOOPBACK   0x40
+#define MODE_LOOPBACK   (1 << 6)
 #define MODE_LISTENONLY 0x60
 #define MODE_CONFIG     0x80
 #define MODE_POWERUP	0xE0

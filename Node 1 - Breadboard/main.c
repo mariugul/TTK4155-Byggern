@@ -32,30 +32,28 @@ int main()
     can_init();
 
     // Try to send a message
-    can_message message;
-    message.id = 3;
-    message.length = 2;
-    message.data[0] = 'U';
-    message.data[1] = 'X';
+    can_message message = {0};
+    message.id = 93;
+    message.length = 4;
+    message.data[0] = (uint8_t)'J';
+    message.data[1] = (uint8_t)'A';
+    message.data[2] = (uint8_t)'A';
+    message.data[3] = (uint8_t)'A';
+    can_send(&message);
 
     // Main program loop
-    while (true) {
-        // Send message
-        can_send(&message);
-
-        // Received message
-        const can_message can_msg = can_receive();
-
-        // Print received message
-        if (can_msg.length > 0) {
-            printf("--- Message Received ---\n");
-            printf("ID: %d   -   Length: %d\n", can_msg.id, can_msg.length);
-            for (int i = 0; i < can_msg.length; i++) {
-                printf("D%d: %c\n", i, can_msg.data[i]);
+    while (1) {
+        const can_message rx = can_receive();
+        if (rx.length > 0) {
+            printf("--- ID: %d\tLength: %d ---\n", rx.id, rx.length);
+            printf("Message: ");
+            for (int i = 0; i < rx.length; i++) {
+                printf("%c", rx.data[i]);
             }
-            printf("\n");
+            printf("\n\n");
         }
 
-        _delay_ms(500); 
+        _delay_ms(100);
+        can_send(&message);
     }
 }

@@ -8,6 +8,7 @@ void gpio_init()
     SET_PORT(DDRB, INPUT, PORTB, PIN_LBUT, LOW); // Set left button to input
     SET_PORT(DDRB, INPUT, PORTB, PIN_RBUT, LOW); // Set right button to input
     SET_PORT(DDRB, INPUT, PORTB, PIN_RBUT, LOW); // Set joystick button to input
+    SET_PORT(DDRB, OUTPUT, PORTB, PIN_MCP_CS, HIGH); // Set joystick button to input
 }
 
 /** Read button values */

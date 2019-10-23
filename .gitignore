@@ -1,3 +1,13 @@
 Atmel project/
 .dist/
 .vscode/
+
+*.ini
+*.elf
+*.o
+*.lss
+*.map
+*.srec
+*.hex
+*.bin
+*.srec
