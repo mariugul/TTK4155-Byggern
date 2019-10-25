@@ -41,7 +41,7 @@ int main()
     can_send(&message);
 
     const int can_stat = mcp_read(MCP_CANSTAT);
-    printf("Can status: %d\n", can_stat);
+    printf("CAN status: %d\n", can_stat);
 
     // Main program loop
     while (1) {
@@ -55,7 +55,6 @@ int main()
             printf("\n\n");
         }
 		const int can_flag = mcp_read(MCP_CANINTF);
-		//printf("LOOP: Can int flag: %d\n", can_flag);
         _delay_ms(1000);
         can_send(&message);
     }

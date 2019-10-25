@@ -11,28 +11,15 @@ void can_init()
     mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, 0xffff);  // Set interrupt enable
 
     mcp_write(MCP_CANINTF, 0);  // Clear flags
-    //mcp_write(MCP_CANINTE, MCP_RX_INT);
-    //mcp_write(MCP_CANINTE, MCP_TX_INT);
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);  // Enable txreq
 
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
-
-    const uint8_t can_int_ef = mcp_read(MCP_CANINTE);
-    printf("CAN int enable flags: %d\n", can_int_ef);
-    
     printf("<CAN is ready>");
 }
 
 void can_send(can_message* message)
 {
+    // Set TX req enable for transmission
     mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
-    //const int mcp_tx_control = mcp_read(MCP_TXB0CTRL);
-    //printf("MCP tx control: %d\n", mcp_tx_control);
-
-    // Check that we can send
-    //if (!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
-        //printf("Transmitt not ready\n");
-        //return;
-    //}
 
     mcp_bit_mod(MCP_CANINTF, MCP_TX_INT, 0); // Clear tx int flag
 
@@ -49,19 +36,11 @@ void can_send(can_message* message)
         mcp_write(buffer_addr[i], message->data[i]);
     }
     
-    //mcp_rts(1);
     mcp_rts(MCP_RTS_TX0);
-    //printf("Message has been transmitted (maybe)\n");
 }
 
 can_message can_receive()
 {
-    //mcp_write(MCP_CANINTE, MCP_RX_INT);
-    // Read from rx intrerrupt FLAG register
-
-    const int mcp_canintf = mcp_read(MCP_CANINTF);
-    printf("Can int flag rec: %d\n", mcp_canintf);
-    //if (mcp_read(MCP_CANINTF) == 0x00) {
     if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF)) {
         return (can_message){0}; // Early exit
     }
@@ -85,14 +64,6 @@ can_message can_receive()
         rx.data[i] = mcp_read(rx0_buffer_addr[i]);
     }
 
-    // CLEAR FLAG!
-    mcp_bit_mod(MCP_CANINTF, MCP_RX0IF, 0);
-    //mcp_write(MCP_CANINTF, 0); // To be removed later
-
+    mcp_bit_mod(MCP_CANINTF, MCP_RX0IF, 0); // CLEAR FLAG!
     return rx;
 }
-
-// In development
-void can_error() {}
-void can_transmit_complete(){}
-void can_int_vect() {}
