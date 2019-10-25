@@ -4,4 +4,17 @@
 *.o
 *.lss
 *.map
+<<<<<<< HEAD
 *.srec
+=======
+*.srec
+*.hex
+*.bin
+*.srec
+*.d
+*.swp
+.gitattributes
+
+Atmel\ Project
+vscode
+>>>>>>> CAN_loopback

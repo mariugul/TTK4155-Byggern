@@ -46,6 +46,8 @@ void uart_init()
 
     // Assign printf to UART
     fdevopen(uart_send, uart_receive);
+
+    printf("<UART is ready>\n");
 }
 
 // Check for data in the HW buffer
