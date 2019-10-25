@@ -1,3 +1,6 @@
+Atmel project/
+.dist/
+.vscode/
 
 *.ini
 *.elf

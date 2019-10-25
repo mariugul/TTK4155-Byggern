@@ -75,8 +75,6 @@ Copyright 2003 Kimberly Otten Software Consulting
 #define MCP_TX_INT		0x1C		// Enable all transmit interrupts
 #define MCP_TX01_INT	0x0C		// Enable TXB0 and TXB1 interrupts
 #define MCP_RX_INT		0x03		// Enable receive interrupts
-//#define MCP_RX_INT		(1 << 0)		// Enable receive interrupts
-//#define MCP_TX_INT		(1 << 2)		// Enable receive interrupts
 #define MCP_NO_INT		0x00		// Disable all interrupts
 
 #define MCP_TX01_MASK	0x14
@@ -99,7 +97,9 @@ Copyright 2003 Kimberly Otten Software Consulting
 //#define MCP_MERRF   (1 << 7)
 
 // Define SPI Instruction Set
+
 #define MCP_WRITE		0x02
+
 #define MCP_READ		0x03
 
 #define MCP_BITMOD		0x05
@@ -127,8 +127,8 @@ Copyright 2003 Kimberly Otten Software Consulting
 
 #define MODE_NORMAL     0x00
 #define MODE_SLEEP      0x20
-#define MODE_LOOPBACK   0x40
-//#define MODE_LOOPBACK   (1 << 6)
+//#define MODE_LOOPBACK   0x40
+#define MODE_LOOPBACK   (1 << 6)
 #define MODE_LISTENONLY 0x60
 #define MODE_CONFIG     0x80
 #define MODE_POWERUP	0xE0

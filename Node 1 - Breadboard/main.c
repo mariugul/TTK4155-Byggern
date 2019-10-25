@@ -18,6 +18,7 @@
 #include <stdio.h> // Standard library
 #include <stdlib.h>
 #include <util/delay.h>
+#include <stdbool.h>
 
 
 int main()
