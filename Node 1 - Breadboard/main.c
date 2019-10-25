@@ -32,13 +32,16 @@ int main()
 
     // Try to send a message
     can_message message = {0};
-    message.id = 93;
+    message.id = 27;
     message.length = 4;
     message.data[0] = (uint8_t)'J';
     message.data[1] = (uint8_t)'A';
     message.data[2] = (uint8_t)'A';
     message.data[3] = (uint8_t)'A';
     can_send(&message);
+
+    const int can_stat = mcp_read(MCP_CANSTAT);
+    printf("Can status: %d\n", can_stat);
 
     // Main program loop
     while (1) {
@@ -51,8 +54,9 @@ int main()
             }
             printf("\n\n");
         }
-
-        _delay_ms(100);
+		const int can_flag = mcp_read(MCP_CANINTF);
+		//printf("LOOP: Can int flag: %d\n", can_flag);
+        _delay_ms(1000);
         can_send(&message);
     }
 }

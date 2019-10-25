@@ -7,33 +7,40 @@ void can_init()
 {
     // -Initialize loop back mode
     mcp_init(MODE_LOOPBACK);            // Set MCP2515 mode
-    //mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, MCP_RX_INT);  // Set interrupt enable
-    //mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, MCP_TX_INT);  // Set interrupt enable
-    mcp_write(MCP_CANINTE, MCP_RX_INT);
-    mcp_write(MCP_CANINTE, MCP_TX_INT);
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
+    mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, 0xffff);  // Set interrupt enable
+    mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, 0xffff);  // Set interrupt enable
+
+    mcp_write(MCP_CANINTF, 0);  // Clear flags
+    //mcp_write(MCP_CANINTE, MCP_RX_INT);
+    //mcp_write(MCP_CANINTE, MCP_TX_INT);
+
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
+
+    const uint8_t can_int_ef = mcp_read(MCP_CANINTE);
+    printf("CAN int enable flags: %d\n", can_int_ef);
+    
     printf("<CAN is ready>");
 }
 
 void can_send(can_message* message)
 {
-    mcp_write(MCP_CANINTE, MCP_TX_INT);
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
+    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
+    //const int mcp_tx_control = mcp_read(MCP_TXB0CTRL);
+    //printf("MCP tx control: %d\n", mcp_tx_control);
 
     // Check that we can send
-    if (!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
+    //if (!(mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
         //printf("Transmitt not ready\n");
-        return;
-    }
+        //return;
+    //}
+
+    mcp_bit_mod(MCP_CANINTF, MCP_TX_INT, 0); // Clear tx int flag
 
     // Set ID and data-length
     mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, (message->id) << 5);    // Set the ID (high)
     mcp_write(MCP_TXB0SIDH, (message->id) >> 3);
     mcp_write(MCP_TXB0DLC, message->length); // Set the length
 
-    // Set priority TXP, Highest=3
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXERR_MASK, 3);
-    
     const uint8_t buffer_addr[8] = {0x36, 0x37, 0x38, 0x39, 
                                     0x3A, 0x3B, 0x3C, 0x3D};
 
@@ -41,22 +48,21 @@ void can_send(can_message* message)
     for (int i = 0; i < message->length; i++) {
         mcp_write(buffer_addr[i], message->data[i]);
     }
-
-    // Set bit to start transmission, may be removed?
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 1);
     
-    
-    mcp_rts(1);
-    printf("Message has been transmitted (maybe)\n");
-    //can_transmit_complete(); // Sets transmit as complete
+    //mcp_rts(1);
+    mcp_rts(MCP_RTS_TX0);
+    //printf("Message has been transmitted (maybe)\n");
 }
 
 can_message can_receive()
 {
-    mcp_write(MCP_CANINTE, MCP_RX_INT);
+    //mcp_write(MCP_CANINTE, MCP_RX_INT);
     // Read from rx intrerrupt FLAG register
-    if (mcp_read(MCP_CANINTF) == 0x00) {
-    //if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF)) {
+
+    const int mcp_canintf = mcp_read(MCP_CANINTF);
+    printf("Can int flag rec: %d\n", mcp_canintf);
+    //if (mcp_read(MCP_CANINTF) == 0x00) {
+    if (!(mcp_read(MCP_CANINTF) & MCP_RX0IF)) {
         return (can_message){0}; // Early exit
     }
 
@@ -81,6 +87,7 @@ can_message can_receive()
 
     // CLEAR FLAG!
     mcp_bit_mod(MCP_CANINTF, MCP_RX0IF, 0);
+    //mcp_write(MCP_CANINTF, 0); // To be removed later
 
     return rx;
 }
