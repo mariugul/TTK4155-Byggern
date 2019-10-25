@@ -10,6 +10,7 @@
 *.srec
 *.d
 *.swp
+.gitattributes
 
 Atmel\ Project
 vscode
