@@ -8,7 +8,6 @@
 
 int main()
 {
-
     // Initializers
 	usart_init();
 
