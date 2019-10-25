@@ -9,3 +9,7 @@
 *.bin
 *.srec
 *.d
+*.swp
+
+Atmel\ Project
+vscode
