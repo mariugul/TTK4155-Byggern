@@ -12,8 +12,10 @@ int main()
     // Initializers
 	usart_init();
 
+    usart_send('A');
+    usart_send('\n');
+    printf("Hej!\n");
     // Loop
     while (true) {
-        usart_send("Testing USART\n");
     }
 }

@@ -7,9 +7,7 @@ Atmel project/
 *.o
 *.lss
 *.map
-<<<<<<< HEAD
 *.srec
-=======
 *.srec
 *.hex
 *.bin
@@ -20,4 +18,3 @@ Atmel project/
 
 Atmel\ Project
 vscode
->>>>>>> CAN_loopback
