@@ -14,9 +14,13 @@ int main()
     // Initializers
     usart_init();
     pwm_init();
+	
+	usart_send('T');
+	usart_send('\n');
+	usart_send('A');
 
     // Loop
     while (true) {
-        usart_send("Testing USART\n");
-    }
+        
+        }
 }

@@ -8,6 +8,8 @@
 
 ..\..\..\src\mcp2515.c
 
+..\..\..\src\pwm.c
+
 ..\..\..\src\spi.c
 
 ..\..\..\src\usart.c
