@@ -16,3 +16,6 @@
 *pwm.d
 *.xml
 #*.atsln
+
+# Ignore local repository
+Pensum
