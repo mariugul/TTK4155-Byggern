@@ -1,6 +1,6 @@
-Atmel project/
-.dist/
-.vscode/
+#Atmel project/
+#.dist/
+#.vscode/
 
 *.ini
 *.elf
@@ -8,13 +8,14 @@ Atmel project/
 *.lss
 *.map
 *.srec
-*.srec
 *.hex
 *.bin
 *.srec
-*.d
-*.swp
-.gitattributes
+*.atsuo
+*.cproj
+*pwm.d
+*.xml
+#*.atsln
 
-Atmel\ Project
-vscode
+# Ignore local repository
+Pensum
