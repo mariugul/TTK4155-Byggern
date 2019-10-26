@@ -1,6 +1,6 @@
-Atmel project/
-.dist/
-.vscode/
+#Atmel project/
+#.dist/
+#.vscode/
 
 *.ini
 *.elf
@@ -11,3 +11,7 @@ Atmel project/
 *.hex
 *.bin
 *.srec
+*.atsuo
+*.cproj
+*pwm.d
+*.xml
