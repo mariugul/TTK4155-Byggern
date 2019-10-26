@@ -1,23 +1,21 @@
-Atmel project/
-.dist/
-.vscode/
+#Atmel project/
+#.dist/
+#.vscode/
 
 *.ini
 *.elf
 *.o
 *.lss
 *.map
-<<<<<<< HEAD
-*.srec
-=======
 *.srec
 *.hex
 *.bin
 *.srec
-*.d
-*.swp
-.gitattributes
+*.atsuo
+*.cproj
+*pwm.d
+*.xml
+#*.atsln
 
-Atmel\ Project
-vscode
->>>>>>> CAN_loopback
+# Ignore local repository
+Pensum
