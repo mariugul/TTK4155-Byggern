@@ -10,7 +10,8 @@
 *.srec
 *.d
 *.swp
-.gitattributes
+*.xml
+*.atsuo
 
-Atmel\ Project
-vscode
+# Ignore local repository
+Pensum
