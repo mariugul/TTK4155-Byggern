@@ -1,2 +1,21 @@
+#Atmel project/
+#.dist/
+#.vscode/
 
 *.ini
+*.elf
+*.o
+*.lss
+*.map
+*.srec
+*.hex
+*.bin
+*.srec
+*.atsuo
+*.cproj
+*pwm.d
+*.xml
+#*.atsln
+
+# Ignore local repository
+Pensum
