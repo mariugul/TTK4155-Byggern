@@ -5,8 +5,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-
 void pwm_init(); // Enable Pulse Width Modulation
-
 
 #endif
