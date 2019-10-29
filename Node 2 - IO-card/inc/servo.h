@@ -5,8 +5,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void servo_init();
-
-
+void servo_init();                      // Initialize the servo
+void servo_set_pos(float joystick_pos); // Set the servo position
 
 #endif

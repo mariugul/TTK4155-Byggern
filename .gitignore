@@ -19,3 +19,8 @@
 
 # Ignore local folder
 Pensum
+*.d
+*.mk
+*.eep
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
+*.atsln

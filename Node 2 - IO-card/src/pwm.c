@@ -51,8 +51,8 @@ void pwm_set_pulse_width(float joystick_pos)
 
     // Calculations
     float pw = ((joystick_pos / median) * diff_median) + min; // Calculate pulse width (seconds)
-    int freq FOSC / PRESC; // Timer frequency
+    int freq = FOSC / PRESC; // Timer frequency
     
     // Set the pulse width
-    OCRA1 = pw * freq;
+    OCR1A = pw * freq;
 }
