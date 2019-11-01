@@ -1,6 +1,14 @@
 #Atmel project/
 #.dist/
-#.vscode/
+.vscode/
+*Debug/*
+*Node2/Debug/*
+*Debug/Makefile
+*Release/*
+*.atsln
+*.d
+*.mk
+*.eep
 
 *.ini
 *.elf
