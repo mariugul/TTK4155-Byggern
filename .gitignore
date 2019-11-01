@@ -19,3 +19,8 @@
 
 # Ignore local repository
 Pensum
+*.atsln
+*.eep
+*.mk
+*.d
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
