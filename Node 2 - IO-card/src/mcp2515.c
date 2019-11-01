@@ -8,10 +8,15 @@ uint8_t mcp_init(uint8_t mode)
     uint8_t value;
 
     spi_init();
+	for (volatile unsigned int i; i < 1000; i++);
     mcp_reset();
+	for (volatile unsigned int i; i < 1000; i++);
 
     // Self test
     value = mcp_read(MCP_CANSTAT);
+	for (volatile unsigned int i; i < 1000; i++);
+    printf("CANSTAT: %d\n", value);
+
     if ((value & MODE_MASK) != MODE_CONFIG) {
         printf("<MCP2515 is NOT in configuration mode after reset!>\n");
         return 1; // Exit
@@ -22,7 +27,14 @@ uint8_t mcp_init(uint8_t mode)
     // ************************************
 
     // Set mode
+    /*
+    char mcp_canctrl = mcp_read(MCP_CANCTRL);
+    mcp_canctrl &= ~(0b11100000);
+    mcp_canctrl |= mode;
+    mcp_write(MCP_CANCTRL, mcp_canctrl);
+    */
     mcp_write(MCP_CANCTRL, mode);
+    //for (volatile unsigned int i = 0; i < 1000; i++);
 
      // Self test
     value = mcp_read(MCP_CANSTAT);
@@ -34,22 +46,24 @@ uint8_t mcp_init(uint8_t mode)
 
     // Print which mode was selected
     if (mode == MODE_NORMAL)
-        printf("<MCP2515 is in   normal   mode.>\n");
+        printf("<MCP2515 is in NORMAL mode.>\n");
 
-    if (mode == MODE_SLEEP)
-        printf("<MCP2515 is in   sleep   mode.>\n");
+    else if (mode == MODE_SLEEP)
+        printf("<MCP2515 is in SLEEP mode.>\n");
 
-    if (mode == MODE_LOOPBACK)
-        printf("<MCP2515 is in   loopback   mode.>\n");
+    else if (mode == MODE_LOOPBACK)
+        printf("<MCP2515 is in LOOPBACK mode.>\n");
 
-    if (mode == MODE_LISTENONLY)
-        printf("<MCP2515 is in   listen only   mode.>\n");
+    else if (mode == MODE_LISTENONLY)
+        printf("<MCP2515 is in LISTEN ONLY mode.>\n");
 
-    if (mode == MODE_CONFIG)
-        printf("MCP2515 is in   config   mode.\n");
+    else if (mode == MODE_CONFIG)
+        printf("MCP2515 is in CONFIG mode.\n");
 
-    if (mode == MODE_POWERUP)
-        printf("MCP2515 is in   power up   mode.\n");
+    else if (mode == MODE_POWERUP)
+        printf("MCP2515 is in POWER UP mode.\n");
+    else 
+        printf("MCP2515 is in NONE DEFINED mode.\n");
 
     return 0;
 }
@@ -88,23 +102,19 @@ void mcp_write(uint8_t address, uint8_t data)
 
 void mcp_rts(uint8_t transmitt)
 {
-    if (transmitt > 7 || transmitt == 0) return;
     mcp_activate();
-    transmitt |= (1 << 7); // MSB must be set
     spi_write(transmitt);
     mcp_deactivate();
 }
 
 uint8_t mcp_read_status()
 {
-    uint8_t read;
     mcp_activate();
 
     spi_write(MCP_READ_STATUS);
-    read = spi_read();
+    uint8_t read = spi_read();
 
     mcp_deactivate();
-
     return read;
 }
 
@@ -123,10 +133,10 @@ void mcp_bit_mod(uint8_t address, uint8_t mask, uint8_t data)
 // PROTOTYPE
 void mcp_activate()
 {
-    PORTB &= ~(1 << PB4); // Lower 'CS
+    PORTB &= ~(1 << PB7); // Lower 'CS
 }
 
 void mcp_deactivate()
 {
-    PORTB |= (1 << PB4); // Higher 'CS
+    PORTB |= (1 << PB7); // Higher 'CS
 }
