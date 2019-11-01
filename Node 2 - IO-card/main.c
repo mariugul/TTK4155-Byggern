@@ -16,11 +16,12 @@ int main()
 
     can_message message = {0};
     message.id = 69;
-    message.length = 4;
-    message.data[0] = (uint8_t)'A';
-    message.data[1] = (uint8_t)'N';
-    message.data[2] = (uint8_t)'U';
-    message.data[3] = (uint8_t)'S';
+    message.length = 5;
+    message.data[0] = (uint8_t)'N';
+    message.data[1] = (uint8_t)'o';
+    message.data[2] = (uint8_t)'d';
+    message.data[3] = (uint8_t)'e';
+    message.data[4] = (uint8_t)'2';
     can_send(&message);
 
     const int can_stat = mcp_read(MCP_CANSTAT);

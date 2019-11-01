@@ -15,8 +15,5 @@ typedef struct
 void can_init();
 void can_send(can_message *message);
 can_message can_receive();
-void can_error();
-void can_transmit_complete();
-void can_int_vect();
 
 #endif
