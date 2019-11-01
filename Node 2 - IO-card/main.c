@@ -14,11 +14,6 @@ int main()
     usart_init();
     servo_init();
 
-    // Test UART
-    usart_send('T');
-    usart_send('\n');
-    usart_send('A');
-
     // Loop
     while (true) {
         // code

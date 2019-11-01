@@ -2,8 +2,8 @@
 #include <avr/io.h> // Include AVR library
 
 // USART macros
-#define FOSC 4915200 // Clock speed
-#define BAUD 9600 // Baud rate for USART
+#define FOSC (16000000) // Clock speed
+#define BAUD (9600) // Baud rate for USART
 #define MYUBRR FOSC / 16 / BAUD - 1 // Calculate the USART init
 
 /*_________________________________
