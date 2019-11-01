@@ -12,7 +12,7 @@ int main()
 {
     // Initializers
 	usart_init();
-    can_init(); // Try to send a message
+    can_init(MODE_NORMAL); // Try to send a message
 
     can_message message = {0};
     message.id = 69;
