@@ -1,6 +1,14 @@
 #Atmel project/
 #.dist/
-#.vscode/
+.vscode/
+*Debug/*
+*Node2/Debug/*
+*Debug/Makefile
+*Release/*
+*.atsln
+*.d
+*.mk
+*.eep
 
 *.ini
 *.elf
@@ -18,4 +26,8 @@
 #*.atsln
 
 # Ignore local repository
+<<<<<<< HEAD
 Pensum
+=======
+Pensum
+>>>>>>> CAN_node_2
