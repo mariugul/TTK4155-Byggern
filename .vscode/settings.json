@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "pwm.h": "c"
+        "pwm.h": "c",
+        "mcp_defines.h": "c",
+        "can.h": "c"
     },
     "workspace.exclude": {
         ".vscode": true,
