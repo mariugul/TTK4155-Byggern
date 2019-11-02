@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <util/delay.h>
 #include <stdbool.h>
+#include "inc/joystick_to_can.h"
 
 
 int main()
@@ -29,16 +30,17 @@ int main()
     uart_init();
     oled_init();
     menu_init();
-    can_init();
+    can_init(MODE_NORMAL);
 
     // Try to send a message
     can_message message = {0};
     message.id = 27;
-    message.length = 4;
-    message.data[0] = (uint8_t)'J';
-    message.data[1] = (uint8_t)'A';
-    message.data[2] = (uint8_t)'A';
-    message.data[3] = (uint8_t)'A';
+    message.length = 5;
+    message.data[0] = (uint8_t)'N';
+    message.data[1] = (uint8_t)'o';
+    message.data[2] = (uint8_t)'d';
+    message.data[3] = (uint8_t)'e';
+    message.data[4] = (uint8_t)'1';
     can_send(&message);
 
     const int can_stat = mcp_read(MCP_CANSTAT);
@@ -56,7 +58,7 @@ int main()
             printf("\n\n");
         }
 		const int can_flag = mcp_read(MCP_CANINTF);
-        _delay_ms(1000);
-        can_send(&message);
+        _delay_ms(100);
+        send_joystick_to_can();
     }
 }

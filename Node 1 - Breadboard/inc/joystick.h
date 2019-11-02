@@ -16,7 +16,6 @@ typedef enum  {
 	NEUTRAL
 } direction_t;
 
-
 typedef struct {
     direction_t dir_x;
     direction_t dir_y;

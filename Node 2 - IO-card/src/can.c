@@ -1,12 +1,11 @@
 #include "../inc/can.h"
 #include "../inc/mcp_defines.h"
 
-#define CANCTRL_REG XFh // Remove this probably (100%)
 
-void can_init()
+void can_init(const uint8_t mode)
 {
     // -Initialize loop back mode
-    mcp_init(MODE_LOOPBACK);            // Set MCP2515 mode
+    mcp_init(mode);            // Set MCP2515 mode
     mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, 0xffff);  // Set interrupt enable
     mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, 0xffff);  // Set interrupt enable
 
