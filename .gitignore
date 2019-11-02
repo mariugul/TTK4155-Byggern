@@ -1,11 +1,26 @@
+#Atmel project/
+#.dist/
+#.vscode/
 
+*.ini
 *.elf
-*.eep
-*.lss
-*.xml
-*.srec
-*.d
 *.o
-*.mk
+*.lss
 *.map
+*.srec
+*.hex
+*.bin
+*.srec
+*.atsuo
+*.cproj
+*pwm.d
+*.xml
+#*.atsln
+
+# Ignore local repository
 Pensum
+*.atsln
+*.eep
+*.mk
+*.d
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
