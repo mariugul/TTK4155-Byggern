@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <util/delay.h>
 #include <stdbool.h>
+#include "inc/joystick_to_can.h"
 
 
 int main()
@@ -57,7 +58,7 @@ int main()
             printf("\n\n");
         }
 		const int can_flag = mcp_read(MCP_CANINTF);
-        _delay_ms(1000);
-        can_send(&message);
+        _delay_ms(100);
+        send_joystick_to_can();
     }
 }

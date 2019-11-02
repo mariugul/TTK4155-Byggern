@@ -15,7 +15,7 @@ int main()
     can_init(MODE_NORMAL); // Try to send a message
 
     can_message message = {0};
-    message.id = 69;
+    message.id = 10;
     message.length = 5;
     message.data[0] = (uint8_t)'N';
     message.data[1] = (uint8_t)'o';
@@ -34,7 +34,7 @@ int main()
             printf("--- ID: %d\tLength: %d ---\n", rx.id, rx.length);
             printf("Message: ");
             for (int i = 0; i < rx.length; i++) {
-                printf("%c", rx.data[i]);
+                printf("%d ", rx.data[i]);
             }
             printf("\n\n");
         }
