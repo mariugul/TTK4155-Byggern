@@ -24,3 +24,7 @@ Pensum
 *.mk
 *.d
 Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
+*.hex
+Node 2 - IO-card/Atmel/ArduinoMega/.vs/ArduinoMega/v14/.atsuo
+*.json
