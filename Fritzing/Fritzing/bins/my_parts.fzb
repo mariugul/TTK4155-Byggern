@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module fritzingVersion="0.9.3b.04.19.5c895d327c44a3114e5fcc9d8260daf0cbb52806" icon="Mine.png">
+    <title>My Parts</title>
+    <instances>
+        <instance moduleIdRef="TQFP32-5MM" modelIndex="85413321" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/SMD_TQFP-32-5MM.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="TQFP32-5MM" modelIndex="85413325" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/SMD_TQFP-32-5MM.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="generic_ic_dip_20_300mil" modelIndex="85413576" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_ic_dip_20_300mil.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="generic_ic_dip_20_300mil" modelIndex="85413578" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_ic_dip_20_300mil.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="generic_ic_dip_20_300mil" modelIndex="85413579" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_ic_dip_20_300mil.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="generic_ic_dip_40_400mil_hs_1mm_0.508mm" modelIndex="85413580" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_ic_dip_40_400mil_hs_1mm_0.508mm.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="generic_ic_dip_20_300mil" modelIndex="85413587" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_ic_dip_20_300mil.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="generic_ic_dip_20_300mil" modelIndex="85413588" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_ic_dip_20_300mil.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="generic_ic_dip_20_300mil" modelIndex="85413589" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_ic_dip_20_300mil.fzp">
+            <views/>
+        </instance>
+    </instances>
+</module>
