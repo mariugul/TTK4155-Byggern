@@ -1,1 +1,0 @@
-This is the VHDL code to program the GAL decoder.
