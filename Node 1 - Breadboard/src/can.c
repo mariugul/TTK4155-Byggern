@@ -7,19 +7,28 @@ void can_init(const uint8_t mode)
 {
     // -Initialize loop back mode
     mcp_init(mode);            // Set MCP2515 mode
+    for (volatile int i = 0; i < 1000; i++);
     mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, 0xffff);  // Set interrupt enable
+    for (volatile int i = 0; i < 1000; i++);
     mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, 0xffff);  // Set interrupt enable
+    for (volatile int i = 0; i < 1000; i++);
 
     mcp_write(MCP_CANINTF, 0);  // Clear flags
+    for (volatile int i = 0; i < 1000; i++);
     mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);  // Enable txreq
+    for (volatile int i = 0; i < 1000; i++);
 
     printf("<CAN is ready>");
 }
 
 void can_send(can_message* message)
 {
+    if ((mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
+        return;
+    }
+    printf("Time to send\n");
     // Set TX req enable for transmission
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
+    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
 
     mcp_bit_mod(MCP_CANINTF, MCP_TX_INT, 0); // Clear tx int flag
 
@@ -66,4 +75,16 @@ can_message can_receive()
 
     mcp_bit_mod(MCP_CANINTF, MCP_RX0IF, 0); // CLEAR FLAG!
     return rx;
+}
+
+void can_clear_errors()
+{
+    const uint8_t int_flags = mcp_read(MCP_CANINTF);
+    printf("can error flags: %d\n", int_flags);
+
+    // See if any error flag is high and clear
+    if (int_flags > 0x1f) {
+        printf("Clearing time!\n");
+        mcp_bit_mod(MCP_CANINTF, 0b11100000, 0x00);
+    }
 }
