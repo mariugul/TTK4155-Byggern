@@ -8,7 +8,9 @@ uint8_t mcp_init(uint8_t mode)
     uint8_t value;
 
     spi_init();
+	for (volatile unsigned int i; i < 1000; i++);
     mcp_reset();
+	for (volatile unsigned int i; i < 1000; i++);
 
     // Self test
     value = mcp_read(MCP_CANSTAT);

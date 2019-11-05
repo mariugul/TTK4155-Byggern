@@ -48,17 +48,9 @@ int main()
 
     // Main program loop
     while (1) {
-        const can_message rx = can_receive();
-        if (rx.length > 0) {
-            printf("--- ID: %d\tLength: %d ---\n", rx.id, rx.length);
-            printf("Message: ");
-            for (int i = 0; i < rx.length; i++) {
-                printf("%c", rx.data[i]);
-            }
-            printf("\n\n");
-        }
-		const int can_flag = mcp_read(MCP_CANINTF);
+        // Send joystick position to Node2 every 100ms
         _delay_ms(100);
         send_joystick_to_can();
+        can_clear_errors();
     }
 }

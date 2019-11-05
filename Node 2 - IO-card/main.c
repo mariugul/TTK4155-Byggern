@@ -15,7 +15,7 @@ int main()
     can_init(MODE_NORMAL); // Try to send a message
 
     can_message message = {0};
-    message.id = 10;
+    message.id = 13;
     message.length = 5;
     message.data[0] = (uint8_t)'N';
     message.data[1] = (uint8_t)'o';
@@ -38,9 +38,5 @@ int main()
             }
             printf("\n\n");
         }
-		const int can_flag = mcp_read(MCP_CANINTF);
-        _delay_ms(1000);
-        can_send(&message);
     }
-
 }
