@@ -56,7 +56,7 @@ void pwm_set_pulse_width(float joystick_pos)
     float const median = 255 / 2; // Joystick max value divided by 2
 
     // Calculations
-    float pulse_width = ((joystick_pos / median) * diff_median) + min; // Calculate pulse width [s]
+    float pulse_width = ((float)(joystick_pos / median) * diff_median) + min; // Calculate pulse width [s]
     int OCR = pulse_width * freq;
 
     // Set the pulse width

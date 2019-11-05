@@ -3,6 +3,7 @@
 #include "inc/can.h"
 #include "inc/servo.h"
 #include "inc/usart.h"
+#include "inc/mcp_defines.h"
 #include <avr/io.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -15,6 +16,7 @@ int main()
 {
     // Initializers
     usart_init();
+	can_init(MODE_NORMAL);
     servo_init();
 
     // Loop
@@ -25,6 +27,7 @@ int main()
         // Check for received data
         if (receive.id == JSTICK_CAN_ID) {
             // Sets servo to received joystick position
+			printf("Received %d %d %d\n", receive.data[0], receive.data[1], receive.data[2]);
             servo_set_pos(receive.data[0]);
 
             // Sets motor to received joystick position
