@@ -10,27 +10,19 @@ void can_init(const uint8_t mode)
     for (volatile int i = 0; i < 1000; i++);
     mcp_bit_mod(MCP_CANINTE, MCP_RX_INT, 0xffff);  // Set interrupt enable
     for (volatile int i = 0; i < 1000; i++);
-    mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, 0xffff);  // Set interrupt enable
-    for (volatile int i = 0; i < 1000; i++);
+    //mcp_bit_mod(MCP_CANINTE, MCP_TX_INT, 0xffff);  // Set interrupt enable
+    //for (volatile int i = 0; i < 1000; i++);
 
     mcp_write(MCP_CANINTF, 0);  // Clear flags
     for (volatile int i = 0; i < 1000; i++);
-    mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);  // Enable txreq
-    for (volatile int i = 0; i < 1000; i++);
+    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);  // Enable txreq
+    //for (volatile int i = 0; i < 1000; i++);
 
     printf("<CAN is ready>");
 }
 
 void can_send(can_message* message)
 {
-    if ((mcp_read(MCP_TXB0CTRL) & MCP_TXREQ_MASK)) {
-        return;
-    }
-    printf("Time to send\n");
-    // Set TX req enable for transmission
-    //mcp_bit_mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
-
-    mcp_bit_mod(MCP_CANINTF, MCP_TX_INT, 0); // Clear tx int flag
 
     // Set ID and data-length
     mcp_bit_mod(MCP_TXB0SIDL, 0b11100000, (message->id) << 5);    // Set the ID (high)

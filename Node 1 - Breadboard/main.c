@@ -52,5 +52,10 @@ int main()
         _delay_ms(100);
         send_joystick_to_can();
         can_clear_errors();
+        //can_send(&message);
+
+    
+        printf("CAN status: %d\n", mcp_read(MCP_CANSTAT));
+        printf("CAN int flag: %d\n", mcp_read(MCP_CANINTF));
     }
 }
