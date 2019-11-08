@@ -4,6 +4,7 @@
 #include <avr/io.h>
 
 void adc_init();
-int adc_read();
+uint16_t adc_read();
+int ball_detected();
 
 #endif

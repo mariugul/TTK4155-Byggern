@@ -1,12 +1,37 @@
 #include "../inc/adc.h"
 
-void adc_init() 
+#define BALL_SENSITIVITY 100
+
+void adc_init()
 {
-    // Forever alone
+    // Select Vref=AVcc
+    ADMUX |= (1 << REFS0);
+    //set prescaller to 128 and enable ADC
+    //ADCSRA |= (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0)|(1<<ADEN);
+    ADCSRA |= (1<<ADEN);
 }
 
 // Returns the ADC value
-int adc_read()
+uint16_t adc_read_raw()
 {
-    return 0;
+    //ADMUX = (ADMUX & 0xF0) | (1 & 0x0F);
+    //single conversion mode
+    ADCSRA |= (1 << ADSC);
+    // wait until ADC conversion is complete
+    while (ADCSRA & (1 << ADSC))
+        ;
+    return ADC;
+}
+
+
+uint16_t adc_read()
+{
+    //return (float)adc_read_raw() / 1023 * 5; 
+    return adc_read_raw();
+}
+
+
+int ball_detected()
+{
+    return adc_read_raw() < BALL_SENSITIVITY;
 }
