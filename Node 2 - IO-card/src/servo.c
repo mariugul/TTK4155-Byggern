@@ -21,7 +21,7 @@ void servo_set_pos(float joystick_pos)
     uint8_t max = 255;
     uint8_t min = 0;
 
-    // Error check the joystick position value
+    // Error check and set the joystick position value
     if (joystick_pos > max)
         pwm_set_pulse_width(max);
 
