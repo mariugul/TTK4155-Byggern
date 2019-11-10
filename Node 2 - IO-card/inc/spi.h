@@ -6,8 +6,8 @@
 #include <avr/io.h>
 
 
-void spi_init();				// Enable SPI communication
-char spi_read();				// Read from the SPI
-void spi_write(uint8_t cmd);	// Write to the SPI
+void SPI_Init();				// Enable SPI communication
+char SPI_Read();				// Read from the SPI
+void SPI_Write(uint8_t cmd);	// Write to the SPI
 
 #endif 

@@ -1,19 +1,19 @@
-#include "../inc/mcp2515.h"
-#include "../inc/mcp_defines.h"
-#include "../inc/spi.h"
+#include "../inc/MCP2515.h"
+#include "../inc/MCP_Defines.h"
+#include "../inc/SPI.h"
 
 
-uint8_t mcp_init(uint8_t mode)
+uint8_t MCP_Init(uint8_t mode)
 {
     uint8_t value;
 
-    spi_init();
+    SPI_Init();
 	for (volatile unsigned int i; i < 1000; i++);
-    mcp_reset();
+    mcp_Reset();
 	for (volatile unsigned int i; i < 1000; i++);
 
     // Self test
-    value = mcp_read(MCP_CANSTAT);
+    value = MCP_Read(MCP_CANSTAT);
 	for (volatile unsigned int i; i < 1000; i++);
     printf("CANSTAT: %d\n", value);
 
@@ -31,13 +31,13 @@ uint8_t mcp_init(uint8_t mode)
     char mcp_canctrl = mcp_read(MCP_CANCTRL);
     mcp_canctrl &= ~(0b11100000);
     mcp_canctrl |= mode;
-    mcp_write(MCP_CANCTRL, mcp_canctrl);
+    MCP_Write(MCP_CANCTRL, mcp_canctrl);
     */
-    mcp_write(MCP_CANCTRL, mode);
+    MCP_Write(MCP_CANCTRL, mode);
     //for (volatile unsigned int i = 0; i < 1000; i++);
 
      // Self test
-    value = mcp_read(MCP_CANSTAT);
+    value = MCP_Read(MCP_CANSTAT);
     if ((value & MODE_MASK) != mode) {
         printf("<MCP2515 is NOT in the selected mode!>\n");
         return 1; // Exit
@@ -68,75 +68,75 @@ uint8_t mcp_init(uint8_t mode)
     return 0;
 }
 
-void mcp_reset()
+void MCP_Reset()
 {
-    mcp_activate();
-    spi_write(MCP_RESET);
-    mcp_deactivate();
+    MCP_Activate();
+    SPI_Write(MCP_RESET);
+    MCP_Deactivate();
 }
 
-uint8_t mcp_read(uint8_t address)
+uint8_t MCP_Read(uint8_t address)
 {
     uint8_t read = 0;
-    mcp_activate(); // Set 'CS LOW
+    MCP_Activate(); // Set 'CS LOW
 
-    spi_write(MCP_READ); // Write READ command
-    spi_write(address); // Write address
+    SPI_Write(MCP_READ); // Write READ command
+    SPI_Write(address); // Write address
 
-    read = spi_read(); // Read data
-    mcp_deactivate(); // Set 'CS HIGH
+    read = SPI_Read(); // Read data
+    MCP_Deactivate(); // Set 'CS HIGH
 
     return read;
 }
 
-void mcp_write(uint8_t address, uint8_t data)
+void MCP_Write(uint8_t address, uint8_t data)
 {
-    mcp_activate();
+    MCP_Activate();
 
-    spi_write(MCP_WRITE);
-    spi_write(address);
-    spi_write(data);
+    SPI_Write(MCP_WRITE);
+    SPI_Write(address);
+    SPI_Write(data);
 
-    mcp_deactivate();
+    MCP_Deactivate();
 }
 
-void mcp_rts(uint8_t transmitt)
+void MCP_Rts(uint8_t transmitt)
 {
-    mcp_activate();
-    spi_write(transmitt);
-    mcp_deactivate();
+    MCP_Activate();
+    SPI_Write(transmitt);
+    MCP_Deactivate();
 }
 
-uint8_t mcp_read_status()
+uint8_t MCP_Read_Status()
 {
-    mcp_activate();
+    MCP_Activate();
 
-    spi_write(MCP_READ_STATUS);
-    uint8_t read = spi_read();
+    SPI_Write(MCP_READ_STATUS);
+    uint8_t read = SPI_read();
 
-    mcp_deactivate();
+    MCP_Deactivate();
     return read;
 }
 
-void mcp_bit_mod(uint8_t address, uint8_t mask, uint8_t data)
+void MCP_Bit_Mod(uint8_t address, uint8_t mask, uint8_t data)
 {
-    mcp_activate();
+    MCP_Activate();
 
-    spi_write(MCP_BITMOD);
-    spi_write(address);
-    spi_write(mask);
-    spi_write(data);
+    SPI_Write(MCP_BITMOD);
+    SPI_Write(address);
+    SPI_Write(mask);
+    SPI_Write(data);
 
-    mcp_deactivate();
+    MCP_Deactivate();
 }
 
 // PROTOTYPE
-void mcp_activate()
+void MCP_Activate()
 {
     PORTB &= ~(1 << PB7); // Lower 'CS
 }
 
-void mcp_deactivate()
+void MCP_Deactivate()
 {
     PORTB |= (1 << PB7); // Higher 'CS
 }

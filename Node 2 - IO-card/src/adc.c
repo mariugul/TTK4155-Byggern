@@ -1,9 +1,9 @@
-#include "../inc/adc.h"
-#include "../inc/gpio_defines.h"
+#include "../inc/ADC.h"
+#include "../inc/GPIO_Defines.h"
 
 #define BALL_SENSITIVITY 100
 
-void adc_init()
+void ADC_Init()
 {
     // Select Vref=AVcc
     ADMUX |= (1 << REFS0);
@@ -15,7 +15,7 @@ void adc_init()
 }
 
 // Returns the ADC value
-uint16_t adc_read_raw()
+uint16_t ADC_Read_Raw()
 {
     //ADMUX = (ADMUX & 0xF0) | (1 & 0x0F);
     //single conversion mode
@@ -26,13 +26,13 @@ uint16_t adc_read_raw()
     return ADC;
 }
 
-uint16_t adc_read()
+uint16_t ADC_Read()
 {
-    //return (float)adc_read_raw() / 1023 * 5;
-    return adc_read_raw();
+    //return (float)ADC_read_raw() / 1023 * 5;
+    return ADC_Read_Raw();
 }
 
-int ball_detected()
+int Ball_Detected()
 {
-    return adc_read_raw() < BALL_SENSITIVITY;
+    return ADC_Read_Raw() < BALL_SENSITIVITY;
 }

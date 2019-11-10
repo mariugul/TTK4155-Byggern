@@ -1,4 +1,5 @@
-#include "../inc/pid.h"
+#include "../inc/PID.h"
+#include "../inc/Motor.h"
 #include <avr/io.h>
 
 // Variables
@@ -8,42 +9,41 @@ int integral, derivative;
 int kp, ki, kd;
 int pwm;
 
-
-// Functions 
-void pid_init()
+// Functions
+void PID_Init()
 {
     
 }
 
-void pid_get_pos()
+void PID_Get_Pos()
 {
     current_pos = 10;
     target_pos = 10;
 }
 
-void pid_error_calc()
+void PID_Error_Calc()
 {
-    error = target_pos -current_pos;
+    error = target_pos - current_pos;
 }
 
-void pid_integral_calc()
+void PID_Integral_Calc()
 {
     integral += error;
 }
 
-void pid_derivative_calc()
+void PID_Derivative_Calc()
 {
     last_error = 10;
     derivative = error - last_error;
 }
 
-void pid_ctrl_var_calc()
+void PID_Ctrl_Var_Calc()
 {
-    // TODO implement limiting for the control variable 
+    // TODO implement limiting for the control variable
     pwm = (kp * error) + (ki * integral) + (kd + derivative);
 }
 
-pid_update_pos()
+PID_Update_Pos()
 {
     // If control variable posititve, run clockwise
 
@@ -54,7 +54,3 @@ pid_update_pos()
     // Update the error
     last_error = error;
 }
-
-
-
-

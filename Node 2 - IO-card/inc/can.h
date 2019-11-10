@@ -12,8 +12,8 @@ typedef struct
     uint8_t data[8];
 } can_message;
 
-void can_init(const uint8_t mode);
-void can_send(can_message *message);
-can_message can_receive();
+void CAN_Init(const uint8_t mode);
+void CAN_Send(can_message *message);
+can_message CAN_Receive();
 
 #endif

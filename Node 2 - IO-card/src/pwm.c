@@ -1,6 +1,6 @@
-#include "../inc/pwm.h"
-#include "../inc/gpio_defines.h"
-#include "../inc/usart.h"
+#include "../inc/PWM.h"
+#include "../inc/GPIO_Defines.h"
+#include "../inc/USART.h"
 
 #define FOSC 16000000 // Clock speed
 #define PRESC 256 // Prescaler
@@ -8,7 +8,7 @@
 uint32_t freq = FOSC/PRESC;
 
 // Enable PWM
-void pwm_init()
+void PWM_Init()
 {
     // Set mode 14, Fast PWM 0CRnA (From table 17-2)
     SET_PIN(TCCR1B, WGM13);
@@ -24,11 +24,11 @@ void pwm_init()
     SET_PORT(DDRB, OUTPUT, PORTB, PB5, LOW);
 
     // Set period
-    pwm_set_period(PERIOD);
+    PWM_Set_Period(PERIOD);
 }
 
 // Set the PWM period
-void pwm_set_period(float period)
+void PWM_Set_Period(float period)
 {
     // Set prescaler to 256
     SET_PIN(TCCR1B, CS12);
@@ -46,7 +46,7 @@ void pwm_set_period(float period)
 }
 
 // Set the PWM pulse width
-void pwm_set_pulse_width(float joystick_pos)
+void PWM_Set_Pulse_Width(float joystick_pos)
 {
     // Variables for calculation
     float const min = 0.0009; // Min pulse width [s]

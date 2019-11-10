@@ -37,7 +37,7 @@ union TWI_statusReg TWI_statusReg = {0};            // TWI_statusReg is defined 
 Call this function to set up the TWI master to its initial standby state.
 Remember to enable interrupts from the main application after initializing the TWI.
 ****************************************************************************/
-void TWI_Master_Initialise(void)
+void TWI_Master_Init(void)
 {
   TWBR = TWI_TWBR;                                  // Set bit rate register (Baudrate). Defined in header file.
 // TWSR = TWI_TWPS;                                  // Not used. Driver presumes prescaler to be 00.
@@ -202,7 +202,7 @@ ISR(TWI_vect)
     case TWI_MTX_ADR_NACK:      // SLA+W has been tramsmitted and NACK received
     case TWI_MRX_ADR_NACK:      // SLA+R has been tramsmitted and NACK received    
     case TWI_MTX_DATA_NACK:     // Data byte has been tramsmitted and NACK received
-//    case TWI_NO_STATE              // No relevant state information available; TWINT = “0”
+//    case TWI_NO_STATE              // No relevant state information available; TWINT = ï¿½0ï¿½
     case TWI_BUS_ERROR:         // Bus error due to an illegal START or STOP condition
     default:     
       TWI_state = TWSR;                                 // Store TWSR and automatically sets clears noErrors bit.

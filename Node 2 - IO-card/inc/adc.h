@@ -3,8 +3,8 @@
 
 #include <avr/io.h>
 
-void adc_init();
-uint16_t adc_read();
-int ball_detected();
+void ADC_Init();
+uint16_t ADC_Read();
+int Ball_Detected();
 
 #endif
