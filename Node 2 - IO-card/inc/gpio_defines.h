@@ -71,3 +71,6 @@
 #define SOL_REG  DDRF
 #define SOL_PORT PORTF
 #define SOL_PIN  PF1
+
+// Interrupt
+#define INT0 PB0

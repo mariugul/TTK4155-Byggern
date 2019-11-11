@@ -1,34 +1,24 @@
 #include "../inc/Motor.h"
 #include "../inc/DAC.h"
-#include "../inc/GPIO_Defines.h"
 #include <util/delay.h>
-#include "../inc/PID.h"
-
 
 void Motor_Init()
 {
-    // ? PID INIT HERE
-
     // Set ports to output
     SET_OUTPUT(MJ1, MJ1_EN);
     SET_OUTPUT(MJ1, MJ1_OE);
     SET_OUTPUT(MJ1, MJ1_SEL);
     SET_OUTPUT(MJ1, MJ1_RST);
     SET_OUTPUT(MJ1, MJ1_DIR);
-    
+
     // Set ports to input
     SET_INPUT(MJ2, MJ2_DOUT);
-    
-
-    
 }
 
-void Motor_Move(uint8_t joystick_pos, uint8_t dir, uint_8t speed)
+void Motor_Move(direction_t dir, uint8_t speed)
 {
     // Set direction
     Motor_Set_Dir(dir);
-
-    // TODO - Calculate speed with PID from Joystick input
 
     // Set speed
     Motor_Set_Speed(speed);
@@ -77,22 +67,25 @@ void Motor_Encoder_Reset()
     CLEAR_PIN(MJ1, MJ1_RST);
 }
 
-void Motor_Set_Dir(uint8_t dir) // TODO Make this parameter an enumeration
+void Motor_Set_Dir(direction_t dir)
 {
-    if (dir = LEFT) {
-        // Set "left" direction
+    switch (dir) {
+    case left: // Set left direction
         CLEAR_PIN(MJ1, MJ1_DIR);
-    } else if (dir = RIGHT) {
-        // Set "right" direction
+        break;
+
+    case right: // Set rigth diretion
         SET_PIN(MJ1, MJ1_DIR);
-    } else {
-        // Set left as default if the value is different from 1 and 0
+        break;
+
+    default: // If passing undefined direction, set left
         CLEAR_PIN(MJ1, MJ1_DIR);
+        break;
     }
 }
 
 void Motor_Set_Speed(uint8_t speed)
-{   
+{
     // Speed should be 0 - 255
     DAC_Send(speed);
 }

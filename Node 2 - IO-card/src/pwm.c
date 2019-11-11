@@ -38,11 +38,6 @@ void PWM_Set_Period(float period)
     // Set period to 20ms
     int period_calc = freq * period;
     ICR1 = period_calc;
-
-    //***** DEBUG **************
-    printf("freq: %d\n", freq);
-    printf("period_calc: %d\n", period_calc);
-    //**************************
 }
 
 // Set the PWM pulse width
@@ -61,10 +56,6 @@ void PWM_Set_Pulse_Width(float joystick_pos)
 
     // Set the pulse width
     OCR1A = OCR;
-
-    //***** DEBUG **************
-    printf("pulse_width: %.2f\n OCR1A: %d\n", pulse_width, OCR);
-    //**************************
 }
 
 

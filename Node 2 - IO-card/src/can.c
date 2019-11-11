@@ -1,16 +1,23 @@
 #include "../inc/CAN.h"
 #include "../inc/MCP_Defines.h"
+#include "../inc/GPIO_Defines.h"
 
+// Receive buffers in MCP2515
+#define RX0B 0
+#define RX1B 1
+
+// ID for joystick data
+#define JSTICK_CAN_ID 10
 
 void CAN_Init(const uint8_t mode)
 {
-    // -Initialize loop back mode
-    MCP_Init(mode);            // Set MCP2515 mode
-    MCP_Bit_Mod(MCP_CANINTE, MCP_RX_INT, 0xffff);  // Set interrupt enable
-    MCP_Bit_Mod(MCP_CANINTE, MCP_TX_INT, 0xffff);  // Set interrupt enable
 
-    MCP_Write(MCP_CANINTF, 0);  // Clear flags
-    MCP_Bit_Mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);  // Enable txreq
+    // -Initialize loop back mode
+    MCP_Init(mode); // Set MCP2515 mode
+    MCP_Bit_Mod(MCP_CANINTE, MCP_RX_INT, 0xffff); // Set interrupt enable
+
+    MCP_Write(MCP_CANINTF, 0); // Clear flags
+    MCP_Bit_Mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff); // Enable txreq
 
     printf("<CAN is ready>");
 }
@@ -23,28 +30,28 @@ void CAN_Send(can_message* message)
     MCP_Bit_Mod(MCP_CANINTF, MCP_TX_INT, 0); // Clear tx int flag
 
     // Set ID and data-length
-    MCP_Bit_Mod(MCP_TXB0SIDL, 0b11100000, (message->id) << 5);    // Set the ID (high)
+    MCP_Bit_Mod(MCP_TXB0SIDL, 0b11100000, (message->id) << 5); // Set the ID (high)
     MCP_Write(MCP_TXB0SIDH, (message->id) >> 3);
     MCP_Write(MCP_TXB0DLC, message->length); // Set the length
 
-    const uint8_t buffer_addr[8] = {0x36, 0x37, 0x38, 0x39, 
-                                    0x3A, 0x3B, 0x3C, 0x3D};
+    const uint8_t buffer_addr[8] = { 0x36, 0x37, 0x38, 0x39,
+        0x3A, 0x3B, 0x3C, 0x3D };
 
     // Load the transmitt data buffer with data
     for (int i = 0; i < message->length; i++) {
         MCP_Write(buffer_addr[i], message->data[i]);
     }
-    
+
     MCP_Rts(MCP_RTS_TX0);
 }
 
 can_message CAN_Receive()
 {
     if (!(MCP_Read(MCP_CANINTF) & MCP_RX0IF)) {
-        return (can_message){0}; // Early exit
+        return (can_message) { 0 }; // Early exit
     }
 
-    can_message rx = {0};
+    can_message rx = { 0 };
 
     // Get ID
     const uint8_t id_high = MCP_Read(MCP_RXB0SIDH);
@@ -56,8 +63,8 @@ can_message CAN_Receive()
     rx.length = (length > 8 ? 8 : length);
 
     // Get data
-    const uint8_t rx0_buffer_addr[8] = {0x66, 0x67, 0x68, 0x69,
-                                        0x6a, 0x6b, 0x6c, 0x6d};
+    const uint8_t rx0_buffer_addr[8] = { 0x66, 0x67, 0x68, 0x69,
+        0x6a, 0x6b, 0x6c, 0x6d };
 
     for (int i = 0; i < rx.length; i++) {
         rx.data[i] = MCP_Read(rx0_buffer_addr[i]);
@@ -66,3 +73,44 @@ can_message CAN_Receive()
     MCP_Bit_Mod(MCP_CANINTF, MCP_RX0IF, 0); // CLEAR FLAG!
     return rx;
 }
+
+// Clear Interrupt on MCP2515
+void CAN_Clear_IF()
+{
+    // TODO - Clear the Interrupt Flag in MCP2515
+}
+
+// Returns cause of the Interrupt
+irqf_decode_t CAN_IRQ_Decode()
+{
+    // Hold the values of RX0B and RX1B flags
+    bool irq_buf_flags[2] = {};
+
+    // Read interrupt flag register
+    uint8_t irq_source = MCP_Read(MCP_CANINTF); 
+
+    // Save to RX buf flags
+    irq_buf_flags[RX0B] = irq_source & MCP_RX0IF;
+    irq_buf_flags[RX1B] = irq_source & MCP_RX1IF;
+
+    // Decode and return the source of the interrupt
+    if(irq_buf_flags[RX0B] == true)
+    {
+        // Both RX buffers has data
+        if(irq_buf_flags[RX1B == true])
+            return rxb_both_data;
+        
+        // Only RX0B has data
+        return rxb0_data;
+    }
+    else // RXOB = false
+    {
+        // Only RX1B has data
+        if(irq_buf_flags[RX1B == true])
+            return rxb1_data;
+        
+        // None of RX buffers has data
+        return rxb_empty;
+    }
+}
+
