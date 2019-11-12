@@ -19,22 +19,31 @@ ISR(TIMER1_OVF_vect){} // Not needed in fast PWM mode
 // Motor/PID Control - Timer2 Interrupt Handler
 ISR(TIMER2_OVF_vect)
 {
-    PID_Ctrl_Var_calc();
-    PID_Speed_calc();
+    // Variables
+    direction_t direction;
+    uint8_t speed;
+
+    // Get the target position from joystick --> happens in CAN interrupt handler
+
+    // Calculate the new position
+    speed = PID_Speed_calc();
+    direction = PID_Direction_Calc();
+
+    // Update error for next calculation
+    PID_Update_Last_Error();
+
+    // Move the motor to updated value
+    switch (direction)
+    {
+    case left: Motor_Move(left, speed);
+        break;
     
-    // If control variable negative, run counter clockwise
-    if (ctrl < 0){
-        if (ctrl )
-        speed = -ctrl;
+    case right: Motor_Move(right, speed);
+        break;
+
+    case stop: Motor_Move(stop, speed);
+        break;
     }
-
-    // If control variable posititve, run clockwise
-    else if (ctrl > 0)
-        Motor_Move();
-
-    // If control variable zero, stop motor
-    else 
-        Motor_Move();
     
 }
 

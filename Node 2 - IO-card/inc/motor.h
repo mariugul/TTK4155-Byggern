@@ -4,7 +4,7 @@
 #include <avr/io.h>
 #include "../inc/GPIO_Defines.h"
 
-typedef enum{left, right} direction_t;
+typedef enum{left, right, stop} direction_t;
 
 int16_t Motor_Read();
 void Motor_Init();

@@ -78,8 +78,10 @@ void Motor_Set_Dir(direction_t dir)
         SET_PIN(MJ1, MJ1_DIR);
         break;
 
-    default: // If passing undefined direction, set left
+    case stop: // If passing stop direction, set left (because it doesn't matter)
         CLEAR_PIN(MJ1, MJ1_DIR);
+
+    default: 
         break;
     }
 }
