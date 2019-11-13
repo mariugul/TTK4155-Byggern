@@ -1,8 +1,8 @@
-/* NODE 2 - ATMEGA 2560 */
+#include "inc/Main.h"
 
 #define F_CPU 16000000UL
 
-#include "inc/Main.h"
+
 #include "inc/ADC.h"
 #include "inc/CAN.h"
 #include "inc/GPIO_Defines.h"

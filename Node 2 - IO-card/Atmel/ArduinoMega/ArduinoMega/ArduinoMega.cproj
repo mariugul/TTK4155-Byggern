@@ -140,6 +140,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="inc" />
+    <Folder Include="doxy" />
     <Folder Include="src" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +267,10 @@
     <Compile Include="..\..\..\src\USART.c">
       <SubType>compile</SubType>
       <Link>src\USART.c</Link>
+    </Compile>
+    <Compile Include="Doxygen_Mainpage.h">
+      <SubType>compile</SubType>
+      <Link>doxy\Doxygen_Mainpage.h</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
