@@ -7,7 +7,7 @@
 
 #include <avr/io.h>
 #include <stdbool.h>
-
+#include <stdio.h>
 
 uint8_t MCP_Init(uint8_t mode);
 void    MCP_Reset();

@@ -1,6 +1,8 @@
 #include "../inc/PID.h"
-#include "../inc/Motor.h"
-#include <avr/io.h>
+
+
+// Limit
+#define ERROR_MAX  (50 / ki) // Limit the integral size
 
 // Position and Error
 int16_t current_pos = 0; // The current position
@@ -15,19 +17,16 @@ float derivative = 0; // Derivative factor
 
 // Gain
 float kp = 2;   // Proportional gain
-float ki = 3.5; // Integral gain
+float ki = 3.5; // Integral gain 
 float kd = 1.2; // Derivative gain
 
 // Control 
 int16_t speed; // The calculated control variable
 
-// Limit
-
-int error_max = (50 / ki); // Limit the integral size
-
 // Functions
 void PID_Init()
 {
+    printf("<PID Initialized>\n");
     // TODO - Initialize the motor to starting position
     // TODO - Create motor "calibrate" function to do this
 }
@@ -35,8 +34,8 @@ void PID_Init()
 void PID_Get_Pos()
 {
     // TODO - Recalculate this to ADC values. Right now it's motor rotations
-    int16_t motor_rotations = Motor_Read();
-    current_pos = 
+    //int16_t motor_rotations = Motor_Read();
+    //current_pos = 
 }
 
 void PID_Error_Calc()
@@ -45,8 +44,8 @@ void PID_Error_Calc()
     error = target_pos - current_pos;
 
     // Limit the error size
-    if(error > error_max)
-        error = error_max;
+    if(error > ERROR_MAX)
+        error = ERROR_MAX;
 }
 
 void PID_Update_Last_Error()
@@ -67,7 +66,7 @@ void PID_Integral_Calc()
         integral = 0;
 
     // Increase integral term when in "integral active zone"
-    else if (error < error_max && error > 1)
+    else if (error < ERROR_MAX && error > 1)
         integral += ki * error;
 }
 
@@ -124,10 +123,10 @@ uint8_t PID_Speed_Calc()
 direction_t PID_Direction_Calc()
 {
     if (speed < 0)
-        return = left;
+        return left;
 
     else if (speed > 0)
-        return = right;
+        return right;
 
     else 
         return stop;

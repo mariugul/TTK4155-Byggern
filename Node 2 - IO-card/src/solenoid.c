@@ -11,8 +11,21 @@ bool solenoid_pulse = false; // TODO Make extern
 
 void Solenoid_Init()
 {
+    printf("<Solenoid Initialized>\n");
     // Set pin for activating solenoid
     SET_PORT(SOL_REG, OUTPUT, SOL_PORT, SOL_PIN, LOW);
+}
+
+void Solenoid_Activate()
+{
+    // Activate solenoid
+    SET_PIN(SOL_PORT, SOL_PIN);
+}
+
+void Solenoid_Deactivate()
+{
+	// Deactivate solenoid
+	CLEAR_PIN(SOL_PORT, SOL_PIN);
 }
 
 // Calling this function twice creates a pulse
@@ -34,28 +47,5 @@ bool Solenoid_Pulse()
     return pulse;
 }
 
-void Solenoid_Activate()
-{
-    // Activate solenoid
-    SET_PIN(SOL_PORT, SOL_PIN);
-}
-
-void Solenoid_Deactivate(uint8_t push)
-{
-    // Deactivate solenoid
-    CLEAR_PIN(SOL_PORT, SOL_PIN);
-}
-
-/*********************/
-/* Interrupt Handler */
-/*********************/
-void Solenoid_IRQ_Handler() // TODO - Make this a real Interrupt handler OR software timer run
-{
-    //This will run twice before stopping the timer
-    if(Solenoid_Pulse() == false)
-        ;// TODO - Timer stop
-
-    // TODO - Clear interrupt flag
-}
 
 

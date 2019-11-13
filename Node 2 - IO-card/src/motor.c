@@ -1,9 +1,13 @@
+#define F_CPU 16000000UL
+
 #include "../inc/Motor.h"
 #include "../inc/DAC.h"
 #include <util/delay.h>
 
 void Motor_Init()
 {
+    printf("<Motor Initialized>\n");
+    
     // Set ports to output
     SET_OUTPUT(MJ1, MJ1_EN);
     SET_OUTPUT(MJ1, MJ1_OE);
@@ -53,7 +57,7 @@ int16_t Motor_Read()
     Motor_Encoder_Reset();
 
     // Set !OE high to disable output of encoder
-    SET_PIN(MJ1, MJ1_OE)
+    SET_PIN(MJ1, MJ1_OE);
 
     // Return received data
     int16_t rotation = (msb << 8) | lsb;

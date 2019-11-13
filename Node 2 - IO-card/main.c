@@ -1,7 +1,9 @@
 /* NODE 2 - ATMEGA 2560 */
 
+#define F_CPU 16000000UL
+
 #include "inc/Main.h"
-#include "inc/Adc.h"
+#include "inc/ADC.h"
 #include "inc/CAN.h"
 #include "inc/GPIO_Defines.h"
 #include "inc/MCP_Defines.h"
@@ -21,17 +23,19 @@
 int main()
 {
     // Initializers
+	USART_Init();
     ADC_Init();
-    USART_Init();
     Servo_Init();
     Motor_Init();
     PID_Init();
-    Timers_Init();
     Solenoid_Init();
     CAN_Init(MODE_NORMAL);
-
+	Timers_Init();
+	
+	printf("\n****Finished setting up Atmega2560!****\n\n");
     // Loop
     while (true) {
+		Global_Interrupt_Enable();
 
         // Read IR diode value
         const uint16_t ir_diode = ADC_Read();
@@ -48,3 +52,4 @@ int main()
             printf("RIP! Ball detected!\n");
         }
     }
+}

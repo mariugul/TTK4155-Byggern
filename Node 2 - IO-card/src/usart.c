@@ -24,7 +24,7 @@ void USART_Init()
     UCSR0C = (1 << USBS0) | (3 << UCSZ00);
 
     // Assign printf to USART
-    fdevopen(USART_send, USART_receive);
+    fdevopen(USART_Send, USART_Receive);
     printf("<USART is ready>\n");
 }
 
@@ -60,3 +60,4 @@ bool USART_Has_Data()
 {
     return (UCSR0A & (1 << RXC0));
 }
+

@@ -1,6 +1,8 @@
 #include "../inc/CAN.h"
+#include "../inc/MCP2515.h"
 #include "../inc/MCP_Defines.h"
 #include "../inc/GPIO_Defines.h"
+#include "../inc/USART.h"
 
 // Receive buffers in MCP2515
 #define RX0B 0
@@ -11,21 +13,22 @@
 
 void CAN_Init(const uint8_t mode)
 {
-
+    printf("<CAN is ready>");
+    
     // -Initialize loop back mode
     MCP_Init(mode); // Set MCP2515 mode
-    MCP_Bit_Mod(MCP_CANINTE, MCP_RX_INT, 0xffff); // Set interrupt enable
+    MCP_Bit_Mod(MCP_CANINTE, MCP_RX_INT, 0xff); // Set interrupt enable
 
     MCP_Write(MCP_CANINTF, 0); // Clear flags
-    MCP_Bit_Mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff); // Enable txreq
+    MCP_Bit_Mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xff); // Enable txreq
 
-    printf("<CAN is ready>");
+    
 }
 
 void CAN_Send(can_message* message)
 {
     // Set TX req enable for transmission
-    MCP_Bit_Mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xffff);
+    MCP_Bit_Mod(MCP_TXB0CTRL, MCP_TXREQ_MASK, 0xff);
 
     MCP_Bit_Mod(MCP_CANINTF, MCP_TX_INT, 0); // Clear tx int flag
 

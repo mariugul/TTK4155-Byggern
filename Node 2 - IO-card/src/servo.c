@@ -1,9 +1,10 @@
 #include "../inc/Servo.h"
-#include "../inc/PWMm.h"
+#include "../inc/PWM.h"
 
 // Initialize Servo
 void Servo_Init()
 {
+    printf("<Servo Initialized>\n");
     PWM_Init();
 
     // Start in the middle

@@ -3,6 +3,7 @@
 
 #include <avr/io.h>
 #include "../inc/GPIO_Defines.h"
+#include <stdio.h>
 
 typedef enum{left, right, stop} direction_t;
 

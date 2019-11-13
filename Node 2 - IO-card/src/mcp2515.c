@@ -1,6 +1,7 @@
 #include "../inc/MCP2515.h"
 #include "../inc/MCP_Defines.h"
 #include "../inc/SPI.h"
+#include "../inc/USART.h"
 
 
 uint8_t MCP_Init(uint8_t mode)
@@ -9,7 +10,7 @@ uint8_t MCP_Init(uint8_t mode)
 
     SPI_Init();
 	for (volatile unsigned int i; i < 1000; i++);
-    mcp_Reset();
+    MCP_Reset();
 	for (volatile unsigned int i; i < 1000; i++);
 
     // Self test
@@ -112,7 +113,7 @@ uint8_t MCP_Read_Status()
     MCP_Activate();
 
     SPI_Write(MCP_READ_STATUS);
-    uint8_t read = SPI_read();
+    uint8_t read = SPI_Read();
 
     MCP_Deactivate();
     return read;

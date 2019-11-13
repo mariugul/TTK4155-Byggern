@@ -1,19 +1,22 @@
 #include "../inc/PID.h"
+#include "../inc/Timers.h"
 #include "../inc/GPIO_Defines.h"
-#include <avr/io.h>
-
+#include <avr/interrupt.h>
 
 
 void Timers_Init()
 {
+	printf("<Timers Initialized!>\n");
     Timer0_Init();
     Timer1_Init();
     Timer2_Init();
+
+    
 }
 
 /* * * * * * * * * * * * * *
  * Initialize 8-bit Timers *
-/* * * * * * * * * * * * * */
+ * * * * * * * * * * * * * */
 void Timer0_Init(){
 
 }
@@ -28,12 +31,12 @@ void Timer2_Init(){
     TIMSK2 = (1 << TOIE2);
 
     // Enable global interrupts
-    Global_Interrupt_Enable();
+    //Global_Interrupt_Enable();
 }
 
 /* * * * * * * * * * * * * * *
  * Initialize 16-bit Timers  *
-/* * * * * * * * * * * * * * */
+ * * * * * * * * * * * * * * */
 
 // Used for PWM generation for the servo
 void Timer1_Init(){
@@ -42,6 +45,11 @@ void Timer1_Init(){
 
 void Global_Interrupt_Enable()
 {
-    __enable_interrupt();
+    sei();
+}
+
+void Global_Interrupt_Disable()
+{
+	cli();
 }
 

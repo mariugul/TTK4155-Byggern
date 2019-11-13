@@ -1,10 +1,12 @@
 #include "../inc/ADC.h"
 #include "../inc/GPIO_Defines.h"
+#include "../inc/USART.h"
 
 #define BALL_SENSITIVITY 100
 
 void ADC_Init()
 {
+    printf("<ADC Initialized>\n");
     // Select Vref=AVcc
     ADMUX |= (1 << REFS0);
     //set prescaller to 128 and enable ADC

@@ -4,7 +4,7 @@
 #define __SPI_H__
 
 #include <avr/io.h>
-
+#include <stdio.h>
 
 void SPI_Init();				// Enable SPI communication
 char SPI_Read();				// Read from the SPI

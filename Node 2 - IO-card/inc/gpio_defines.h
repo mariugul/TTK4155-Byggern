@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <stdio.h>
 
 // Set PORTs and PINs
 #define SET_OUTPUT(reg, pin) (reg |= (1 << pin))   // Set PORTx to output
@@ -73,4 +74,4 @@
 #define SOL_PIN  PF1
 
 // Interrupt
-#define INT0 PB0
+//#define INT0 PB0

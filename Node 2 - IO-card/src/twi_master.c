@@ -25,7 +25,7 @@
 
 #include <avr/io.h>              
 #include <avr/interrupt.h>
-#include "TWI_Master.h"
+#include "../inc/TWI_Master.h"
 
 static unsigned char TWI_buf[ TWI_BUFFER_SIZE ];    // Transceiver buffer
 static unsigned char TWI_msgSize;                   // Number of bytes to be transmitted.
