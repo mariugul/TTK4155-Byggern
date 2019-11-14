@@ -25,7 +25,7 @@
 // ID for joystick data
 #define JSTICK_CAN_ID 10
 
-// Functions
+// Function Definitions
 //---------------------------------------------------
 void CAN_Init(const uint8_t mode)
 {

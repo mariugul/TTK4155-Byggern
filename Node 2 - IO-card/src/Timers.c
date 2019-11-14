@@ -1,9 +1,23 @@
+/*********************************************************
+ *               Timers and Interrupts                   *
+ *                                                       *
+ * This file sets up the timer counters and the timer    *
+ * interrupts. It should be viewed in accordance with    *
+ * "IRQ_Handlers", as they describe the interrupt handler*
+ * functionality.                                        *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/PID.h"
 #include "../inc/Timers.h"
 #include "../inc/GPIO_Defines.h"
 #include <avr/interrupt.h>
 
-
+// Function Definitions
+//---------------------------------------------------
 void Timers_Init()
 {
 	printf("<Timers Initialized!>\n");

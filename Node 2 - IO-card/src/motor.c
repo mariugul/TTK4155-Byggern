@@ -1,9 +1,26 @@
+/*********************************************************
+ *                   Motor Controller                    *
+ *                                                       *
+ * This is the controller for the motor. It will control *
+ * the arm moving in left and right direction. The motor *
+ * controller has to be viewed in accordance with the PID*
+ * -controller as they work together.                    *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Definition of clock (has to come before delay library)
+//---------------------------------------------------
 #define F_CPU 16000000UL
 
+// Includes
+//---------------------------------------------------
 #include "../inc/Motor.h"
 #include "../inc/DAC.h"
 #include <util/delay.h>
 
+// Funtion Definitions
+//---------------------------------------------------
 void Motor_Init()
 {
     printf("<Motor Initialized>\n");

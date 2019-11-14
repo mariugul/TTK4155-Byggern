@@ -1,12 +1,31 @@
+/*********************************************************
+ *               Pulse Width Modulation                  *
+ *                                                       *
+ * Pulse width modulation is used for controlling the    *
+ * servo motor, as it needs PWM to work. This driver     *
+ * is thus included in the servo controller.             *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/PWM.h"
 #include "../inc/GPIO_Defines.h"
 #include "../inc/USART.h"
 
+// Definitions
+//---------------------------------------------------
 #define FOSC 16000000 // Clock speed
 #define PRESC 256 // Prescaler
 #define PERIOD 0.02 // 20ms period for PWM
+
+// Variables
+//---------------------------------------------------
 uint32_t freq = FOSC/PRESC;
 
+// Function Definitions
+//---------------------------------------------------
 // Enable PWM
 void PWM_Init()
 {

@@ -36,7 +36,7 @@ float kd = 1.2; // Derivative gain
 uint8_t speed = 0;
 direction_t direction;
 
-// Functions                                         
+// Function Definitions                               
 //---------------------------------------------------
 void PID_Init()
 {

@@ -1,5 +1,20 @@
+/*********************************************************
+ *               Servo Motor Controller                  *
+ *                                                       *
+ * The servo motor controls the x/y direction of the     *
+ * solenoid that will eventually be used to hit the      *
+ * ping pong ball.                                       *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/Servo.h"
 #include "../inc/PWM.h"
+
+// Function Definitions
+//---------------------------------------------------
 
 // Initialize Servo
 void Servo_Init()

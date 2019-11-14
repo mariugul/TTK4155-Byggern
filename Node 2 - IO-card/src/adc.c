@@ -17,7 +17,7 @@
 //---------------------------------------------------
 #define BALL_SENSITIVITY 100
 
-// Functions
+// Function Definitions
 //---------------------------------------------------
 
 void ADC_Init()

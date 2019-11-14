@@ -1,9 +1,20 @@
+/*********************************************************
+ *             CAN Controller: MCP2515                   *
+ *                                                       *
+ * This is the CAN Driver for controlling the CAN Bus.   *
+ * It used an SPI driver to function with the Atmega2560 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/MCP2515.h"
 #include "../inc/MCP_Defines.h"
 #include "../inc/SPI.h"
 #include "../inc/USART.h"
 
-
+// Function Definitions
+//---------------------------------------------------
 uint8_t MCP_Init(uint8_t mode)
 {
     uint8_t value;

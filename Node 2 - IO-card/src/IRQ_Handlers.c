@@ -1,3 +1,16 @@
+/*********************************************************
+ *               Interrupt Handlers                      *
+ *                                                       *
+ *  These are the Interrupt Handlers for CAN Bus,        *
+ *  motor/PID control and Solenoid. They also have a few *
+ *  functions for updating "interrupt flags" that are our*
+ *  own flags, used mainly for motor control.            *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/ADC.h"
 #include "../inc/CAN.h"
 #include "../inc/GPIO_Defines.h"
@@ -15,7 +28,7 @@
 bool motor_flag = false;
 
 
-// Functions                                         
+// Function Definitions                                       
 //---------------------------------------------------
 void IRQ_Set_Motor_Flag()
 {

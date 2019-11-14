@@ -1,14 +1,24 @@
+/*********************************************************
+ *                 Solenoid Controller                   *
+ *                                                       *
+ * The solenoid will be hitting the ping pong ball. It's *
+ * controller with pulse width modulation and thus,      *
+ * includes the PWM driver.                              *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/Solenoid.h"
 #include "../inc/GPIO_Defines.h"
 
 // Variables
+//---------------------------------------------------
 bool solenoid_pulse = false; // TODO Make extern
 
-
-/***************/
-/*  Functions  */
-/***************/
-
+// Function Definitions
+//---------------------------------------------------
 void Solenoid_Init()
 {
     printf("<Solenoid Initialized>\n");

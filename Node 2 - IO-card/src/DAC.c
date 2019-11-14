@@ -1,8 +1,21 @@
+/*********************************************************
+ *             Digital to Analog Converter               *
+ *                                                       *
+ *  The DAC is used for generating an analog signal      * 
+ *  for the servo motor. The DAC uses I2C to do so.      *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/DAC.h"
 #include "../inc/GPIO_Defines.h"
 #include "../inc/TWI_Master.h"
 #include <avr/interrupt.h>
 
+// Function Definitions
+//---------------------------------------------------
 void DAC_Init()
 {
     TWI_Master_Init();

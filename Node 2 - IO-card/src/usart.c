@@ -1,15 +1,27 @@
+/*********************************************************
+ *             USART Communication Driver                *
+ *                                                       *
+ * The USART driver is used for easy debugging by using  *
+ * "printf" in the code. It works over the USB provided  *
+ * with the Arduino Mega.                                *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/USART.h" // Include header file
 #include <avr/io.h> // Include AVR library
 #include "../inc/Timers.h"
 
-// USART macros
+// Definitions
+//---------------------------------------------------
 #define FOSC (16000000) // Clock speed
 #define BAUD (1000000) // Baud rate for USAR
 #define MYUBRR FOSC / 16 / BAUD - 1 // Calculate the USART init
 
-/*_________________________________
-  \     Function definitions      /
-   \____________________________*/
+// Function Definitions
+//---------------------------------------------------
 
 // initialize the USART
 void USART_Init()
