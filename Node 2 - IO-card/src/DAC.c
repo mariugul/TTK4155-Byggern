@@ -5,12 +5,11 @@
 
 void DAC_Init()
 {
-    sei(); // Enable global interrupts
     TWI_Master_Init();
 }
 
 void DAC_Send(uint8_t data)
-{
+{	
     // Variables for the message
     uint8_t addr = 10; // TODO Find correct address
     uint8_t cmd  = 0x0;

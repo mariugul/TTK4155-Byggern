@@ -1,5 +1,25 @@
+/*********************************************************
+ *                  GPIO Definitions                     *
+ *                                                       *
+ *  These are the definitions of registers, ports, pins  *
+ *  used in the Atmega2560. It also includes function-   *
+ *  definitions for setting/clearing pins and ports.     *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Header Guard
+//---------------------------------------------------
+#ifndef __GPIO_DEFINES_H__
+#define __GPIO_DEFINES_H__
+
+// Includes
+//---------------------------------------------------
 #include <avr/io.h>
 #include <stdio.h>
+
+// Definitions
+//---------------------------------------------------
 
 // Set PORTs and PINs
 #define SET_OUTPUT(reg, pin) (reg |= (1 << pin))   // Set PORTx to output
@@ -48,30 +68,28 @@
         }                                 \
     })
 
-/************************
- *         PINS         *
- ************************/
+// Definitions of pins
+//---------------------------------------------------
 
 // Motor related
-#define MJ1     PORTH // The port where motor pins are connected
-#define MJ1_OE  PH5 // Encoder pin 
-#define MJ1_SEL PH3 // Select pin 
-#define MJ1_RST PH6 // Reset pin 
-#define MJ1_EN  PH4 // Enable pin
+#define MJ1 PORTH   // The port where motor pins are connected
+#define MJ1_OE PH5  // Encoder pin
+#define MJ1_SEL PH3 // Select pin
+#define MJ1_RST PH6 // Reset pin
+#define MJ1_EN PH4  // Enable pin
 #define MJ1_DIR PH1 // Direction pin
 
 // Motor direction
-#define LEFT  0
+#define LEFT 0
 #define RIGHT 1
 
 // Motor output
-#define MJ2      PORTC
+#define MJ2 PORTC
 #define MJ2_DOUT PINC
 
 // Solenoid
-#define SOL_REG  DDRF
+#define SOL_REG DDRF
 #define SOL_PORT PORTF
-#define SOL_PIN  PF1
+#define SOL_PIN PF1
 
-// Interrupt
-//#define INT0 PB0
+#endif

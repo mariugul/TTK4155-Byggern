@@ -7,52 +7,70 @@
 #include "../inc/Timers.h"
 #include "../inc/USART.h"
 #include "../inc/Servo.h"
-#include <avr/interrupt.h>
-#include <avr/io.h>
+#include "../inc/IRQ_Handlers.h"
 
+
+// Flags                                             
+//---------------------------------------------------
+bool motor_flag = false;
+
+
+// Functions                                         
+//---------------------------------------------------
+void IRQ_Set_Motor_Flag()
+{
+	motor_flag = true;
+}
+
+void IRQ_Clear_Motor_Flag()
+{
+	motor_flag = false;
+}
+
+bool IRQ_Motor_Flag()
+{
+	return motor_flag;
+}
+
+// Interrupt Handlers                                
+//---------------------------------------------------
+
+// NB!!! I think that we can maybe use a software timer instead of this function to generate
+// a Solenoid pulse. What do you think Daniel?
 // Solenoid Control - Timer0 Interrupt Handler
 ISR(TIMER0_OVF_vect)
 {
-    printf("<Solenoid IRQH\n");
+  printf("<Solenoid IRQH\n");
 }
 
 // Servo Control - Timer1 Interrupt Handler
-//ISR(TIMER1_OVF_vect){} // Not needed in fast PWM mode
+ISR(TIMER1_OVF_vect){} // Not needed in fast PWM mode
 
 // Motor/PID Control - Timer2 Interrupt Handler
 ISR(TIMER2_OVF_vect)
 {
 	printf("<Motor IRQH>\n");
 	
-    // Variables
-    direction_t direction;
-    uint8_t speed;
-
     // Get the target position from joystick --> happens in CAN interrupt handler
 
-    // Calculate the new position
-    speed = PID_Speed_Calc();
-    direction = PID_Direction_Calc();
+    // Calculate necesarry steps before speed and direction
+    PID_Get_Motor_Pos();
+    PID_Error_Calc();
+    PID_Proportional_Calc();
+    PID_Integral_Calc();
+    PID_Derivative_Calc();
+
+    // Calculate the new speed and direction
+    PID_Calc();
 
     // Update error for next calculation
     PID_Update_Last_Error();
 	
-	
-    // Move the motor to updated value
-    switch (direction) {
-    case left:
-        Motor_Move(left, speed);
-        break;
-
-    case right:
-        Motor_Move(right, speed);
-        break;
-
-    case stop:
-        Motor_Move(stop, speed);
-        break;
-    }
-	
+	// ** Set flag so the main loop can move motor**
+    // The reason for this is that the DAC is controlled by
+    // I2C, and this is run on interrupt. Calling Motor_Move 
+    // here would result in nested interrupts.
+	IRQ_Set_Motor_Flag(); 	
 }
 
 // CAN Message Receive - External Interrupt Handler

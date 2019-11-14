@@ -1,14 +1,24 @@
- /*Low level driver for setting up the CAN controller 
-  *and accessing its control and status registers
-  */
+/*********************************************************
+ *             CAN Controller: MCP2515                   *
+ *                                                       *
+ * This is the CAN Driver for controlling the CAN Bus.   *
+ * It used an SPI driver to function with the Atmega2560 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-#ifndef __MCP2515_H_              // HEADER GUARD
+// Header Guard
+//---------------------------------------------------
+#ifndef __MCP2515_H_            
 #define __MCP2515_H__
 
+// Includes
+//---------------------------------------------------
 #include <avr/io.h>
 #include <stdbool.h>
 #include <stdio.h>
 
+// Function Prototypes
+//---------------------------------------------------
 uint8_t MCP_Init(uint8_t mode);
 void    MCP_Reset();
 uint8_t MCP_Read(uint8_t address);

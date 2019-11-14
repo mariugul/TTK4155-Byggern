@@ -1,8 +1,22 @@
+/*********************************************************
+ *                    CAN Bus                            *
+ *                                                       *
+ *  The CAN bus sends and receives messages between the  *
+ *  two nodes (Atmega162 and Atmega2560)                 *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/CAN.h"
 #include "../inc/MCP2515.h"
 #include "../inc/MCP_Defines.h"
 #include "../inc/GPIO_Defines.h"
 #include "../inc/USART.h"
+
+// Definitions
+//---------------------------------------------------
 
 // Receive buffers in MCP2515
 #define RX0B 0
@@ -11,6 +25,8 @@
 // ID for joystick data
 #define JSTICK_CAN_ID 10
 
+// Functions
+//---------------------------------------------------
 void CAN_Init(const uint8_t mode)
 {
     printf("<CAN is ready>");

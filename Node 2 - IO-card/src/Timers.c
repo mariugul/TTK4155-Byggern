@@ -10,8 +10,7 @@ void Timers_Init()
     Timer0_Init();
     Timer1_Init();
     Timer2_Init();
-
-    
+	Global_Interrupt_Enable();
 }
 
 /* * * * * * * * * * * * * *
@@ -29,9 +28,6 @@ void Timer2_Init(){
 
     // Overflow Interrupt Enable
     TIMSK2 = (1 << TOIE2);
-
-    // Enable global interrupts
-    //Global_Interrupt_Enable();
 }
 
 /* * * * * * * * * * * * * * *

@@ -1,9 +1,10 @@
 #include "../inc/USART.h" // Include header file
 #include <avr/io.h> // Include AVR library
+#include "../inc/Timers.h"
 
-// USAR macros
+// USART macros
 #define FOSC (16000000) // Clock speed
-#define BAUD (9600) // Baud rate for USAR
+#define BAUD (1000000) // Baud rate for USAR
 #define MYUBRR FOSC / 16 / BAUD - 1 // Calculate the USART init
 
 /*_________________________________
@@ -42,6 +43,7 @@ void USART_Send(unsigned char data)
         ;
 
     UDR0 = data; //put data on buffer
+
 }
 
 // Return received data
@@ -53,6 +55,7 @@ unsigned char USART_Receive()
 
     /* Get and return received data from buffer */
     return UDR0;
+
 }
 
 // Check for data in the HW buffer

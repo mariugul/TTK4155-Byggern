@@ -1,11 +1,17 @@
+/*********************************************************
+ *             NODE 2 - Ping Pong Game                   *
+ *     This is the main file for controlling Node 2.     *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "inc/Main.h"
-
-#define F_CPU 16000000UL
-
-
 #include "inc/ADC.h"
 #include "inc/CAN.h"
 #include "inc/GPIO_Defines.h"
+#include "inc/IRQ_Handlers.h"
 #include "inc/MCP_Defines.h"
 #include "inc/Motor.h"
 #include "inc/PID.h"
@@ -20,36 +26,43 @@
 #include <util/delay.h>
 
 
+// Main
+//---------------------------------------------------
 int main()
 {
     // Initializers
-	USART_Init();
+    USART_Init();
     ADC_Init();
     Servo_Init();
     Motor_Init();
     PID_Init();
     Solenoid_Init();
     CAN_Init(MODE_NORMAL);
-	Timers_Init();
-	
-	printf("\n****Finished setting up Atmega2560!****\n\n");
+    Timers_Init();
+
+    printf("\n****Finished setting up Atmega2560!****\n\n");
+
     // Loop
+    //-----------------------------------------------
     while (true) {
-		Global_Interrupt_Enable();
 
         // Read IR diode value
         const uint16_t ir_diode = ADC_Read();
-
-        // Print IR value to PC for Debug
         printf("ADC: %d\n", ir_diode);
 
-        // Delay for debugging
-        _delay_ms(200);
-
-        // TODO - Implement ADC Interrupt for IR diode
         // Check if ball fell out
         if (Ball_Detected()) {
             printf("RIP! Ball detected!\n");
+        }
+
+        // Move motor when flag is set
+        if (IRQ_Motor_Flag()) {
+
+            // Move the motor to updated value
+            Motor_Move(PID_Get_Direction(), PID_Get_Speed());
+
+            // Clear the Motor flag
+            IRQ_Clear_Motor_Flag();
         }
     }
 }

@@ -43,3 +43,5 @@ Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/doxygen/latex/Makefile
 *.css
 *.lnk
 Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
+*.hex
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/doxyfile

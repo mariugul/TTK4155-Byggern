@@ -1,8 +1,24 @@
+/*********************************************************
+ *             Analog to Digital Converter               *
+ *                                                       *
+ *  The ADC will read the IR diode values for detecting  *
+ *  the ball.                                            *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/ADC.h"
 #include "../inc/GPIO_Defines.h"
 #include "../inc/USART.h"
 
+// Definitions
+//---------------------------------------------------
 #define BALL_SENSITIVITY 100
+
+// Functions
+//---------------------------------------------------
 
 void ADC_Init()
 {

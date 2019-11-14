@@ -1,12 +1,29 @@
-#ifndef __CAN_H_ // HEADER GUARD
+/*********************************************************
+ *                    CAN Bus                            *
+ *                                                       *
+ *  The CAN bus sends and receives messages between the  *
+ *  two nodes (Atmega162 and Atmega2560)                 *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Header Guard
+//---------------------------------------------------
+#ifndef __CAN_H__
 #define __CAN_H__
 
+// Includes
+//---------------------------------------------------
 #include <avr/io.h>
 #include <stdbool.h>
 #include <stdio.h>
 
+// Typedefs
+//---------------------------------------------------
+
 // Interrupt Flag States
-typedef enum {
+typedef enum
+{
     rxb_empty,
     rxb0_data,
     rxb1_data,
@@ -14,13 +31,15 @@ typedef enum {
 } irqf_decode_t;
 
 // CAN Messages
-typedef struct {
+typedef struct
+{
     uint16_t id;
     uint8_t length;
     uint8_t data[8];
 } can_message;
 
-// Function prototypes
+// Function Prototypes
+//---------------------------------------------------
 void CAN_Init(const uint8_t mode);
 void CAN_Send(can_message *message);
 void CAN_Clear_IF();

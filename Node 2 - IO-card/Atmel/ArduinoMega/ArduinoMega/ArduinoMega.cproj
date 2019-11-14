@@ -160,6 +160,10 @@
       <SubType>compile</SubType>
       <Link>inc\GPIO_Defines.h</Link>
     </Compile>
+    <Compile Include="..\..\..\inc\IRQ_Handlers.h">
+      <SubType>compile</SubType>
+      <Link>inc\IRQ_Handlers.h</Link>
+    </Compile>
     <Compile Include="..\..\..\inc\Main.h">
       <SubType>compile</SubType>
       <Link>inc\Main.h</Link>

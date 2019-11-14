@@ -7,6 +7,9 @@
 void Motor_Init()
 {
     printf("<Motor Initialized>\n");
+	
+	// Set up DAC with I2C
+    DAC_Init();
     
     // Set ports to output
     SET_OUTPUT(MJ1, MJ1_EN);
@@ -21,9 +24,16 @@ void Motor_Init()
 
 void Motor_Move(direction_t dir, uint8_t speed)
 {
-    // Set direction
-    Motor_Set_Dir(dir);
+	
+    // Set direction of the motor
+    switch (dir) {
+        case left:  Motor_Set_Dir(left);  break;
 
+        case right: Motor_Set_Dir(right); break;
+
+        case stop:  Motor_Set_Dir(stop);  break;
+    }
+ 
     // Set speed
     Motor_Set_Speed(speed);
 }

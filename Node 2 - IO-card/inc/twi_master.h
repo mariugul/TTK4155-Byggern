@@ -1,3 +1,14 @@
+/*********************************************************
+ *            I2C Communication Driver                   *
+ *                                                       *
+ * This is a driver provided by Atmel and we did not     *
+ * modify it, with the exception of renaming the         *
+ * "initializer" function to be in accordance with our   *
+ * naming convention.                                    *
+ *                                                       *
+ * Modified by: Marius C. K. Gulbrandsen and Daniel Rahme*
+ *********************************************************/
+
 /*****************************************************************************
 *
 * Atmel Corporation
