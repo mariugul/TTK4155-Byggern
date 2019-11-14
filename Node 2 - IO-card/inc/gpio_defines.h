@@ -72,20 +72,21 @@
 //---------------------------------------------------
 
 // Motor related
-#define MJ1 PORTH   // The port where motor pins are connected
-#define MJ1_OE PH5  // Encoder pin
-#define MJ1_SEL PH3 // Select pin
-#define MJ1_RST PH6 // Reset pin
-#define MJ1_EN PH4  // Enable pin
-#define MJ1_DIR PH1 // Direction pin
+#define MJ1_REG     DDRH
+#define MJ1			PORTH   // The port where motor pins are connected
+#define MJ1_OE		PH5  // Encoder pin
+#define MJ1_SEL		PH3 // Select pin
+#define MJ1_RST		PH6 // Reset pin
+#define MJ1_EN		PH4  // Enable pin
+#define MJ1_DIR		PH1 // Direction pin
 
 // Motor direction
 #define LEFT 0
 #define RIGHT 1
 
 // Motor output
-#define MJ2 PORTC
-#define MJ2_DOUT PINC
+#define MJ2 PORTK
+#define MJ2_DOUT PINK
 
 // Solenoid
 #define SOL_REG DDRF

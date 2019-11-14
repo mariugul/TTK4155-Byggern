@@ -28,8 +28,9 @@ void Motor_Init()
 	// Set up DAC with I2C
     DAC_Init();
     
-    // Set ports to output
-    SET_OUTPUT(MJ1, MJ1_EN);
+	// Set ports to output
+	SET_OUTPUT(MJ1_REG, MJ1_DIR);
+	SET_PIN(MJ1, MJ1_DIR);
     SET_OUTPUT(MJ1, MJ1_OE);
     SET_OUTPUT(MJ1, MJ1_SEL);
     SET_OUTPUT(MJ1, MJ1_RST);
@@ -69,6 +70,7 @@ int16_t Motor_Read()
     // TODO Check on this
     // Read MSB
     uint8_t msb = MJ2_DOUT;
+	printf("msb: %d\n", msb);
 
     // Set SEL high to get low byte
     SET_PIN(MJ1, MJ1_SEL);
@@ -100,12 +102,14 @@ void Motor_Encoder_Reset()
 
 void Motor_Set_Dir(direction_t dir)
 {
+	
+	
     switch (dir) {
     case left: // Set left direction
         CLEAR_PIN(MJ1, MJ1_DIR);
         break;
 
-    case right: // Set rigth diretion
+    case right: // Set right direction
         SET_PIN(MJ1, MJ1_DIR);
         break;
 

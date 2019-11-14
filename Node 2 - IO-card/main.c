@@ -19,6 +19,7 @@
 #include "inc/Solenoid.h"
 #include "inc/Timers.h"
 #include "inc/USART.h"
+#include "inc/DAC.h"
 #include <avr/io.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -45,10 +46,11 @@ int main()
     // Loop
     //-----------------------------------------------
     while (true) {
-
+		//int tmp = Motor_Read();
+		//printf("Motor: %d\n", tmp);
         // Read IR diode value
-        const uint16_t ir_diode = ADC_Read();
-        printf("ADC: %d\n", ir_diode);
+		
+		Motor_Move(right, 150);
 
         // Check if ball fell out
         if (Ball_Detected()) {
