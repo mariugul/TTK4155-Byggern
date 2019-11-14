@@ -84,8 +84,8 @@
 #define RIGHT 1
 
 // Motor output
-#define MJ2 PORTC
-#define MJ2_DOUT PINC
+#define MJ2 PORTK
+#define MJ2_DOUT PINK
 
 // Solenoid
 #define SOL_REG DDRF

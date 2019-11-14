@@ -24,12 +24,12 @@ void DAC_Init()
 void DAC_Send(uint8_t data)
 {	
     // Variables for the message
-    uint8_t addr = 10; // TODO Find correct address
-    uint8_t cmd  = 0x0;
-    uint8_t length = 3;
+    uint8_t addr = 0x50; 
+    uint8_t cmd  = 0x00;
+    uint8_t length = 0x03;
 
     // Message to be sent
-    uint8_t message[] = {addr, cmd, data}; // ! Does this compile? Check it out!
+    uint8_t message[] = {addr, cmd, data}; 
 
     // Send data over I2C 
     TWI_Start_Transceiver_With_Data(message, length);

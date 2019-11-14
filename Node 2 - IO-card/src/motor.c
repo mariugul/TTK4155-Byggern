@@ -28,8 +28,11 @@ void Motor_Init()
 	// Set up DAC with I2C
     DAC_Init();
     
+    // Motor Enable
+
+
     // Set ports to output
-    SET_OUTPUT(MJ1, MJ1_EN);
+    SET_PORT(DDRH, OUTPUT, PORTH, PH4, HIGH);
     SET_OUTPUT(MJ1, MJ1_OE);
     SET_OUTPUT(MJ1, MJ1_SEL);
     SET_OUTPUT(MJ1, MJ1_RST);
