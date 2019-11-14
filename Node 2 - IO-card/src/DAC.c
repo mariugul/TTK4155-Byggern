@@ -18,14 +18,15 @@
 //---------------------------------------------------
 void DAC_Init()
 {
+	//SET_OUTPUT(PORTD, PD0);
     TWI_Master_Init();
 }
 
 void DAC_Send(uint8_t data)
 {	
     // Variables for the message
-    uint8_t addr = 0x50; 
-    uint8_t cmd  = 0x00;
+    uint8_t addr   = 0x50; 
+    uint8_t cmd    = 0x00;
     uint8_t length = 0x03;
 
     // Message to be sent

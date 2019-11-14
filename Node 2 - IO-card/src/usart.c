@@ -17,7 +17,8 @@
 // Definitions
 //---------------------------------------------------
 #define FOSC (16000000) // Clock speed
-#define BAUD (1000000) // Baud rate for USAR
+//#define BAUD (1000000) // Baud rate for USAR
+#define BAUD (57600)
 #define MYUBRR FOSC / 16 / BAUD - 1 // Calculate the USART init
 
 // Function Definitions

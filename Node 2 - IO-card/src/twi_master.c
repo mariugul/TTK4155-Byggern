@@ -52,11 +52,19 @@ void TWI_Master_Init(void)
 {
   TWBR = TWI_TWBR;                                  // Set bit rate register (Baudrate). Defined in header file.
 // TWSR = TWI_TWPS;                                  // Not used. Driver presumes prescaler to be 00.
-  TWDR = 0xFF;                                      // Default content = SDA released.
+  TWBR = 0x0c; // 400kHz
+  TWSR = 0;
+  TWCR = (1 << TWEN);
+
+
+
+  TWDR = 0xFF;         
+                               // Default content = SDA released.
   TWCR = (1<<TWEN)|                                 // Enable TWI-interface and release TWI pins.
          (0<<TWIE)|(0<<TWINT)|                      // Disable Interupt.
          (0<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|           // No Signal requests.
          (0<<TWWC);                                 //
+         
 }    
     
 /****************************************************************************

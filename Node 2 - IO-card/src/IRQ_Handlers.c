@@ -62,7 +62,7 @@ ISR(TIMER1_OVF_vect){} // Not needed in fast PWM mode
 // Motor/PID Control - Timer2 Interrupt Handler
 ISR(TIMER2_OVF_vect)
 {
-	printf("<Motor IRQH>\n");
+	//printf("<Motor IRQH>\n");
 	
     // Get the target position from joystick --> happens in CAN interrupt handler
 
