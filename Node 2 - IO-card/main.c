@@ -47,7 +47,9 @@ int main()
     //-----------------------------------------------
     while (true) {
 		
-
+		int16_t motor = Motor_Read();
+		printf("Motor encoder: %ld", motor);
+		
 		// Save the received message
 		can_message receive = CAN_Receive();
 
@@ -55,12 +57,12 @@ int main()
 		if (receive.id == JSTICK_CAN_ID) {
 
 			// *Printf for debug
-			printf("Received %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT]);
+			//printf("Received %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT]);
 
 			// Sets servo to received joystick position
 			Servo_Set_Pos(receive.data[JSTICK_Y]);
-
-			// TODO - Solenoid activate
+			
+			// Solenoid shoot
 			if (receive.data[JSTICK_BUT] == PUSHED) {
 				printf("Making a Solenoid Pulse!\n");
 				
@@ -73,9 +75,6 @@ int main()
 				receive.data[JSTICK_BUT] = NOT_PUSHED;
 			}
 		} 
-		
-		// Move motor TEST
-		Motor_Move(right, 0);
 
         // Check if ball fell out
         if (ADC_Ball_Detected()) {

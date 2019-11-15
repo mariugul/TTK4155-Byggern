@@ -37,7 +37,7 @@ void Motor_Init()
     SET_OUTPUT(MJ1, MJ1_DIR);
 
     // Set ports to input
-    SET_INPUT(MJ2, MJ2_DOUT);
+    DDRK = 0;
 }
 
 void Motor_Move(direction_t dir, uint8_t speed)
@@ -83,7 +83,7 @@ int16_t Motor_Read()
     uint8_t lsb = MJ2_DOUT;
 
     // Toggle !RST to reset encoder
-    Motor_Encoder_Reset();
+   // Motor_Encoder_Reset();
 
     // Set !OE high to disable output of encoder
     SET_PIN(MJ1, MJ1_OE);

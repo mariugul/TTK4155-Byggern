@@ -20,9 +20,13 @@
 #define JSTICK_CAN_ID 10
 
 // Joystick value index in array
-#define JSTICK_X 0
-#define JSTICK_Y 1
+#define JSTICK_X   0
+#define JSTICK_Y   1
 #define JSTICK_BUT 2
+#define SLIDER_L   3
+#define SLIDER_R   4
+#define PUSH_BUT_L 
+#define PUSH_BUT_R
 
 // Button push
 #define PUSHED HIGH
