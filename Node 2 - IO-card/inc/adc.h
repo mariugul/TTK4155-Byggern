@@ -21,6 +21,6 @@
 //---------------------------------------------------
 void ADC_Init();
 uint16_t ADC_Read();
-int Ball_Detected();
+int ADC_Ball_Detected();
 
 #endif

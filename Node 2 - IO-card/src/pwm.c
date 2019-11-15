@@ -39,7 +39,7 @@ void PWM_Init()
     SET_PIN(TCCR1A, COM1A1);
     CLEAR_PIN(TCCR1A, COM1A0);
 
-    // Set pin B5 to output
+    // Set PB5 to output
     SET_PORT(DDRB, OUTPUT, PORTB, PB5, LOW);
 
     // Set period

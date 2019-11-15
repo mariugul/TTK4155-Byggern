@@ -89,8 +89,8 @@
 #define MJ2_DOUT PINK
 
 // Solenoid
-#define SOL_REG DDRF
-#define SOL_PORT PORTF
-#define SOL_PIN PF1
+#define SOL_REG DDRD
+#define SOL_PORT PORTD
+#define SOL_PIN PD2
 
 #endif

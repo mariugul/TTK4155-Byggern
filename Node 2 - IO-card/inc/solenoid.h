@@ -24,6 +24,6 @@
 void Solenoid_Init();
 bool Solenoid_Pulse();
 void Solenoid_Activate();
-void Solenoid_Decativate();
+void Solenoid_Deactivate();
 
 #endif

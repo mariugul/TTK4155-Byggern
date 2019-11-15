@@ -46,14 +46,39 @@ int main()
     // Loop
     //-----------------------------------------------
     while (true) {
-		//int tmp = Motor_Read();
-		//printf("Motor: %d\n", tmp);
-        // Read IR diode value
 		
-		Motor_Move(right, 150);
+
+		// Save the received message
+		can_message receive = CAN_Receive();
+
+		// Check for received data
+		if (receive.id == JSTICK_CAN_ID) {
+
+			// *Printf for debug
+			printf("Received %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT]);
+
+			// Sets servo to received joystick position
+			Servo_Set_Pos(receive.data[JSTICK_Y]);
+
+			// TODO - Solenoid activate
+			if (receive.data[JSTICK_BUT] == PUSHED) {
+				printf("Making a Solenoid Pulse!\n");
+				
+				// Solenoid pulse
+				Solenoid_Activate();
+				_delay_ms(50);
+				Solenoid_Deactivate();
+				
+				// Reset joystick push variable
+				receive.data[JSTICK_BUT] = NOT_PUSHED;
+			}
+		} 
+		
+		// Move motor TEST
+		Motor_Move(right, 0);
 
         // Check if ball fell out
-        if (Ball_Detected()) {
+        if (ADC_Ball_Detected()) {
             printf("RIP! Ball detected!\n");
         }
 

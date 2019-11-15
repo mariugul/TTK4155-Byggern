@@ -50,7 +50,7 @@ uint16_t ADC_Read()
     return ADC_Read_Raw();
 }
 
-int Ball_Detected()
+int ADC_Ball_Detected()
 {
     return ADC_Read_Raw() < BALL_SENSITIVITY;
 }

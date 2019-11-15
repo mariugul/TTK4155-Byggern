@@ -103,7 +103,6 @@ void Motor_Encoder_Reset()
 void Motor_Set_Dir(direction_t dir)
 {
 	
-	
     switch (dir) {
     case left: // Set left direction
         CLEAR_PIN(MJ1, MJ1_DIR);
