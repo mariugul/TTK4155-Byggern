@@ -25,8 +25,8 @@
 #define JSTICK_BUT 2
 #define SLIDER_L   3
 #define SLIDER_R   4
-#define PUSH_BUT_L 
-#define PUSH_BUT_R
+#define SLIDER_BUT_L 5
+#define SLIDER_BUT_R 6
 
 // Button push
 #define PUSHED HIGH

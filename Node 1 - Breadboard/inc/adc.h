@@ -24,8 +24,8 @@ typedef struct {
 enum adc_channels {
 	JOY_X = 0,
 	JOY_Y = 1,
-	SLIDER_L = 2,
-	SLIDER_R = 3
+	SLIDER_R = 2,
+	SLIDER_L = 3
 };
 
 
