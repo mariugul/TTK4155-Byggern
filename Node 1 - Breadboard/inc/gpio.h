@@ -4,7 +4,13 @@
 #include <avr/io.h>
 #include <stdbool.h>
 
+typedef enum {
+    push_l,
+    push_r,
+    jstick
+} button_t;
+
 void gpio_init();                       // Initialize gpio pins
-bool gpio_read_button(uint8_t button);  // Read button values
+bool gpio_read_button(button_t button);  // Read button values
 
 #endif 

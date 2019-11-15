@@ -12,20 +12,18 @@ void gpio_init()
 }
 
 /** Read button values */
-bool gpio_read_button(uint8_t button)
+bool gpio_read_button(button_t button)
 {
-    bool read_button;
+    bool read_button = 0;
 
-    if (button == 1)
+    if (button == push_l)
         read_button = (1 << PB1) & PINB;
 
-    else if (button == 2)
+    else if (button == push_r)
         read_button = (1 << PB2) & PINB;
 
-    else if (button == 3)
+    else if (button == jstick)
         read_button = (1 << PB3) & PINB;
-    else
-        return 0;
 
     return read_button;
 }
