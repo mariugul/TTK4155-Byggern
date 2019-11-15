@@ -47,32 +47,30 @@ int main()
     //-----------------------------------------------
     while (true) {
 		
-		int16_t motor = Motor_Read();
-		//printf("Motor encoder: %ld", motor);
 		
 		// Save the received message
-		can_message receive = CAN_Receive();
+		const can_message receive = CAN_Receive();
 
 		// Check for received data
 		if (receive.id == JSTICK_CAN_ID) {
 
+		const int motor = Motor_Read();
+		printf("Motor encoder: %d\n", motor);
+
 			// *Printf for debug
-			printf("Received %d %d %d %d %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT], receive.data[3], receive.data[4], receive.data[5], receive.data[6] );
+			printf("Received %d %d %d %d %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT], receive.data[SLIDER_L], receive.data[SLIDER_R], receive.data[SLIDER_BUT_L], receive.data[SLIDER_BUT_R]);
 
 			// Sets servo to received joystick position
 			Servo_Set_Pos(receive.data[JSTICK_Y]);
 			
 			// Solenoid shoot
-			if (receive.data[JSTICK_BUT] == PUSHED) {
+			if (receive.data[SLIDER_BUT_R] == PUSHED) {
 				printf("Making a Solenoid Pulse!\n");
 				
 				// Solenoid pulse
 				Solenoid_Activate();
 				_delay_ms(50);
 				Solenoid_Deactivate();
-				
-				// Reset joystick push variable
-				receive.data[JSTICK_BUT] = NOT_PUSHED;
 			}
 		} 
 

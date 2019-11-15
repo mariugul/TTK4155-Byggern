@@ -29,13 +29,15 @@ void Motor_Init()
     DAC_Init();
     
 	// Set ports to output
-	SET_OUTPUT(MJ1_REG, MJ1_DIR);
-	SET_PIN(MJ1, MJ1_DIR);
-    SET_OUTPUT(MJ1, MJ1_OE);
-    SET_OUTPUT(MJ1, MJ1_SEL);
-    SET_OUTPUT(MJ1, MJ1_RST);
-    SET_OUTPUT(MJ1, MJ1_DIR);
+    SET_OUTPUT(MJ1_REG, MJ1_DIR);
+    SET_OUTPUT(MJ1_REG, MJ1_OE);
+    SET_OUTPUT(MJ1_REG, MJ1_SEL);
+    SET_OUTPUT(MJ1_REG, MJ1_RST);
+    SET_OUTPUT(MJ1_REG, MJ1_DIR);
 
+    SET_PIN(MJ1, MJ1_DIR);
+    SET_PIN(MJ1, MJ1_RST);
+    SET_PIN(MJ1, MJ1_OE);
     // Set ports to input
     DDRK = 0;
 }
@@ -58,6 +60,8 @@ void Motor_Move(direction_t dir, uint8_t speed)
 
 int16_t Motor_Read()
 {
+    // Set nRST to high  
+    SET_PIN(MJ1, MJ1_RST);
     // Set !OE low to enable output of encoder
     CLEAR_PIN(MJ1, MJ1_OE);
 
@@ -67,8 +71,7 @@ int16_t Motor_Read()
     // Wait about 20 microseconds
     _delay_us(50);
 
-    // TODO Check on this
-    // Read MSB
+    // Read upper 8-bits
     uint8_t msb = MJ2_DOUT;
 	//printf("msb: %d\n", msb);
 
@@ -78,26 +81,24 @@ int16_t Motor_Read()
     // Wait about 20 microseconds
     _delay_us(50);
 
-    // TODO Check on this
-    // Read LSB
+    // Read lower 8-bits
     uint8_t lsb = MJ2_DOUT;
+	//printf("lsb: %d\n", lsb);
 
     // Toggle !RST to reset encoder
-   // Motor_Encoder_Reset();
+    //Motor_Encoder_Reset();
 
     // Set !OE high to disable output of encoder
     SET_PIN(MJ1, MJ1_OE);
 
-    // Return received data
-    int16_t rotation = (msb << 8) | lsb;
-    return rotation;
+    return (int16_t)(msb << 8) | lsb;
 }
 
 void Motor_Encoder_Reset()
 {
-    SET_PIN(MJ1, MJ1_RST);
-    _delay_us(250);
     CLEAR_PIN(MJ1, MJ1_RST);
+    _delay_us(250);
+    SET_PIN(MJ1, MJ1_RST);
 }
 
 void Motor_Set_Dir(direction_t dir)
