@@ -55,16 +55,19 @@ int main()
 		if (receive.id == JSTICK_CAN_ID) {
 
 		const int motor = Motor_Read();
-		printf("Motor encoder: %d\n", motor);
+		//printf("Motor encoder: %d\n", motor);
 
 			// *Printf for debug
-			printf("Received %d %d %d %d %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT], receive.data[SLIDER_L], receive.data[SLIDER_R], receive.data[SLIDER_BUT_L], receive.data[SLIDER_BUT_R]);
+			//printf("JX: %d JY: %d JB: %d SL: %d SR: %d BL: %d BR: %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT], receive.data[SLIDER_L], receive.data[SLIDER_R], receive.data[PUSH_BUT_L], receive.data[PUSH_BUT_R]);
 
 			// Sets servo to received joystick position
 			Servo_Set_Pos(receive.data[JSTICK_Y]);
 			
+			// Update PID with joystick position
+			PID_Update_Pos(receive.data[JSTICK_X]);
+			
 			// Solenoid shoot
-			if (receive.data[SLIDER_BUT_R] == PUSHED) {
+			if (receive.data[PUSH_BUT_R] == PUSHED) {
 				printf("Making a Solenoid Pulse!\n");
 				
 				// Solenoid pulse
@@ -81,9 +84,13 @@ int main()
 
         // Move motor when flag is set
         if (IRQ_Motor_Flag()) {
-
+			//printf("Motor flag set.\n");
+			
+			printf("Motor Direction: %d Motor Speed: %d\n", PID_Get_Direction(), PID_Get_Speed() );
+			
+			
             // Move the motor to updated value
-            Motor_Move(PID_Get_Direction(), PID_Get_Speed());
+            //Motor_Move(PID_Get_Direction(), PID_Get_Speed());
 
             // Clear the Motor flag
             IRQ_Clear_Motor_Flag();

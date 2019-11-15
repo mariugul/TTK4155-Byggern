@@ -40,11 +40,14 @@ void Motor_Init()
     SET_PIN(MJ1, MJ1_OE);
     // Set ports to input
     DDRK = 0;
+	
+	// Encode reset
+	Motor_Encoder_Reset();
+	
 }
 
 void Motor_Move(direction_t dir, uint8_t speed)
 {
-	
     // Set direction of the motor
     switch (dir) {
         case left:  Motor_Set_Dir(left);  break;

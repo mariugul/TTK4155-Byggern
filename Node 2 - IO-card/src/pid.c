@@ -13,6 +13,7 @@
 //---------------------------------------------------
 #define ERROR_MAX  (50 / ki) // Limit the integral size
 
+
 // Variables
 //---------------------------------------------------
 
@@ -48,9 +49,14 @@ void PID_Init()
 // Gets the current position of the motor
 void PID_Get_Motor_Pos()
 {
-    // TODO - Recalculate this to ADC values. Right now it's motor rotations
-    //int16_t motor_rotations = Motor_Read();
-    //current_pos = "some math with motor_rotations"
+	// Calculate the motor rotations
+    int16_t rotations = Motor_Read(); // 0 - 8000 value
+	int16_t max_rotations = 8000;
+	uint8_t adc_max_value = 255;
+	int16_t scaled_rotations = (max_rotations / adc_max_value) + 1; // The +1 is because the result is floating point and we need to round up
+	
+	// Calculate the current position
+    current_pos =  (rotations / scaled_rotations);
 }
 
 // Calculates current error
