@@ -48,7 +48,7 @@ int main()
     while (true) {
 		
 		int16_t motor = Motor_Read();
-		printf("Motor encoder: %ld", motor);
+		//printf("Motor encoder: %ld", motor);
 		
 		// Save the received message
 		can_message receive = CAN_Receive();
@@ -57,7 +57,7 @@ int main()
 		if (receive.id == JSTICK_CAN_ID) {
 
 			// *Printf for debug
-			//printf("Received %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT]);
+			printf("Received %d %d %d %d %d %d %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT], receive.data[3], receive.data[4], receive.data[5], receive.data[6] );
 
 			// Sets servo to received joystick position
 			Servo_Set_Pos(receive.data[JSTICK_Y]);

@@ -70,7 +70,7 @@ int16_t Motor_Read()
     // TODO Check on this
     // Read MSB
     uint8_t msb = MJ2_DOUT;
-	printf("msb: %d\n", msb);
+	//printf("msb: %d\n", msb);
 
     // Set SEL high to get low byte
     SET_PIN(MJ1, MJ1_SEL);
