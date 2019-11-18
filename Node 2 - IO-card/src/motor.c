@@ -29,6 +29,7 @@ void Motor_Init()
     DAC_Init();
     
 	// Set ports to output
+    Motor_Disable();
     SET_OUTPUT(MJ1_REG, MJ1_DIR);
     SET_OUTPUT(MJ1_REG, MJ1_OE);
     SET_OUTPUT(MJ1_REG, MJ1_SEL);
@@ -48,6 +49,7 @@ void Motor_Init()
 
 void Motor_Move(direction_t dir, uint8_t speed)
 {
+    Motor_Enable();
     // Set direction of the motor
     switch (dir) {
         case left:  Motor_Set_Dir(left);  break;
@@ -59,6 +61,7 @@ void Motor_Move(direction_t dir, uint8_t speed)
  
     // Set speed
     Motor_Set_Speed(speed);
+    
 }
 
 int16_t Motor_Read()
@@ -128,4 +131,14 @@ void Motor_Set_Speed(uint8_t speed)
 {
     // Speed should be 0 - 255
     DAC_Send(speed);
+}
+
+void Motor_Enable()
+{
+    SET_PORT(MJ1_REG, OUTPUT, MJ1, MJ1_EN, HIGH);
+}
+
+void Motor_Disable()
+{
+    SET_PORT(MJ1_REG, OUTPUT, MJ1, MJ1_EN, LOW);
 }
