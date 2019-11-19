@@ -106,7 +106,7 @@ ISR(INT2_vect) // !PB0 is external interrupt pin
         Servo_Set_Pos(receive.data[JSTICK_Y]);
 
         // Update the PID with Joystick position
-        PID_Update_Target_Pos(receive.data[JSTICK_X]);
+        //PID_Update_Target_Pos(receive.data[JSTICK_X]);
 
         // Solenoid shoot
         if (receive.data[PUSH_BUT_R] == PUSHED) {

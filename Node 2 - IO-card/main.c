@@ -53,33 +53,44 @@ int main()
 
 		// Check for received data
 		if (receive.id == JSTICK_CAN_ID) {
-
-		const int motor = Motor_Read();
-		//printf("Motor encoder: %d\n", motor);
-
-			// *Printf for debug
+		    const int motor = Motor_Read();
+		    //printf("Motor encoder: %d\n", motor);
 			//printf("JX: %d JY: %d JB: %d SL: %d SR: %d BL: %d BR: %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT], receive.data[SLIDER_L], receive.data[SLIDER_R], receive.data[PUSH_BUT_L], receive.data[PUSH_BUT_R]);
 
-			// Sets servo to received joystick position
-			Servo_Set_Pos(receive.data[JSTICK_Y]);
-			
-			// Update PID with joystick position
-			PID_Update_Target_Pos(receive.data[SLIDER_R]);
-			
+			//Servo_Set_Pos(receive.data[JSTICK_Y]);
+			//PID_Update_Target_Pos(receive.data[SLIDER_R]);
+
 			// Solenoid shoot
 			if (receive.data[PUSH_BUT_R] == PUSHED) {
 				printf("Making a Solenoid Pulse!\n");
-				
-				// Solenoid pulse
 				Solenoid_Activate();
 				_delay_ms(50);
 				Solenoid_Deactivate();
 			}
-		} 
+		} else if (receive.id == NODE1_INIT_ID) {
+            printf("Node 2: INIT state\n");
+            // Send init message
+            can_message msg = {
+                .id = NODE2_READY_ID,
+                .length = 1,
+                .data[0] = 'R'
+            };
+            CAN_Send(&msg);
+
+		} else if (receive.id == NODE1_QUIT_ID) {
+            printf("Node 2 state: QUIT\n");
+        }
 
         // Check if ball fell out
         if (ADC_Ball_Detected()) {
             printf("RIP! Ball detected!\n");
+            // Send init message
+            can_message msg = {
+                .id = NODE2_GAME_OVER_ID,
+                .length = 1,
+                .data[0] = 'G'
+            };
+            CAN_Send(&msg);
         }
 
         // Move motor when flag is set

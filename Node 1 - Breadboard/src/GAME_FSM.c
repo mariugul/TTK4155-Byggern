@@ -19,7 +19,10 @@
 #include <util/delay.h>
 
 
-
+#define NODE1_INIT_ID 1
+#define NODE2_READY_ID 2
+#define NODE2_GAME_OVER_ID 3
+#define NODE1_QUIT_ID 4
 
 // Handle the transitions between the states
 /*
@@ -78,14 +81,15 @@ void output_state()
         
         // Send init message
         can_message msg = {
-            .id = 1,
+            .id = NODE1_INIT_ID,
             .length = 1,
             .data[0] = 'I'
         };
         can_send(&msg);
 
+        // 
 		can_message node2 = can_receive();
-        if (node2.id == 2 && node2.data[0] == 'R') {
+        if (node2.id == NODE2_READY_ID && node2.data[0] == 'R') {
             current_state = RUNNING;
         }
 
@@ -97,7 +101,7 @@ void output_state()
 
         // Receive ball detected -> Game over
 		can_message node2 = can_receive();
-        if (node2.id == 3 && node2.data[0] == 'G') {
+        if (node2.id == NODE2_GAME_OVER_ID && node2.data[0] == 'G') {
             current_state = GAME_OVER;
         }
 
@@ -109,7 +113,7 @@ void output_state()
 
         // Send Quit message to node2
         can_message msg = {
-            .id = 5,
+            .id = NODE1_QUIT_ID,
             .length = 1,
             .data[0] = 'Q'
         };

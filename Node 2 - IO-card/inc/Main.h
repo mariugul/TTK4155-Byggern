@@ -18,6 +18,10 @@
 
 // The ID for receiving joystick data
 #define JSTICK_CAN_ID 10
+#define NODE1_INIT_ID 1
+#define NODE2_READY_ID 2
+#define NODE2_GAME_OVER_ID 3
+#define NODE1_QUIT_ID 4
 
 // Joystick value index in array
 #define JSTICK_X   0
