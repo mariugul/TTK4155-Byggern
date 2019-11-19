@@ -7,6 +7,8 @@
 #ifndef __MENU_H__                              // HEADER GUARD
 #define __MENU_H__
 
+#include "../inc/joystick.h"
+
 typedef enum {
     PLAY,
     HIGHSCORE,
@@ -17,6 +19,8 @@ typedef enum {
 
 void menu_init();
 void menu_print();
+void menu_game_running_print();
+void menu_game_over_print();
 void menu_highlight(menu_state selection);
 menu_state menu_highlight_handler(direction_t dir);
 void menu_selection(menu_state selection);

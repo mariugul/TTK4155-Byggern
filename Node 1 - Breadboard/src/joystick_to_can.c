@@ -10,11 +10,11 @@ void send_joystick_to_can()
     can_message msg = {
         .id = 10,
         .length = 7,
-        .data[0] = adc_read(JOY_X), // Joystick X direction
-        .data[1] = adc_read(JOY_Y), // Joystick Y direction
+        .data[0] = ADC_Read(JOY_X), // Joystick X direction
+        .data[1] = ADC_Read(JOY_Y), // Joystick Y direction
         .data[2] = !gpio_read_button(jstick), // Joystick push button
-        .data[3] = adc_read(SLIDER_L), // Slider left
-        .data[4] = adc_read(SLIDER_R), // Slider right
+        .data[3] = ADC_Read(SLIDER_L), // Slider left
+        .data[4] = ADC_Read(SLIDER_R), // Slider right
         .data[5] = gpio_read_button(push_l),// Push button left
         .data[6] = gpio_read_button(push_r)// Push button right
     };

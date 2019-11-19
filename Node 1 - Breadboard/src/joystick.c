@@ -16,8 +16,8 @@ joy_t joystick_read_direction()
 {
     const int threshold = 97; // the tolerable difference from 0
 
-    const int joy_x = pos_to_percent(adc_read(JOY_X));
-    const int joy_y = pos_to_percent(adc_read(JOY_Y));
+    const int joy_x = pos_to_percent(ADC_Read(JOY_X));
+    const int joy_y = pos_to_percent(ADC_Read(JOY_Y));
 
     joy_t pos = { 0 };
 
