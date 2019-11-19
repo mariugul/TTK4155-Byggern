@@ -39,6 +39,14 @@ void menu_print()
 	
 }
 
+void menu_init_print()
+{	
+	oled_reset();
+	oled_goto_line(4);
+	oled_print("--- STARTING UP ---");
+}
+
+
 void menu_game_over_print()
 {	
 	oled_reset();

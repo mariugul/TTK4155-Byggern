@@ -19,6 +19,7 @@ typedef enum {
 
 void menu_init();
 void menu_print();
+void menu_init_print();
 void menu_game_running_print();
 void menu_game_over_print();
 void menu_highlight(menu_state selection);

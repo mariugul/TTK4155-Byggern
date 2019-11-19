@@ -74,6 +74,7 @@ void output_state()
 
     } else if (current_state == INIT) {
         printf("State: INIT\n");
+        menu_init_print();
         
         // Send init message
         can_message msg = {
@@ -91,6 +92,7 @@ void output_state()
 
     } else if (current_state == RUNNING) {
         printf("State: RUNNING\n");
+        menu_game_running_print();
         send_joystick_to_can();
 
         // Receive ball detected -> Game over
@@ -119,6 +121,7 @@ void output_state()
 		_delay_ms(50);
 
 		_delay_ms(3000);
+        menu_print();
 
     } else {
         printf("State: OTHERS\n");
