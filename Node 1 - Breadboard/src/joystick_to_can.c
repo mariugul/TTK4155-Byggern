@@ -1,9 +1,22 @@
+/*********************************************************
+ *             Send joystick values to CAN               *
+ *                                                       *
+ *  This sends the joystick values to Node 2 over CAN.   *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-#include "../inc/joystick.h"
-#include "../inc/adc.h"
-#include "../inc/gpio.h"
-#include "../inc/can.h"
+// Includes
+//---------------------------------------------------
 #include "../inc/joystick_to_can.h"
+#include "../inc/adc.h"
+#include "../inc/can.h"
+#include "../inc/gpio.h"
+#include "../inc/joystick.h"
+
+
+// Function Definitions
+//---------------------------------------------------
 
 void send_joystick_to_can()
 {
@@ -15,8 +28,8 @@ void send_joystick_to_can()
         .data[2] = !gpio_read_button(jstick), // Joystick push button
         .data[3] = adc_read(SLIDER_L), // Slider left
         .data[4] = adc_read(SLIDER_R), // Slider right
-        .data[5] = gpio_read_button(push_l),// Push button left
-        .data[6] = gpio_read_button(push_r)// Push button right
+        .data[5] = gpio_read_button(push_l), // Push button left
+        .data[6] = gpio_read_button(push_r) // Push button right
     };
     can_send(&msg);
 }

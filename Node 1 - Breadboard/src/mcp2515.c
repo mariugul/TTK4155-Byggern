@@ -1,16 +1,30 @@
+/*********************************************************
+ *             CAN Controller: MCP2515                   *
+ *                                                       *
+ * This is the CAN Driver for controlling the CAN Bus.   *
+ * It used an SPI driver to function with the Atmega162 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/mcp2515.h"
 #include "../inc/mcp_defines.h"
 #include "../inc/spi.h"
 
+// Function Definitions
+//---------------------------------------------------
 
 uint8_t mcp_init(uint8_t mode)
 {
     uint8_t value;
 
     spi_init();
-	for (volatile unsigned int i; i < 1000; i++);
+    for (volatile unsigned int i; i < 1000; i++)
+        ;
     mcp_reset();
-	for (volatile unsigned int i; i < 1000; i++);
+    for (volatile unsigned int i; i < 1000; i++)
+        ;
 
     // Self test
     value = mcp_read(MCP_CANSTAT);
@@ -29,13 +43,12 @@ uint8_t mcp_init(uint8_t mode)
     mcp_canctrl |= mode;
     mcp_write(MCP_CANCTRL, mcp_canctrl);
 
-     // Self test
+    // Self test
     value = mcp_read(MCP_CANSTAT);
     if ((value & MODE_MASK) != mode) {
         printf("<MCP2515 is NOT in the selected mode!>\n");
         return 1; // Exit
     }
-
 
     // Print which mode was selected
     if (mode == MODE_NORMAL)
@@ -55,7 +68,7 @@ uint8_t mcp_init(uint8_t mode)
 
     else if (mode == MODE_POWERUP)
         printf("MCP2515 is in POWER UP mode.\n");
-    else 
+    else
         printf("MCP2515 is in NONE DEFINED mode.\n");
 
     return 0;

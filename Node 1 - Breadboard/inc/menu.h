@@ -1,20 +1,33 @@
-/* * menu.h
- *
- *  Created: 14.10.2019 11:04
- *  Author: Daniel
- */ 
+/*********************************************************
+ *                      OLED Menu                        *
+ *                                                       *
+ * These are the functions to control the OLED menu.     *
+ *                                                       *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-#ifndef __MENU_H__                              // HEADER GUARD
+// Header Guard
+//---------------------------------------------------
+#ifndef __MENU_H__
 #define __MENU_H__
 
-typedef enum {
+// Includes
+//---------------------------------------------------
+#include "../inc/joystick.h" // For "direction_t" typedef
+
+// Typedefs
+//---------------------------------------------------
+typedef enum
+{
     PLAY,
     HIGHSCORE,
     ABOUT,
-	HOME,
+    HOME,
     NOTHING
 } menu_state;
 
+// Function Prototypes
+//---------------------------------------------------
 void menu_init();
 void menu_print();
 void menu_highlight(menu_state selection);

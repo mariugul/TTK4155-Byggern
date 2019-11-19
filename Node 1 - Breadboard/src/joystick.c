@@ -1,11 +1,19 @@
-/* * joystick.c
- *
- *  Created: 08.10.2019
- *  Author: Daniel Rahme
- */
+/*********************************************************
+ *                     Joystick                          *
+ *                                                       *
+ *  These are the functions to get the joystick                           *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
+
+// Includes
+//---------------------------------------------------
 #include "../inc/joystick.h"
 #include "../inc/adc.h"
 #include "../inc/gpio.h"
+
+// Function Definitions
+//---------------------------------------------------
 
 int pos_to_percent(int pos)
 {
@@ -21,13 +29,19 @@ joy_t joystick_read_direction()
 
     joy_t pos = { 0 };
 
-    if (joy_x >= threshold)         pos.dir_x = RIGHT;
-    else if (joy_x <= -threshold)   pos.dir_x = LEFT;
-    else                            pos.dir_x = NEUTRAL;
+    if (joy_x >= threshold)
+        pos.dir_x = RIGHT;
+    else if (joy_x <= -threshold)
+        pos.dir_x = LEFT;
+    else
+        pos.dir_x = NEUTRAL;
 
-    if (joy_y >= threshold)         pos.dir_y = UP;
-    else if (joy_y <= -threshold)   pos.dir_y = DOWN;
-    else                            pos.dir_y = NEUTRAL;
+    if (joy_y >= threshold)
+        pos.dir_y = UP;
+    else if (joy_y <= -threshold)
+        pos.dir_y = DOWN;
+    else
+        pos.dir_y = NEUTRAL;
 
     return pos;
 }
