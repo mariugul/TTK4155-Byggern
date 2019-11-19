@@ -27,6 +27,94 @@
 #include <util/delay.h>
 
 
+typedef enum {
+    IDLE,
+    INIT,
+    RUNNING,
+    GAME_OVER,
+    OTHERS
+} state_t;
+
+
+void fsm()
+{
+    static state_t current_state = IDLE;
+	const can_message node1 = CAN_Receive();
+
+    if (current_state == IDLE) {
+        printf("Node 2: IDLE state\n");
+        // Disable stuff
+
+        // Go to init state when Node1 sends init msg
+		if (node1.id == NODE1_INIT_ID && node1.data[0] == 'I') {
+            current_state = INIT;
+        }
+        _delay_ms(50); // Debug
+
+    } else if (current_state == INIT) {
+        printf("Node 2: INIT state\n");
+        // TODO: Init motors and stuff
+
+        // Send ready message back to Node1
+        can_message msg = {
+            .id = NODE2_READY_ID,
+            .length = 1,
+            .data[0] = 'R'
+        };
+
+        CAN_Send(&msg);
+        _delay_ms(100);
+        
+        // Receive a start message
+        if (node1.id == NODE1_START_ID && node1.data[0] == 'S') {
+            current_state = RUNNING;
+        }
+
+
+    } else if (current_state == RUNNING) {
+        printf("Node 2: RUNNING state\n");
+
+        // Solenoid shoot
+		if (node1.id == JSTICK_CAN_ID 
+            && node1.data[PUSH_BUT_R] == PUSHED) {
+				printf("Making a Solenoid Pulse!\n");
+				Solenoid_Activate();
+				_delay_ms(50);
+				Solenoid_Deactivate();
+        }
+
+        // TODO: Implement read slider and PID control
+
+        // Ball detection
+        if (ADC_Ball_Detected()) { 
+            printf("Ball detected! RIP!\n");
+            current_state = GAME_OVER;
+        }
+
+    } else if (current_state == GAME_OVER) {
+        printf("Node2 State: GAME_OVER\n");
+        can_message msg = {
+            .id = NODE2_GAME_OVER_ID,
+            .length = 1,
+            .data[0] = 'G'
+        };
+
+        for (int i = 0; i < 10; i++) {
+            CAN_Send(&msg);
+            _delay_ms(200);
+        }
+
+		//if (node1.id == NODE1_RESET_ID && node1.data[0] == 'Q') {
+            current_state = IDLE;
+        //}
+
+
+    } else {
+        printf("State: OTHERS\n");
+        current_state = IDLE;
+    }
+}
+
 // Main
 //---------------------------------------------------
 int main()
@@ -46,8 +134,12 @@ int main()
     // Loop
     //-----------------------------------------------
     while (true) {
+        fsm();
+    }
+}
+
 		
-		
+        /*
 		// Save the received message
 		const can_message receive = CAN_Receive();
 
@@ -82,7 +174,7 @@ int main()
         }
 
         // Check if ball fell out
-        if (ADC_Ball_Detected()) {
+        if (ADC_Ball_Detected()) { 
             printf("RIP! Ball detected!\n");
             // Send init message
             can_message msg = {
@@ -106,4 +198,4 @@ int main()
 		// Delay for debug
 		_delay_ms(100);
     }
-}
+        */

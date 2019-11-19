@@ -1,12 +1,3 @@
-/*******************
- * 
- * CAN Status messages:
- * I - Init
- * R - Ready
- * G - Game over
- * Q - Quit / Reset
- * 
- *******************/
 
 #include "../inc/GAME_FSM.h"
 #include "../inc/menu.h"
@@ -19,81 +10,56 @@
 #include <util/delay.h>
 
 
-#define NODE1_INIT_ID 1
-#define NODE2_READY_ID 2
-#define NODE2_GAME_OVER_ID 3
-#define NODE1_QUIT_ID 4
-
-// Handle the transitions between the states
-/*
-void update_state(uint8_t play, uint8_t nodes_ready, uint8_t ball_detected)
-{
-    if (current_state == IDLE) {
-        // Button press - select play
-        if (play) {
-            current_state = INIT;
-        }
-
-    } else if (current_state == INIT) {
-        // Send over can and receive acc back
-        // Init stuff
-        if (nodes_ready) {
-            current_state = RUNNING;
-        }
-
-    } else if (current_state == RUNNING) {
-        // Send joy
-        // Receive ball detect
-        if (ball_detected) {
-            current_state = GAME_OVER;
-        }
-
-    } else if (current_state == GAME_OVER) {
-        // Wait a couple of loops
-        // Go back to idle
-
-    } else {
-        current_state = IDLE;
-    }
-}
-*/
 
 
 void output_state()
 {
     static state_t current_state = IDLE;
 
+    //--------------------------//
+    //---------- IDLE ----------//
+    //--------------------------//
     if (current_state == IDLE) {
         printf("State: IDLE\n");
         // MENU
-        const int button_pressed = gpio_read_button(push_r);// Push button right
-        const joy_t joy = get_joystick();
+        const int button_pressed    = gpio_read_button(push_r);// Push button right
+        const joy_t joy             = get_joystick();
         const menu_state current_selection = menu_highlight_handler(joy.dir_y);
 
         if (button_pressed && current_selection == PLAY) {
             current_state = INIT;
         }
 
+        can_send_reset();
+        _delay_ms(100);
 
+    //--------------------------//
+    //---------- INIT ----------//
+    //--------------------------//
     } else if (current_state == INIT) {
         printf("State: INIT\n");
         menu_init_print();
         
         // Send init message
-        can_message msg = {
-            .id = NODE1_INIT_ID,
-            .length = 1,
-            .data[0] = 'I'
-        };
-        can_send(&msg);
+        can_send_init();
+        _delay_ms(100);
 
-        // 
+        // Send ready
 		can_message node2 = can_receive();
         if (node2.id == NODE2_READY_ID && node2.data[0] == 'R') {
             current_state = RUNNING;
+
+            // Send start
+            for (int i = 0; i < 10; i++) {
+                can_send_start();
+                _delay_ms(100);
+            }
         }
 
 
+    //-----------------------------//
+    //---------- RUNNING ----------//
+    //-----------------------------//
     } else if (current_state == RUNNING) {
         printf("State: RUNNING\n");
         menu_game_running_print();
@@ -106,31 +72,31 @@ void output_state()
         }
 
 
+    //-------------------------------//
+    //---------- GAME OVER ----------//
+    //-------------------------------//
     } else if (current_state == GAME_OVER) {
         printf("State: GAME_OVER\n");
-
         menu_game_over_print();
 
-        // Send Quit message to node2
-        can_message msg = {
-            .id = NODE1_QUIT_ID,
-            .length = 1,
-            .data[0] = 'Q'
-        };
-        can_send(&msg);
-		_delay_ms(50);
-        can_send(&msg);
-		_delay_ms(50);
-        can_send(&msg);
-		_delay_ms(50);
+        // Send Quit message to node2 10 times
+        for (int i = 0; i < 10; i++) {
+            can_send_reset();
+            _delay_ms(1000);
+        }
 
 		_delay_ms(3000);
         menu_print();
+        current_state = IDLE;
 
+    //-------------------------------//
+    //---------- OTHERS -------------//
+    //-------------------------------//
     } else {
         printf("State: OTHERS\n");
         // should not come here
         // Disable stuff
+        menu_print();
         current_state = IDLE;
     }
 

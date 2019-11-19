@@ -1,7 +1,48 @@
+/*******************
+ * 
+ * CAN Status messages:
+ * I - Init
+ * R - Ready
+ * S - Start
+ * G - Game over
+ * Q - Quit / Reset
+ * 
+ *******************/
 #include "../inc/can.h"
 #include "../inc/mcp_defines.h"
 
 #define CANCTRL_REG XFh // Remove this probably (100%)
+
+
+void can_send_init()
+{
+    can_message msg = {
+        .id = NODE1_INIT_ID,
+        .length = 1,
+        .data[0] = 'I'
+    };
+    can_send(&msg);
+}
+
+
+void can_send_start()
+{
+    can_message msg = {
+        .id = NODE1_START_ID,
+        .length = 1,
+        .data[0] = 'S'
+    };
+    can_send(&msg);
+}
+
+void can_send_reset()
+{
+    can_message msg = {
+        .id = NODE1_RESET_ID,
+        .length = 1,
+        .data[0] = 'Q'
+    };
+}
 
 void can_init(const uint8_t mode)
 {
