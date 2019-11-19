@@ -12,15 +12,30 @@
 
 void menu_init()
 {
-	oled_print("WELCOME!");
 	oled_pos(4, 0);
-	oled_print_inv("*ENTER GAME*");
+	oled_print("Hej!");
+	oled_pos(5, 0);
+	oled_print("Tjena tjena!");
 	
 	// Wait to display welcome screen
 	//oled_print_logo();
 	_delay_ms(3000);
 	
 	menu_print();
+}
+
+void menu_about_print()
+{
+	oled_reset();
+	oled_goto_line(0);
+	oled_print("--- Authors ---");
+	
+	oled_goto_line(2);
+	oled_print("Marius C.K");
+	
+	oled_goto_line(4);	
+	oled_print("Daniel R.");
+
 }
 
 void menu_print()

@@ -29,6 +29,11 @@ void fsm_node_1()
 
         if (btn_pressed && menu_select == PLAY) {
             current_state = INIT;
+
+        } else if (btn_pressed && menu_select == ABOUT) {
+            menu_about_print();
+            _delay_ms(8000);
+            menu_print();
         }
 
         can_send_reset();
