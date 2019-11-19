@@ -29,13 +29,13 @@ void Solenoid_Init()
 void Solenoid_Activate()
 {
     // Activate solenoid
-    SET_PIN(SOL_PORT, SOL_PIN);
+    CLEAR_PIN(SOL_PORT, SOL_PIN);
 }
 
 void Solenoid_Deactivate()
 {
 	// Deactivate solenoid
-	CLEAR_PIN(SOL_PORT, SOL_PIN);
+	SET_PIN(SOL_PORT, SOL_PIN);
 }
 
 // Calling this function twice creates a pulse

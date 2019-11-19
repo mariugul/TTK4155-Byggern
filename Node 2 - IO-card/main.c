@@ -41,6 +41,9 @@ void fsm()
     static state_t current_state = IDLE;
 	const can_message node1 = CAN_Receive();
 
+    //--------------------------//
+    //---------- IDLE ----------//
+    //--------------------------//
     if (current_state == IDLE) {
         printf("Node 2: IDLE state\n");
         // Disable stuff
@@ -51,6 +54,9 @@ void fsm()
         }
         _delay_ms(50); // Debug
 
+    //--------------------------//
+    //---------- INIT ----------//
+    //--------------------------//
     } else if (current_state == INIT) {
         printf("Node 2: INIT state\n");
         // TODO: Init motors and stuff
@@ -71,16 +77,23 @@ void fsm()
         }
 
 
+    //-----------------------------//
+    //---------- RUNNING ----------//
+    //-----------------------------//
     } else if (current_state == RUNNING) {
         printf("Node 2: RUNNING state\n");
 
-        // Solenoid shoot
-		if (node1.id == JSTICK_CAN_ID 
-            && node1.data[PUSH_BUT_R] == PUSHED) {
+        // Joystick and sliders
+		if (node1.id == JSTICK_CAN_ID) {
+            Servo_Set_Pos(node1.data[JSTICK_X]);
+
+            // Solenoid shoot
+            if (node1.data[PUSH_BUT_R] == PUSHED) {
 				printf("Making a Solenoid Pulse!\n");
 				Solenoid_Activate();
 				_delay_ms(50);
 				Solenoid_Deactivate();
+            }
         }
 
         // TODO: Implement read slider and PID control
@@ -91,6 +104,10 @@ void fsm()
             current_state = GAME_OVER;
         }
 
+
+    //-------------------------------//
+    //---------- GAME OVER ----------//
+    //-------------------------------//
     } else if (current_state == GAME_OVER) {
         printf("Node2 State: GAME_OVER\n");
         can_message msg = {
@@ -109,6 +126,9 @@ void fsm()
         //}
 
 
+    //-------------------------------//
+    //---------- OTHERS -------------//
+    //-------------------------------//
     } else {
         printf("State: OTHERS\n");
         current_state = IDLE;
@@ -137,65 +157,3 @@ int main()
         fsm();
     }
 }
-
-		
-        /*
-		// Save the received message
-		const can_message receive = CAN_Receive();
-
-		// Check for received data
-		if (receive.id == JSTICK_CAN_ID) {
-		    const int motor = Motor_Read();
-		    //printf("Motor encoder: %d\n", motor);
-			//printf("JX: %d JY: %d JB: %d SL: %d SR: %d BL: %d BR: %d\n", receive.data[JSTICK_X], receive.data[JSTICK_Y], receive.data[JSTICK_BUT], receive.data[SLIDER_L], receive.data[SLIDER_R], receive.data[PUSH_BUT_L], receive.data[PUSH_BUT_R]);
-
-			//Servo_Set_Pos(receive.data[JSTICK_Y]);
-			//PID_Update_Target_Pos(receive.data[SLIDER_R]);
-
-			// Solenoid shoot
-			if (receive.data[PUSH_BUT_R] == PUSHED) {
-				printf("Making a Solenoid Pulse!\n");
-				Solenoid_Activate();
-				_delay_ms(50);
-				Solenoid_Deactivate();
-			}
-		} else if (receive.id == NODE1_INIT_ID) {
-            printf("Node 2: INIT state\n");
-            // Send init message
-            can_message msg = {
-                .id = NODE2_READY_ID,
-                .length = 1,
-                .data[0] = 'R'
-            };
-            CAN_Send(&msg);
-
-		} else if (receive.id == NODE1_QUIT_ID) {
-            printf("Node 2 state: QUIT\n");
-        }
-
-        // Check if ball fell out
-        if (ADC_Ball_Detected()) { 
-            printf("RIP! Ball detected!\n");
-            // Send init message
-            can_message msg = {
-                .id = NODE2_GAME_OVER_ID,
-                .length = 1,
-                .data[0] = 'G'
-            };
-            CAN_Send(&msg);
-        }
-
-        // Move motor when flag is set
-        if (IRQ_Motor_Flag()) {
-					
-            // Move the motor to updated value
-            //Motor_Move(PID_Get_Direction(), PID_Get_Speed());
-
-            // Clear the Motor flag
-            IRQ_Clear_Motor_Flag();
-        }
-		
-		// Delay for debug
-		_delay_ms(100);
-    }
-        */
