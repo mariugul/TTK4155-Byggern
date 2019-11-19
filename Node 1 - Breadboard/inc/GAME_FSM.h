@@ -10,6 +10,6 @@ typedef enum {
     OTHERS
 } state_t;
 
-void output_state();
+void fsm_node_1();
 
 #endif

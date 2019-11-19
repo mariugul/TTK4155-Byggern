@@ -1,5 +1,5 @@
 
-#include "../inc/GAME_FSM.h"
+#include "../inc/game_fsm.h"
 #include "../inc/menu.h"
 #include "../inc/joystick.h"
 #include "../inc/joystick_to_can.h"
@@ -12,7 +12,8 @@
 
 
 
-void output_state()
+// Finite state machine
+void fsm_node_1()
 {
     static state_t current_state = IDLE;
 
@@ -22,11 +23,11 @@ void output_state()
     if (current_state == IDLE) {
         printf("State: IDLE\n");
         // MENU
-        const int button_pressed    = gpio_read_button(push_r);// Push button right
-        const joy_t joy             = get_joystick();
-        const menu_state current_selection = menu_highlight_handler(joy.dir_y);
+        const int btn_pressed = gpio_read_button(push_r);
+        const joy_t joy = get_joystick();
+        const menu_state menu_select = menu_highlight_handler(joy.dir_y);
 
-        if (button_pressed && current_selection == PLAY) {
+        if (btn_pressed && menu_select == PLAY) {
             current_state = INIT;
         }
 
@@ -44,16 +45,17 @@ void output_state()
         can_send_init();
         _delay_ms(100);
 
-        // Send ready
+        // Wait for Node2 to finish initialize
 		can_message node2 = can_receive();
         if (node2.id == NODE2_READY_ID && node2.data[0] == 'R') {
-            current_state = RUNNING;
 
-            // Send start
+            // Send start 10 times
             for (int i = 0; i < 10; i++) {
                 can_send_start();
                 _delay_ms(100);
             }
+
+            current_state = RUNNING;
         }
 
 
@@ -94,8 +96,6 @@ void output_state()
     //-------------------------------//
     } else {
         printf("State: OTHERS\n");
-        // should not come here
-        // Disable stuff
         menu_print();
         current_state = IDLE;
     }

@@ -20,7 +20,7 @@
 #include <util/delay.h>
 #include <stdbool.h>
 #include "inc/joystick_to_can.h"
-#include "inc/GAME_FSM.h"
+#include "inc/game_fsm.h"
 
 
 int main()
@@ -39,7 +39,7 @@ int main()
 
     // Main program loop
     while (1) {
-        output_state();
+        fsm_node_1();
         // Send joystick position to Node2 every 100ms
         _delay_ms(100);
         //send_joystick_to_can();
