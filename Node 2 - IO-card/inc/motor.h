@@ -32,5 +32,7 @@ void Motor_Encoder_Reset();
 void Motor_Set_Dir(direction_t dir);
 void Motor_Set_Speed(uint8_t speed);
 void Motor_Move(uint8_t dir, uint8_t speed);
+void Motor_Enable();
+void Motor_Disable();
 
 #endif

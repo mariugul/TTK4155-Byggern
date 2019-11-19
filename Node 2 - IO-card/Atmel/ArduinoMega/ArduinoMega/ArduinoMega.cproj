@@ -180,9 +180,9 @@
       <SubType>compile</SubType>
       <Link>inc\Motor.h</Link>
     </Compile>
-    <Compile Include="..\..\..\inc\PID.h">
+    <Compile Include="..\..\..\inc\PID_Simplified.h">
       <SubType>compile</SubType>
-      <Link>inc\PID.h</Link>
+      <Link>inc\PID_Simplified.h</Link>
     </Compile>
     <Compile Include="..\..\..\inc\PWM.h">
       <SubType>compile</SubType>
@@ -240,9 +240,9 @@
       <SubType>compile</SubType>
       <Link>src\Motor.c</Link>
     </Compile>
-    <Compile Include="..\..\..\src\PID.c">
+    <Compile Include="..\..\..\src\PID_Simplified.c">
       <SubType>compile</SubType>
-      <Link>src\PID.c</Link>
+      <Link>src\PID_Simplified.c</Link>
     </Compile>
     <Compile Include="..\..\..\src\PWM.c">
       <SubType>compile</SubType>

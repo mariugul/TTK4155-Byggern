@@ -41,9 +41,6 @@ direction_t direction;
 //---------------------------------------------------
 void PID_Init()
 {
-    printf("<PID Initialized>\n");
-    // TODO - Initialize the motor to starting position
-    // TODO - Create motor "calibrate" function to do this
 }
 
 // Gets the current position of the motor

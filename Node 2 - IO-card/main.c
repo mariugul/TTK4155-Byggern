@@ -14,7 +14,7 @@
 #include "inc/IRQ_Handlers.h"
 #include "inc/MCP_Defines.h"
 #include "inc/Motor.h"
-#include "inc/PID.h"
+#include "inc/PID_Simplified.h"
 #include "inc/Servo.h"
 #include "inc/Solenoid.h"
 #include "inc/Timers.h"
@@ -64,7 +64,7 @@ int main()
 			Servo_Set_Pos(receive.data[JSTICK_Y]);
 			
 			// Update PID with joystick position
-			PID_Update_Pos(receive.data[JSTICK_X]);
+			PID_Update_Target_Pos(receive.data[SLIDER_R]);
 			
 			// Solenoid shoot
 			if (receive.data[PUSH_BUT_R] == PUSHED) {
@@ -84,16 +84,15 @@ int main()
 
         // Move motor when flag is set
         if (IRQ_Motor_Flag()) {
-			//printf("Motor flag set.\n");
-			
-			printf("Motor Direction: %d Motor Speed: %d\n", PID_Get_Direction(), PID_Get_Speed() );
-			
-			
+					
             // Move the motor to updated value
             //Motor_Move(PID_Get_Direction(), PID_Get_Speed());
 
             // Clear the Motor flag
             IRQ_Clear_Motor_Flag();
         }
+		
+		// Delay for debug
+		_delay_ms(100);
     }
 }
