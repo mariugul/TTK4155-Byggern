@@ -124,7 +124,7 @@ int main()
     ADC_Init();
     Servo_Init();
     Motor_Init();
-    PID_Init();
+    //PID_Init();
     Solenoid_Init();
     CAN_Init(MODE_NORMAL);
     Timers_Init();

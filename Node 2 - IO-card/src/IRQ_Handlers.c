@@ -20,7 +20,7 @@
 #include "../inc/GPIO_Defines.h"
 #include "../inc/Main.h"
 #include "../inc/Motor.h"
-#include "../inc/PID_Simplified.h"
+//#include "../inc/PID_Simplified.h"
 #include "../inc/Timers.h"
 #include "../inc/USART.h"
 #include "../inc/Servo.h"
@@ -73,7 +73,7 @@ ISR(TIMER2_OVF_vect)
     // Get the target position from joystick --> happens in CAN interrupt handler
 
     // Calculate the new speed and direction
-    PID_Calc();
+    //PID_Calc();
 	
 	// Set flag so the main loop can move motor.
     // The reason for this is that the DAC is controlled by
