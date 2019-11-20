@@ -14,7 +14,7 @@
 #include "inc/IRQ_Handlers.h"
 #include "inc/MCP_Defines.h"
 #include "inc/Motor.h"
-#include "inc/PID_Simplified.h"
+#include "inc/pid.h"
 #include "inc/Servo.h"
 #include "inc/Solenoid.h"
 #include "inc/Timers.h"
@@ -27,27 +27,48 @@
 #include <util/delay.h>
 
 
-typedef enum {
-    IDLE,
-    INIT,
-    RUNNING,
-    GAME_OVER,
-    OTHERS
-} state_t;
+// Main
+//---------------------------------------------------
+int main()
+{
+    // Initializers
+    USART_Init();
+    ADC_Init();
+	Solenoid_Init();
+	CAN_Init(MODE_NORMAL);
+    Servo_Init();
+    Timers_Init();
+    Motor_Init();
+	
+    printf("\n****Finished setting up Atmega2560!****\n\n");
+	
+    // Loop
+    //-----------------------------------------------
+    while (true) {
+        // run the Finite State Machine
+        //fsm();
+
+        // Calibrate the IR diode
+        //printf("IR: %d", ADC_Read());
+
+    }
+}
 
 
+
+// Finite State Machine
 void fsm()
 {
     static state_t current_state = IDLE;
 	const can_message node1 = CAN_Receive();
-
+	
     //--------------------------//
     //---------- IDLE ----------//
     //--------------------------//
     if (current_state == IDLE) {
         printf("Node 2: IDLE state\n");
         // Disable stuff
-
+		
         // Go to init state when Node1 sends init msg
 		if (node1.id == NODE1_INIT_ID && node1.data[0] == 'I') {
             current_state = INIT;
@@ -132,28 +153,5 @@ void fsm()
     } else {
         printf("State: OTHERS\n");
         current_state = IDLE;
-    }
-}
-
-// Main
-//---------------------------------------------------
-int main()
-{
-    // Initializers
-    USART_Init();
-    ADC_Init();
-    Servo_Init();
-    Motor_Init();
-    //PID_Init();
-    Solenoid_Init();
-    CAN_Init(MODE_NORMAL);
-    Timers_Init();
-
-    printf("\n****Finished setting up Atmega2560!****\n\n");
-
-    // Loop
-    //-----------------------------------------------
-    while (true) {
-        fsm();
     }
 }

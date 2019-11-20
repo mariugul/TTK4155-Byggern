@@ -15,7 +15,7 @@
 
 // Definitions
 //---------------------------------------------------
-#define BALL_SENSITIVITY 100
+#define BALL_SENSITIVITY 40
 
 // Function Definitions
 //---------------------------------------------------

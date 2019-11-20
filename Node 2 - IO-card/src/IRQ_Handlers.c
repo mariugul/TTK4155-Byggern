@@ -24,6 +24,8 @@
 #include "../inc/Timers.h"
 #include "../inc/USART.h"
 #include "../inc/Servo.h"
+#include "../inc/solenoid.h"
+#include "../inc/pid.h"
 #include "../inc/IRQ_Handlers.h"
 #include <util/delay.h>
 
@@ -73,7 +75,7 @@ ISR(TIMER2_OVF_vect)
     // Get the target position from joystick --> happens in CAN interrupt handler
 
     // Calculate the new speed and direction
-    //PID_Calc();
+    PID_Calc();
 	
 	// Set flag so the main loop can move motor.
     // The reason for this is that the DAC is controlled by

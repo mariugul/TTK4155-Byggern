@@ -9,19 +9,27 @@
 //---------------------------------------------------
 #include "../inc/PID.h"
 
-// Definitions 
+// Definitions
 //---------------------------------------------------
-#define ERROR_MAX  (50 / ki) // Limit the integral size
-
+#define MAX_ERROR 250 // Limit the error size
+#define MIN_ERROR -250
+#define MAX_SPEED 200
+#define MIN_SPEED 100
+#define dt 0.01
+#define epsilon 0.01
 
 // Variables
 //---------------------------------------------------
 
 // Position and Error
-int16_t current_pos = 0; // The current position
-int16_t target_pos  = 0; // The wanted position (from joystick)
-int16_t last_error  = 0; // The error from previous calculation
-int16_t error       = 0; // Current error
+int16_t error = 0; // Current error (-250 : 250)
+int16_t prev_error = 0; // The error from previous calculation
+int16_t current_pos = 0; // The current position (0-250)
+int16_t target_pos = 0; // The wanted position (from joystick) (0-255)
+
+// Speed and Directions
+uint8_t speed = 0;
+direction_t direction;
 
 // Factors
 float proportion = 0; // Proportional factor
@@ -29,125 +37,75 @@ float integral   = 0; // Integral factor
 float derivative = 0; // Derivative factor
 
 // Gain
-float kp = 2;   // Proportional gain
-float ki = 3.5; // Integral gain 
+float kp = 2; // Proportional gain
+float ki = 3.5; // Integral gain
 float kd = 1.2; // Derivative gain
 
-// Speed and Directions
-uint8_t speed = 0;
-direction_t direction;
 
-// Function Definitions                               
+
+// Function Definitions
 //---------------------------------------------------
-void PID_Init()
-{
+
+// Initialize the controller
+void PID_Init(){
+    // Forever alone :'(
 }
 
 // Gets the current position of the motor
-void PID_Get_Motor_Pos()
+void PID_Update_Current_Pos()
 {
-	// Calculate the motor rotations
+    // Calculate the motor rotations
     int16_t rotations = Motor_Read(); // 0 - 8000 value
-	int16_t max_rotations = 8000;
-	uint8_t adc_max_value = 255;
-	int16_t scaled_rotations = (max_rotations / adc_max_value) + 1; // The +1 is because the result is floating point and we need to round up
-	
-	// Calculate the current position
-    current_pos =  (rotations / scaled_rotations);
+    int16_t max_rotations = 8000;
+    uint8_t adc_max_value = 255;
+    int16_t scaled_rotations = (max_rotations / adc_max_value) + 1; // The +1 is because the result is floating point and we need to round up
+
+    // Calculate the current position
+    current_pos = (rotations / scaled_rotations);
+    //printf("Current position: %d\n", current_pos);
 }
 
-// Calculates current error
-void PID_Error_Calc()
+void PID_Update_Target_Pos(uint8_t joystick_pos)
 {
+    target_pos = joystick_pos;
+    //printf("Target position: %d\n", current_pos);
+}
+
+void PID_Calc()
+{
+    PID_Update_Current_Pos();
+    //PID_Update_Target_Pos(); --> Happens in CAN interrupt
+
     // Calculate current error
     error = target_pos - current_pos;
 
-    // Limit the error size
-    if(error > ERROR_MAX)
-        error = ERROR_MAX;
-}
+    // Calculate integral term
+    if (abs(error) > MAX_ERROR)
+        integral += error * dt;
 
-// Updates the last error
-void PID_Update_Last_Error()
-{  
-    last_error = error;
-}
+    // Calculate differential term
+    derivative = (error - prev_error) / dt;
 
-// Calculates the proportional part
-void PID_Proportional_Calc()
-{
-    // Calculate proportional gain
-    proportion = kp * error;
-}
+    // Calculate the speed
+    speed = kp * error + ki * integral + kd * derivative;
+    //printf("   Speed: %d\n", speed);
+    //-----------------------------
 
-// Calculates the integral part
-void PID_Integral_Calc()
-{
-    // When the error is close to zero, set integral part to 0
-    if (error < 1)
-        integral = 0;
+    // Filter for speed safety
+    if (speed > MAX_SPEED)
+        speed = MAX_SPEED;
 
-    // Increase integral term when in "integral active zone"
-    else if (error < ERROR_MAX && error > 1)
-        integral += ki * error;
-}
+    else if (speed < MIN_SPEED)
+        speed = MIN_SPEED;
 
-// Calculates the derivative part
-void PID_Derivative_Calc()
-{
-    // When error is close to zero, set derivative to zero
-    if (error < 1)
-        derivative = 0;
-
-    // Calculate derivative
-    else
-        derivative = kd * (error - last_error);
-}
-
-// Calculates the whole PID speed and direction
-void PID_Calc()
-{   
-    // Calculate the speed 
-    uint8_t speed_ctrl = proportion + integral + derivative;
-
-    // Control Values
-    uint8_t max_speed =  150;
-    int16_t min_speed = -150;
-    uint8_t stop_speed = 0;
-
-    // If control variable negative, run counter clockwise
-    if (speed_ctrl < 0) {
-        // Set direction left
+    // Set the correct direction from the error values
+    if (error > 0)
         direction = left;
-
-        // Check for values outside minimum and set speed to positive corresponding value
-        if (speed_ctrl < min_speed)
-            speed = abs(min_speed);
-        else
-            speed = abs(speed_ctrl);
-    }
-
-    else if (speed_ctrl > 0) {
-        // Set direction right
+    else if (error < 0)
         direction = right;
-
-        // Check for values outside maximum and set speed to corresponding value
-        if (speed_ctrl > max_speed)
-            speed = max_speed;
-        else
-            speed = speed_ctrl;
-    }
-
-    // If control variable zero, stop motor
-    else
-        speed = stop_speed;
-}
-
-
-// Updates the target position from joystick (Used in CAN interrupt)
-void PID_Update_Pos(uint8_t joystick_pos)
-{
-    target_pos = joystick_pos;
+    
+    // Update error
+    prev_error = error;
 }
 
 // Used for returning the speed to the main loop

@@ -23,13 +23,11 @@
 //---------------------------------------------------
 void Motor_Init()
 {
-    printf("<Motor Initialized>\n");
-	
 	// Set up DAC with I2C
     DAC_Init();
     
 	// Set ports to output
-    Motor_Disable();
+    SET_PORT(MJ1_REG, OUTPUT, MJ1, MJ1_EN, HIGH); // Enable the motor (EN = 1)
     SET_OUTPUT(MJ1_REG, MJ1_DIR);
     SET_OUTPUT(MJ1_REG, MJ1_OE);
     SET_OUTPUT(MJ1_REG, MJ1_SEL);
@@ -41,15 +39,25 @@ void Motor_Init()
     SET_PIN(MJ1, MJ1_OE);
     // Set ports to input
     DDRK = 0;
+
+	// Run motor test
+	printf("\n<Testing motor!>\n");
+	Motor_Calibrate(left);
+	printf("..........\n");
 	
+    // Calibrate motor to the right
+    Motor_Calibrate(right);
+
 	// Encode reset
 	Motor_Encoder_Reset();
 	
+	printf("<Motor Calibrated>\n");
+	printf(">Encoder reset to: %d>\n", Motor_Read());
 }
 
 void Motor_Move(direction_t dir, uint8_t speed)
 {
-    Motor_Enable();
+   
     // Set direction of the motor
     switch (dir) {
         case left:  Motor_Set_Dir(left);  break;
@@ -133,12 +141,9 @@ void Motor_Set_Speed(uint8_t speed)
     DAC_Send(speed);
 }
 
-void Motor_Enable()
+void Motor_Calibrate(direction_t dir)
 {
-    SET_PORT(MJ1_REG, OUTPUT, MJ1, MJ1_EN, HIGH);
-}
-
-void Motor_Disable()
-{
-    SET_PORT(MJ1_REG, OUTPUT, MJ1, MJ1_EN, LOW);
+    Motor_Move(dir, 80);
+	_delay_ms(2000);
+	Motor_Move(dir, 0);
 }

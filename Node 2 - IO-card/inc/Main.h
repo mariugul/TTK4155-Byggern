@@ -37,6 +37,22 @@
 #define PUSHED HIGH
 #define NOT_PUSHED LOW
 
+
+// Typedefs
+//---------------------------------------------------
+typedef enum {
+    IDLE,
+    INIT,
+    RUNNING,
+    GAME_OVER,
+    OTHERS
+} state_t;
+
+// Function Prototypes
+//---------------------------------------------------
+void fsm();
+
+
 #endif
 //---------------------------------------------------
 // End Main.h

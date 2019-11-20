@@ -45,3 +45,4 @@ Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/doxygen/latex/Makefile
 Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
 *.hex
 Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/doxyfile
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/ArduinoMega.hex
