@@ -14,8 +14,8 @@
 #define MAX_ERROR 250 // Limit the error size
 #define MIN_ERROR -250
 #define MAX_SPEED 200
-#define MIN_SPEED 100
-#define dt 0.01
+#define MIN_SPEED 50
+#define dt 0.02
 #define epsilon 0.01
 
 // Variables
@@ -38,8 +38,8 @@ float derivative = 0; // Derivative factor
 
 // Gain
 float kp = 2; // Proportional gain
-float ki = 3.5; // Integral gain
-float kd = 1.2; // Derivative gain
+float ki = 0; // Integral gain
+float kd = 0; // Derivative gain
 
 
 
@@ -62,13 +62,14 @@ void PID_Update_Current_Pos()
 
     // Calculate the current position
     current_pos = (rotations / scaled_rotations);
-    //printf("Current position: %d\n", current_pos);
+    printf("Current position: %d\n", current_pos);
 }
 
+// Takes a number between 0 - 255
 void PID_Update_Target_Pos(uint8_t joystick_pos)
 {
     target_pos = joystick_pos;
-    //printf("Target position: %d\n", current_pos);
+    printf("Target position: %d\n", current_pos);
 }
 
 void PID_Calc()
@@ -78,26 +79,44 @@ void PID_Calc()
 
     // Calculate current error
     error = target_pos - current_pos;
+	//*DEBUG
+	printf("Error: %d\n", error);
 
     // Calculate integral term
-    if (abs(error) > MAX_ERROR)
+    if(abs(error) < 10)
+        integral = 0;
+    else
         integral += error * dt;
+
+    //*DEBUG
+    printf("Integral: %d\n", (int)integral);
 
     // Calculate differential term
     derivative = (error - prev_error) / dt;
+    //*DEBUG
+    printf("Derivative: %d\n", (int)derivative);
 
     // Calculate the speed
-    speed = kp * error + ki * integral + kd * derivative;
-    //printf("   Speed: %d\n", speed);
+    speed = (kp * error) + (ki * integral) + (kd * derivative);
+	//*DEBUG
+	printf("kp*error: %d,  ki*integal: %d,  kd*derivative: %d\n", (int)(kp * error), (int)(ki * integral), (int)(kd * derivative));
     //-----------------------------
 
+    //*DEBUG
+    printf("speed: %d\n", speed);
+    
     // Filter for speed safety
     if (speed > MAX_SPEED)
         speed = MAX_SPEED;
-
-    else if (speed < MIN_SPEED)
-        speed = MIN_SPEED;
-
+	
+	else if (speed < MIN_SPEED)
+    {
+        if(abs(error) < 10)
+		    speed = 0; // Stop motor with error less than 10
+        else
+    	    speed = MIN_SPEED;
+    }
+	
     // Set the correct direction from the error values
     if (error > 0)
         direction = left;
@@ -106,6 +125,10 @@ void PID_Calc()
     
     // Update error
     prev_error = error;
+
+    //* Debug
+    printf("Speed: %d\n", speed);
+    printf("Previous Error: %d\n", prev_error);    
 }
 
 // Used for returning the speed to the main loop

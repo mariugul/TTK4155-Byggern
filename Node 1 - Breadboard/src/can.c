@@ -10,6 +10,8 @@
  *******************/
 #include "../inc/can.h"
 #include "../inc/mcp_defines.h"
+#include "../inc/mcp2515.h"
+#include "../inc/uart.h"
 
 #define CANCTRL_REG XFh // Remove this probably (100%)
 

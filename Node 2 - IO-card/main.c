@@ -38,18 +38,24 @@ int main()
 	CAN_Init(MODE_NORMAL);
     Servo_Init();
     Timers_Init();
-    Motor_Init();
+    Motor_Init(); // Motor needs to be after Timers_Init
 	
     printf("\n****Finished setting up Atmega2560!****\n\n");
 	
+    // Development of PID - regulator
+    //PID_Update_Target_Pos(120);
+    //PID_Calc();
+
     // Loop
     //-----------------------------------------------
     while (true) {
         // run the Finite State Machine
-        //fsm();
+        fsm();
 
         // Calibrate the IR diode
         //printf("IR: %d", ADC_Read());
+
+        
 
     }
 }
@@ -106,7 +112,19 @@ void fsm()
 
         // Joystick and sliders
 		if (node1.id == JSTICK_CAN_ID) {
+			// Move servo
             Servo_Set_Pos(node1.data[JSTICK_X]);
+			
+			// Poll if motor values are updated
+			if(IRQ_Motor_Flag()){
+				// Get direction and speed
+				uint8_t speed = PID_Get_Speed();
+				direction_t dir = PID_Get_Direction();
+				
+				// Move motor and clear flag
+				Motor_Move(dir, speed);
+				IRQ_Clear_Motor_Flag();
+			}
 
             // Solenoid shoot
             if (node1.data[PUSH_BUT_R] == PUSHED) {
