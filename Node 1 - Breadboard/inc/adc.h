@@ -39,11 +39,11 @@ enum ADC_Channels {
 
 // Function Prototypes
 //---------------------------------------------------
-void  ADC_Test();
-void  ADC_Init();
-int   ADC_Read(uint8_t channel);
-pos_t Pos_Read();
-int   Pos_To_Percent(int pos);
-enum direction J_pos(int joy_x, int joy_y);
+void  adc_test();
+void  adc_init();
+int   adc_read(uint8_t channel);
+pos_t pos_read();
+int   pos_to_percent(int pos);
+enum direction j_pos(int joy_x, int joy_y);
 
 #endif

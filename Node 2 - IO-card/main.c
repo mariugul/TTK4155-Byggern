@@ -50,13 +50,33 @@ int main()
     //-----------------------------------------------
     while (true) {
         // run the Finite State Machine
-        fsm();
+        //fsm();
 
         // Calibrate the IR diode
         //printf("IR: %d", ADC_Read());
-
-        
-
+		
+		//////////////////////////////////////////////////////////
+		// Development of P-Regulator
+		//////////////////////////////////////////////////////////
+		uint8_t adc = ADC_Read() / 4;	
+		printf("ADC: %d\n", adc);	
+		
+		PID_Update_Target_Pos(adc);
+		PID_Calc();
+		
+		direction_t dir = PID_Get_Direction();
+		uint8_t speed = PID_Get_Speed();
+		printf("dir: %d    speed: %d \n", dir, speed);
+		
+		Motor_Move(dir, speed);
+		_delay_ms(100);
+		
+		
+		
+		
+		//////////////////////////////////////////////////////////
+		//
+		//////////////////////////////////////////////////////////		
     }
 }
 
@@ -67,7 +87,7 @@ void fsm()
 {
     static state_t current_state = IDLE;
 	const can_message node1 = CAN_Receive();
-	
+	printf("id: %d\n", node1.id);
     //--------------------------//
     //---------- IDLE ----------//
     //--------------------------//

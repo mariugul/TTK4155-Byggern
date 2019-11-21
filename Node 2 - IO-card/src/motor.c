@@ -42,12 +42,12 @@ void Motor_Init()
 
 	// Run motor test
 	printf("\n<Testing motor!>\n");
-	//Motor_Calibrate(left);
+	Motor_Calibrate(left);
 	printf("..........\n");
 	
     // Calibrate motor to the right
-    //Motor_Calibrate(right);
-
+    Motor_Calibrate(right);
+	
 	// Encode reset
 	Motor_Encoder_Reset();
 	

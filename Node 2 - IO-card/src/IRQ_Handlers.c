@@ -75,13 +75,13 @@ ISR(TIMER2_OVF_vect)
     // Get the target position from joystick --> happens in CAN interrupt handler
 
     // Calculate the new speed and direction
-    PID_Calc();
+    //PID_Calc();
 	
 	// Set flag so the main loop can move motor.
     // The reason for this is that the DAC is controlled by
     // I2C, and this is run on interrupt. Calling Motor_Move 
     // here would result in nested interrupts.
-	IRQ_Set_Motor_Flag(); 	
+	//IRQ_Set_Motor_Flag(); 	
 }
 
 // CAN Message Receive - External Interrupt Handler

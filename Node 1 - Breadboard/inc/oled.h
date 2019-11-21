@@ -1,16 +1,23 @@
-/*
- * oled.h
- *
- * Created: 28.09.2019 18:00:29
- *  Author: Marius
- */ 
+/*********************************************************
+ *                      OLED Driver                      *
+ *                                                       *
+ * This is the OLED driver. It controls how to write to  *
+ * the OLED screen.                                      *
+ *                                                       *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-#ifndef __OLED_H__                          // HEADER GUARD
+// Header Guard
+//---------------------------------------------------
+#ifndef __OLED_H__                          
 #define __OLED_H__
 
+// Includes
+//---------------------------------------------------
 #include <avr/io.h>							// Include AVR library
 
-
+// Function Prototypes
+//---------------------------------------------------
 void oled_init();							// Initialize oled
 void oled_reset();							// Reset display
 void oled_home();							// Go to home screen

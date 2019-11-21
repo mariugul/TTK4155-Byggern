@@ -1,14 +1,24 @@
-#include "../inc/uart.h"                     // Include header file
-#include <avr/io.h>                   // Include AVR library
+/*********************************************************
+ *             UART Communication Driver                 *
+ *                                                       *
+ * The UART driver is used for easy debugging by using   *
+ * "printf" in the code.                                 *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-// UART macros
-#define FOSC   4915200                  // Clock speed
-#define BAUD   9600                     // Baud rate for uart
-#define MYUBRR FOSC / 16 / BAUD - 1     // Calculate the uart init 
+// Includes
+//---------------------------------------------------
+#include "../inc/uart.h" // Include header file
 
-/*_________________________________
-  \     Function definitions      /
-   \____________________________*/
+// Defines
+//---------------------------------------------------
+#define FOSC 4915200 // Clock speed
+#define BAUD 9600 // Baud rate for uart
+#define MYUBRR FOSC / 16 / BAUD - 1 // Calculate the uart init
+
+// Funtion Definitions
+//---------------------------------------------------
 
 // Check if transmitt buffer is ready
 bool uart_is_ready()
@@ -20,7 +30,8 @@ bool uart_is_ready()
 void uart_send(unsigned char data)
 {
     // Wait for empty transmit buffer
-    while (!uart_is_ready());
+    while (!uart_is_ready())
+        ;
 
     UDR0 = data; //put data on buffer
 }

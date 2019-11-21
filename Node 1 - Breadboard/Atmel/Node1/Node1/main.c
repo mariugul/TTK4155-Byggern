@@ -1,8 +1,8 @@
 /*
- * Node2.c
+ * Node1.c
  *
- * Created: 01.11.2019 11:34:59
- * Author : Daniel Rahme
+ * Created: 20.11.2019 22:05:46
+ * Author : Mariu
  */ 
 
 #include <avr/io.h>

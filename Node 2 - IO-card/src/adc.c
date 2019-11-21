@@ -25,8 +25,8 @@ void ADC_Init()
     printf("<ADC Initialized>\n");
     // Select Vref=AVcc
     ADMUX |= (1 << REFS0) | (1 << 0); // ADC1
-    //set prescaller to 128 and enable ADC
-    //ADCSRA |= (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0)|(1<<ADEN);
+    //set prescaler to 128 and enable ADC
+    ADCSRA |= (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0)|(1<<ADEN);
 
     // Enable ADC
     ADCSRA |= (1 << ADEN);
