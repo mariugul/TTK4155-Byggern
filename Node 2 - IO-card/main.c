@@ -50,16 +50,17 @@ int main()
     //-----------------------------------------------
     while (true) {
         // run the Finite State Machine
-        //fsm();
+        fsm();
 
-        // Calibrate the IR diode
-        //printf("IR: %d", ADC_Read());
 		
 		//////////////////////////////////////////////////////////
 		// Development of P-Regulator
 		//////////////////////////////////////////////////////////
 		uint8_t adc = ADC_Read() / 4;	
 		printf("ADC: %d\n", adc);	
+		
+		// Calibrate the IR diode
+		printf("IR: %d", ADC_Read());
 		
 		PID_Update_Target_Pos(adc);
 		PID_Calc();

@@ -36,6 +36,7 @@ void ADC_Init()
 uint16_t ADC_Read_Raw()
 {
     //ADMUX = (ADMUX & 0xF0) | (1 & 0x0F);
+	ADMUX |= (1 << REFS0) | (1 << 0); // ADC1
     //single conversion mode
     ADCSRA |= (1 << ADSC);
     // wait until ADC conversion is complete

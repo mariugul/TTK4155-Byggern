@@ -68,14 +68,14 @@ void PID_Update_Current_Pos()
 	else 
 		current_pos = (rotations / scaled_rotations);
 		
-    printf("Current position: %d\n", current_pos);
+    //printf("Current position: %d\n", current_pos);
 }
 
 // Takes a number between 0 - 255
 void PID_Update_Target_Pos(uint8_t joystick_pos)
 {
     target_pos = joystick_pos;
-    printf("Target position: %d\n", target_pos);
+    //printf("Target position: %d\n", target_pos);
 }
 
 void PID_Calc()
@@ -86,7 +86,7 @@ void PID_Calc()
     // Calculate current error
     error = (target_pos - current_pos); 
 	//*DEBUG
-	printf("Error: %d\n", error);
+	//printf("Error: %d\n", error);
 
     // Calculate integral term
     if(abs(error) < 10)
@@ -150,10 +150,10 @@ void PID_Calc()
     prev_error = error;
 
     //* Debug
-    printf("Speed: %d\n", speed);
-	printf("Ctrl: %d\n", ctrl);
-    printf("Previous Error: %d\n", prev_error);    
-	printf("Direction: %d\n\n", direction);
+    //printf("Speed: %d\n", speed);
+	//printf("Ctrl: %d\n", ctrl);
+    //printf("Previous Error: %d\n", prev_error);    
+	//printf("Direction: %d\n\n", direction);
 }
 
 // Used for returning the speed to the main loop
