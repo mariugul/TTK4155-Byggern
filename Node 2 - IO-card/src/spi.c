@@ -1,7 +1,19 @@
-#include "../inc/spi.h"
+/*********************************************************
+ *              SPI Communication Driver                 *
+ *                                                       *
+ * The SPI driver is used to communicate from the Atmega *
+ * to the CAN Controller "MCP2515".         			 *
+ *                                                       *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
+// Includes
+//---------------------------------------------------
+#include "../inc/SPI.h"
 
-void spi_init()                             /* Enable SPI */
+// Function Definitions
+//---------------------------------------------------
+void SPI_Init()                             /* Enable SPI */
 {
     DDRB   |= (1<<PB7)  |(1<<PB0) | (1<<PB2) | (1<<PB1);  // Set SS, MOSI and SCK output, all others input */
     DDRB   &= ~(1 << PB3);  // MISO as input. 
@@ -11,16 +23,16 @@ void spi_init()                             /* Enable SPI */
     PORTB  |= (1 << PB7);                       // Set Slave Select to HIGH
 }
 
-char spi_read()                              /* Read from the SPI */
+char SPI_Read()                              /* Read from the SPI */
 {   
-    spi_write(0x00);                        // Delay one clk
+    SPI_Write(0x00);                        // Delay one clk
     while(!(SPSR & (1<<SPIF)))              // Wait for reception complete 
         ;
 
     return SPDR;                            // Return data register
 }
 
-void spi_write(uint8_t cmd)                      /* Write to the SPI */
+void SPI_Write(uint8_t cmd)                      /* Write to the SPI */
 {
     SPDR = cmd;                            // Start transmission                        
     while(!(SPSR & (1<<SPIF)) )            // Wait for transmission complete  

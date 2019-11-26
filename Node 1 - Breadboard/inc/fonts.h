@@ -1,14 +1,24 @@
-/*
- * fonts.h
- *
- * Library of fonts
- * Large: 8x8, normal: 5x7 and small: 4x7
- */
+/*********************************************************
+ *                       Fonts                           *
+ *                                                       *
+ *  These are the fonts for the OLED screen.             *
+ *  Large: 8x8, normal: 5x7 and small: 4x7               *
+ *                                                       *
+ * File provided by: NTNU                                *														 *
+ * Modified by: Marius C. K. Gulbrandsen and Daniel Rahme*
+ *********************************************************/
+
+// Header Guard
+//---------------------------------------------------
 #ifndef FONTS_H_
 #define FONTS_H_
 
-
+// Includes
+//---------------------------------------------------
 #include <avr/pgmspace.h>
+
+// Fonts
+//---------------------------------------------------
 
 // Font 8x8 - Large
 const unsigned char PROGMEM font8[95][8] = {

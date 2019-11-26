@@ -1,17 +1,24 @@
+/*********************************************************
+ *           CAN-Controller: MCP2515 Definitions         *
+ *                                                       *
+ * This file contains constants that are specific to     *
+ * the MCP2515.                                          *
+ * ----------------------------------------------------- *
+ * Version     Date        Description                   *
+ * ----------------------------------------------------- *
+ * v1.00       2003/12/11  Initial release               *
+ * Copyright 2003 Kimberly Otten Software Consulting     *
+ *														 *
+ * Modified by: Marius C. K. Gulbrandsen and Daniel Rahme*
+ *********************************************************/
+
+// Header Guard
+//---------------------------------------------------
 #ifndef __MCP_DEFINES_H
 #define __MCP_DEFINES_H
 
-/*
-mcp2515.h
-
-This file contains constants that are specific to the MCP2515.
-
-Version     Date        Description
-----------------------------------------------------------------------
-v1.00       2003/12/11  Initial release
-
-Copyright 2003 Kimberly Otten Software Consulting
-*/
+// Definitions 
+//---------------------------------------------------
 
 // Define MCP2515 register addresses
 #define MCP_TXB0SIDL	0x32

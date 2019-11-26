@@ -1,12 +1,57 @@
-#include "../inc/adc.h"
+/*********************************************************
+ *             Analog to Digital Converter               *
+ *                                                       *
+ *  The ADC will read the IR diode values for detecting  *
+ *  the ball.                                            *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-void adc_init() 
+// Includes
+//---------------------------------------------------
+#include "../inc/ADC.h"
+#include "../inc/GPIO_Defines.h"
+#include "../inc/USART.h"
+
+// Definitions
+//---------------------------------------------------
+#define BALL_SENSITIVITY 40
+
+// Function Definitions
+//---------------------------------------------------
+
+void ADC_Init()
 {
-    // Forever alone
+    printf("<ADC Initialized>\n");
+    // Select Vref=AVcc
+    ADMUX |= (1 << REFS0) | (1 << 0); // ADC1
+    //set prescaler to 128 and enable ADC
+    ADCSRA |= (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0)|(1<<ADEN);
+
+    // Enable ADC
+    ADCSRA |= (1 << ADEN);
 }
 
 // Returns the ADC value
-int adc_read()
+uint16_t ADC_Read_Raw()
 {
-    return 0;
+    //ADMUX = (ADMUX & 0xF0) | (1 & 0x0F);
+	ADMUX |= (1 << REFS0) | (1 << 0); // ADC1
+    //single conversion mode
+    ADCSRA |= (1 << ADSC);
+    // wait until ADC conversion is complete
+    while (ADCSRA & (1 << ADSC))
+        ;
+    return ADC;
+}
+
+uint16_t ADC_Read()
+{
+    //return (float)ADC_read_raw() / 1023 * 5;
+    return ADC_Read_Raw();
+}
+
+int ADC_Ball_Detected()
+{
+    return ADC_Read_Raw() < BALL_SENSITIVITY;
 }

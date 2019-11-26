@@ -1,14 +1,33 @@
-#include "../inc/pwm.h"
-#include "../inc/gpio_defines.h"
-#include "../inc/usart.h"
+/*********************************************************
+ *               Pulse Width Modulation                  *
+ *                                                       *
+ * Pulse width modulation is used for controlling the    *
+ * servo motor, as it needs PWM to work. This driver     *
+ * is thus included in the servo controller.             *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
+// Includes
+//---------------------------------------------------
+#include "../inc/PWM.h"
+#include "../inc/GPIO_Defines.h"
+#include "../inc/USART.h"
+
+// Definitions
+//---------------------------------------------------
 #define FOSC 16000000 // Clock speed
 #define PRESC 256 // Prescaler
 #define PERIOD 0.02 // 20ms period for PWM
+
+// Variables
+//---------------------------------------------------
 uint32_t freq = FOSC/PRESC;
 
+// Function Definitions
+//---------------------------------------------------
 // Enable PWM
-void pwm_init()
+void PWM_Init()
 {
     // Set mode 14, Fast PWM 0CRnA (From table 17-2)
     SET_PIN(TCCR1B, WGM13);
@@ -20,15 +39,15 @@ void pwm_init()
     SET_PIN(TCCR1A, COM1A1);
     CLEAR_PIN(TCCR1A, COM1A0);
 
-    // Set pin B5 to output
+    // Set PB5 to output
     SET_PORT(DDRB, OUTPUT, PORTB, PB5, LOW);
 
     // Set period
-    pwm_set_period(PERIOD);
+    PWM_Set_Period(PERIOD);
 }
 
 // Set the PWM period
-void pwm_set_period(float period)
+void PWM_Set_Period(float period)
 {
     // Set prescaler to 256
     SET_PIN(TCCR1B, CS12);
@@ -38,15 +57,10 @@ void pwm_set_period(float period)
     // Set period to 20ms
     int period_calc = freq * period;
     ICR1 = period_calc;
-
-    //***** DEBUG **************
-    printf("freq: %d\n", freq);
-    printf("period_calc: %d\n", period_calc);
-    //**************************
 }
 
 // Set the PWM pulse width
-void pwm_set_pulse_width(float joystick_pos)
+void PWM_Set_Pulse_Width(float joystick_pos)
 {
     // Variables for calculation
     float const min = 0.0009; // Min pulse width [s]
@@ -61,10 +75,6 @@ void pwm_set_pulse_width(float joystick_pos)
 
     // Set the pulse width
     OCR1A = OCR;
-
-    //***** DEBUG **************
-    printf("pulse_width: %.2f\n OCR1A: %d\n", pulse_width, OCR);
-    //**************************
 }
 
 

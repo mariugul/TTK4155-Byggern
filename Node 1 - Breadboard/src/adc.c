@@ -1,12 +1,18 @@
-/*
- * joystick.c
- *
- * Created: 17.09.2019 10:48:38
- *  Author: Marius
- */ 
+/*********************************************************
+ *             Analog to Digital Converter               *
+ *                                                       *
+ *  The ADC will read the IR diode values for detecting  *
+ *  the ball.                                            *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
+// Includes
+//---------------------------------------------------
 #include "../inc/adc.h"
 
+// Defines
+//---------------------------------------------------
 #define OLED_BASE	   0x1000
 #define ADC_BASE	   0x1400
 #define SRAM_BASE	   0x1800
@@ -15,9 +21,9 @@
 #define ADC_ADDR_SIZE  0x400
 #define SRAM_ADDR_SIZE 0x800
 
-
-
-void adc_test(void)
+// Function Definitions
+//---------------------------------------------------
+void ADC_Test(void)
 {
 	volatile char* ext_ram      = (char*)ADC_BASE; // Start address for the SRAM
 	uint16_t       ext_ram_size = ADC_ADDR_SIZE;
@@ -28,14 +34,14 @@ void adc_test(void)
 	printf("Written to all ADC addresses - DONE\n");
 }
 
-void adc_init()
+void ADC_Init()
 {
 	//volatile char* ext_ram = (char*)ADC_BASE; // Start address for the SRAM
 	// init code
 	// calibrate
 }
 
-int adc_read(uint8_t channel)
+int ADC_Read(uint8_t channel)
 {
 	// Channel address for channel 1, 2, 3, 4
 	const uint8_t mux_address[4] = { 0x04, 0x05, 0x06, 0x07 };
@@ -49,7 +55,7 @@ int adc_read(uint8_t channel)
 	return ext_ram[0]; // return read value
 }
 
-pos_t pos_read()
+pos_t Pos_Read()
 {
 	return (pos_t){
 		.joy_x    = pos_to_percent( adc_read(JOY_X)    ),				// change with read function

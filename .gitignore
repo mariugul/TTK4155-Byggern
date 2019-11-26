@@ -28,3 +28,21 @@ Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
 *.hex
 Node 2 - IO-card/Atmel/ArduinoMega/.vs/ArduinoMega/v14/.atsuo
 *.json
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
+*.hex
+Node 2 - IO-card/Atmel/ArduinoMega/.vs/ArduinoMega/v14/.atsuo
+Node 1 - Breadboard/Atmel/Byggern/.vs/Byggern/v14/.atsuo
+
+
+*.html
+*.sty
+*.tex
+*.js
+*.bat
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/doxygen/latex/Makefile
+*.css
+*.lnk
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/Makefile
+*.hex
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/doxyfile
+Node 2 - IO-card/Atmel/ArduinoMega/ArduinoMega/Debug/ArduinoMega.hex

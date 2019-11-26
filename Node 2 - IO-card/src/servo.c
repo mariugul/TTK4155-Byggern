@@ -1,18 +1,34 @@
-#include "../inc/servo.h"
-#include "../inc/pwm.h"
+/*********************************************************
+ *               Servo Motor Controller                  *
+ *                                                       *
+ * The servo motor controls the x/y direction of the     *
+ * solenoid that will eventually be used to hit the      *
+ * ping pong ball.                                       *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-// Initialize servo
-void servo_init()
+// Includes
+//---------------------------------------------------
+#include "../inc/Servo.h"
+#include "../inc/PWM.h"
+
+// Function Definitions
+//---------------------------------------------------
+
+// Initialize Servo
+void Servo_Init()
 {
-    pwm_init();
+    printf("<Servo Initialized>\n");
+    PWM_Init();
 
     // Start in the middle
     float start_pos = 127.5;
-    servo_set_pos(start_pos);
+    Servo_Set_Pos(start_pos);
 }
 
-// Returns servo position from joystick values (pulse width in seconds)
-void servo_set_pos(float joystick_pos)
+// Returns Servo position from joystick values (pulse width in seconds)
+void Servo_Set_Pos(float joystick_pos)
 {
     // ! Joystick_pos has to be ADC values (0-255)
     // ! and not percentage values (-100 to 100).
@@ -21,13 +37,13 @@ void servo_set_pos(float joystick_pos)
     uint8_t max = 255;
     uint8_t min = 0;
 
-    // Error check the joystick position value
+    // Error check and set the joystick position value
     if (joystick_pos > max)
-        pwm_set_pulse_width(max);
+        PWM_Set_Pulse_Width(max);
 
     else if (joystick_pos < min)
-        pwm_set_pulse_width(min);
+        PWM_Set_Pulse_Width(min);
 
     else
-        pwm_set_pulse_width(joystick_pos);
+        PWM_Set_Pulse_Width(joystick_pos);
 }

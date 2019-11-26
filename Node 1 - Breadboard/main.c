@@ -20,6 +20,7 @@
 #include <util/delay.h>
 #include <stdbool.h>
 #include "inc/joystick_to_can.h"
+#include "inc/game_fsm.h"
 
 
 int main()
@@ -32,28 +33,17 @@ int main()
     menu_init();
     can_init(MODE_NORMAL);
 
-    // Try to send a message
-    can_message message = {0};
-    message.id = 27;
-    message.length = 5;
-    message.data[0] = (uint8_t)'N';
-    message.data[1] = (uint8_t)'o';
-    message.data[2] = (uint8_t)'d';
-    message.data[3] = (uint8_t)'e';
-    message.data[4] = (uint8_t)'1';
-    can_send(&message);
 
     const int can_stat = mcp_read(MCP_CANSTAT);
     printf("CAN status: %d\n", can_stat);
 
     // Main program loop
     while (1) {
+        fsm_node_1();
         // Send joystick position to Node2 every 100ms
         _delay_ms(100);
-        send_joystick_to_can();
+        //send_joystick_to_can();
         can_clear_errors();
-        //can_send(&message);
-
     
         printf("CAN status: %d\n", mcp_read(MCP_CANSTAT));
         printf("CAN int flag: %d\n", mcp_read(MCP_CANINTF));

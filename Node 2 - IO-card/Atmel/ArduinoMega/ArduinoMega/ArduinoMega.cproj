@@ -139,70 +139,143 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\inc\can.h">
-      <SubType>compile</SubType>
-      <Link>inc\can.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\inc\gpio_defines.h">
-      <SubType>compile</SubType>
-      <Link>inc\gpio_defines.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\inc\mcp2515.h">
-      <SubType>compile</SubType>
-      <Link>inc\mcp2515.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\inc\mcp_defines.h">
-      <SubType>compile</SubType>
-      <Link>inc\mcp_defines.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\inc\pwm.h">
-      <SubType>compile</SubType>
-      <Link>inc\pwm.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\inc\servo.h">
-      <SubType>compile</SubType>
-      <Link>inc\servo.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\inc\spi.h">
-      <SubType>compile</SubType>
-      <Link>inc\spi.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\inc\usart.h">
-      <SubType>compile</SubType>
-      <Link>inc\usart.h</Link>
-    </Compile>
-    <Compile Include="..\..\..\main.c">
-      <SubType>compile</SubType>
-      <Link>main.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\can.c">
-      <SubType>compile</SubType>
-      <Link>src\can.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\mcp2515.c">
-      <SubType>compile</SubType>
-      <Link>src\mcp2515.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\pwm.c">
-      <SubType>compile</SubType>
-      <Link>src\pwm.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\servo.c">
-      <SubType>compile</SubType>
-      <Link>src\servo.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\spi.c">
-      <SubType>compile</SubType>
-      <Link>src\spi.c</Link>
-    </Compile>
-    <Compile Include="..\..\..\src\usart.c">
-      <SubType>compile</SubType>
-      <Link>src\usart.c</Link>
-    </Compile>
+    <Folder Include="inc" />
+    <Folder Include="doxy" />
+    <Folder Include="src" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="inc" />
-    <Folder Include="src" />
+    <Compile Include="..\..\..\inc\ADC.h">
+      <SubType>compile</SubType>
+      <Link>inc\ADC.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\CAN.h">
+      <SubType>compile</SubType>
+      <Link>inc\CAN.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\DAC.h">
+      <SubType>compile</SubType>
+      <Link>inc\DAC.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\GPIO_Defines.h">
+      <SubType>compile</SubType>
+      <Link>inc\GPIO_Defines.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\IRQ_Handlers.h">
+      <SubType>compile</SubType>
+      <Link>inc\IRQ_Handlers.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\Main.h">
+      <SubType>compile</SubType>
+      <Link>inc\Main.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\MCP2515.h">
+      <SubType>compile</SubType>
+      <Link>inc\MCP2515.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\MCP_Defines.h">
+      <SubType>compile</SubType>
+      <Link>inc\MCP_Defines.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\Motor.h">
+      <SubType>compile</SubType>
+      <Link>inc\Motor.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\pid.h">
+      <SubType>compile</SubType>
+      <Link>inc\pid.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\PWM.h">
+      <SubType>compile</SubType>
+      <Link>inc\PWM.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\Servo.h">
+      <SubType>compile</SubType>
+      <Link>inc\Servo.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\Solenoid.h">
+      <SubType>compile</SubType>
+      <Link>inc\Solenoid.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\SPI.h">
+      <SubType>compile</SubType>
+      <Link>inc\SPI.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\Timers.h">
+      <SubType>compile</SubType>
+      <Link>inc\Timers.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\TWI_Master.h">
+      <SubType>compile</SubType>
+      <Link>inc\TWI_Master.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\inc\USART.h">
+      <SubType>compile</SubType>
+      <Link>inc\USART.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\Main.c">
+      <SubType>compile</SubType>
+      <Link>Main.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\ADC.c">
+      <SubType>compile</SubType>
+      <Link>src\ADC.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\CAN.c">
+      <SubType>compile</SubType>
+      <Link>src\CAN.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\DAC.c">
+      <SubType>compile</SubType>
+      <Link>src\DAC.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\IRQ_Handlers.c">
+      <SubType>compile</SubType>
+      <Link>src\IRQ_Handlers.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\MCP2515.c">
+      <SubType>compile</SubType>
+      <Link>src\MCP2515.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\Motor.c">
+      <SubType>compile</SubType>
+      <Link>src\Motor.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\pid.c">
+      <SubType>compile</SubType>
+      <Link>src\pid.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\PWM.c">
+      <SubType>compile</SubType>
+      <Link>src\PWM.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\Servo.c">
+      <SubType>compile</SubType>
+      <Link>src\Servo.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\Solenoid.c">
+      <SubType>compile</SubType>
+      <Link>src\Solenoid.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\SPI.c">
+      <SubType>compile</SubType>
+      <Link>src\SPI.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\Timers.c">
+      <SubType>compile</SubType>
+      <Link>src\Timers.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\TWI_Master.c">
+      <SubType>compile</SubType>
+      <Link>src\TWI_Master.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\src\USART.c">
+      <SubType>compile</SubType>
+      <Link>src\USART.c</Link>
+    </Compile>
+    <Compile Include="Doxygen_Mainpage.h">
+      <SubType>compile</SubType>
+      <Link>doxy\Doxygen_Mainpage.h</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

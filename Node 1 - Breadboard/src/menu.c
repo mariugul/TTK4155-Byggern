@@ -12,15 +12,30 @@
 
 void menu_init()
 {
-	oled_print("WELCOME!");
 	oled_pos(4, 0);
-	oled_print_inv("*ENTER GAME*");
+	oled_print("Hej!");
+	oled_pos(5, 0);
+	oled_print("Tjena tjena!");
 	
 	// Wait to display welcome screen
 	//oled_print_logo();
 	_delay_ms(3000);
 	
 	menu_print();
+}
+
+void menu_about_print()
+{
+	oled_reset();
+	oled_goto_line(0);
+	oled_print("--- Authors ---");
+	
+	oled_goto_line(2);
+	oled_print("Marius C.K");
+	
+	oled_goto_line(4);	
+	oled_print("Daniel R.");
+
 }
 
 void menu_print()
@@ -32,11 +47,34 @@ void menu_print()
 	oled_goto_line(2);
 	oled_print("Play");
 	
-	oled_goto_line(4);
-	oled_print("Highscore");
-	
-	oled_goto_line(6);	
+	oled_goto_line(4);	
 	oled_print("About");
+	//oled_goto_line(4);
+	//oled_print("Highscore");
+	
+}
+
+void menu_init_print()
+{	
+	oled_reset();
+	oled_goto_line(4);
+	oled_print("--- STARTING UP ---");
+}
+
+
+void menu_game_over_print()
+{	
+	oled_reset();
+	oled_goto_line(4);
+	oled_print("--- GAME OVER ---");
+}
+
+
+void menu_game_running_print()
+{	
+	oled_reset();
+	oled_goto_line(4);
+	oled_print("--- PLAYING ---");
 }
 
 void menu_highlight(menu_state selection)
@@ -45,12 +83,12 @@ void menu_highlight(menu_state selection)
         oled_goto_line(2);
         oled_print_inv("Play");
 
-    } else if (selection == HIGHSCORE) {
-        oled_goto_line(4);
-        oled_print_inv("Highscore");
+    //} else if (selection == HIGHSCORE) {
+        //oled_goto_line(4);
+        //oled_print_inv("Highscore");
 
     } else if (selection == ABOUT) {
-        oled_goto_line(6);
+        oled_goto_line(4);
         oled_print_inv("About");
     }
 }
@@ -59,8 +97,9 @@ void menu_highlight(menu_state selection)
 menu_state menu_highlight_handler(direction_t dir)
 {
     static uint8_t pos = 0; // TODO: Needs a clear
-    const uint8_t num_of_states = 3;
-    const menu_state states[3] = {PLAY, HIGHSCORE, ABOUT};
+    const uint8_t num_of_states = 2; // 3
+    //const menu_state states[3] = {PLAY, HIGHSCORE, ABOUT};
+    const menu_state states[2] = {PLAY, ABOUT};
 
     // Early exit
     if (dir != DOWN && dir != UP) return states[pos];

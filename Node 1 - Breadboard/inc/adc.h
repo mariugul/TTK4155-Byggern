@@ -1,14 +1,23 @@
-/*
- * joystick.h
- *
- * Created: 17.09.2019 10:48:51
- *  Author: Marius
- */ 
+/*********************************************************
+ *             Analog to Digital Converter               *
+ *                                                       *
+ *  The ADC will read the IR diode values for detecting  *
+ *  the ball.                                            *
+ *														 *
+ * By: Marius C. K. Gulbrandsen and Daniel Rahme         *
+ *********************************************************/
 
-#ifndef __ADC_H__                              // HEADER GUARD
+// Header Guard
+//---------------------------------------------------
+#ifndef __ADC_H__                             
 #define __ADC_H__
 
-#include <avr/io.h>									// Include AVR library
+// Includes
+//---------------------------------------------------
+#include <avr/io.h>	
+
+// Typedefs
+//---------------------------------------------------
 
 // joystick and slider values
 typedef struct {
@@ -21,14 +30,15 @@ typedef struct {
 } pos_t;
 
 
-enum adc_channels {
+enum ADC_Channels {
 	JOY_X = 0,
 	JOY_Y = 1,
-	SLIDER_L = 2,
-	SLIDER_R = 3
+	SLIDER_R = 2,
+	SLIDER_L = 3
 };
 
-
+// Function Prototypes
+//---------------------------------------------------
 void  adc_test();
 void  adc_init();
 int   adc_read(uint8_t channel);
