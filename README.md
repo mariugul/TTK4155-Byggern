@@ -3,3 +3,7 @@
 
 ## *This is a work in progress.
 ![Breadboard_top](Images/Breadboard_top.png) 
+
+![Breadboard_bird](Images/Breadboard_bird.png) 
+
+![Breadboard_close](Images/Breadboard_close.png) 
