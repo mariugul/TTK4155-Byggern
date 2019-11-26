@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module fritzingVersion="0.9.3b.04.19.5c895d327c44a3114e5fcc9d8260daf0cbb52806" icon="Search.png" search="male">
+    <title>Search</title>
+    <instances>
+        <instance moduleIdRef="SparkFun-Connectors-M03-POLAR_LOCK" modelIndex="85417746" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m03-polar_lock.fzp">
+            <views>
+                <iconView layer="schematic">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-1X06-SMD_EDGE_FEMALE" modelIndex="85417752" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-1x06-smd_edge_female.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-SMD-STRAIGHT" modelIndex="85417754" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-smd-straight.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="copper0">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M01--SMTSO-256-ET" modelIndex="85417756" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m01--smtso-256-et.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-F25-VP" modelIndex="85418833" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-f25-vp.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M12-MACHINE-PIN_LOCK" modelIndex="85417761" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m12-machine-pin_lock.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="USBHostShield-v13" modelIndex="85412893" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/USBHostShield-v13.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB25-VB" modelIndex="85418837" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db25-vb.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB9-MALE" modelIndex="85418839" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db9-male.fzp">
+            <views>
+                <iconView layer="copper0">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-SMDF" modelIndex="85417779" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-smdf.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M01-OFFSET" modelIndex="85417782" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m01-offset.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02-SPRING-2.54-RA" modelIndex="85417786" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02-spring-2.54-ra.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-LITTLEBITS_MALE-" modelIndex="85418844" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-littlebits_male-.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-USB--A-SMD" modelIndex="85418846" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-usb--a-smd.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-F25-V" modelIndex="85418848" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-f25-v.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB25-H" modelIndex="85418850" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db25-h.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M08-SMD-STRAIGHT-ALT" modelIndex="85417796" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m08-smd-straight-alt.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M08-SMD-COMBO" modelIndex="85417804" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m08-smd-combo.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M11-SMD" modelIndex="85417808" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m11-smd.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-USB-_" modelIndex="85418856" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-usb-_.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="atlas-sientific_RJ-11" modelIndex="85414920" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/atlas-sientific_RJ-11.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BUTTON-MAGNETIC-18MM-male" modelIndex="85418859" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-electromechanical-button-magnetic-18mm-male.fzp">
+            <views>
+                <iconView layer="copper1">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB25-HP" modelIndex="85418861" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db25-hp.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M03-JST-PTH" modelIndex="85417818" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m03-jst-pth.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M04-JST-PTH" modelIndex="85417820" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m04-jst-pth.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BUTTON-MAGNETIC-18MM-female" modelIndex="85418865" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-electromechanical-button-magnetic-18mm-female.fzp">
+            <views>
+                <iconView layer="breadboardbreadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M01-SMTRA-256-8-6" modelIndex="85417833" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m01-smtra-256-8-6.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-50-PIN-CENTRONICS-M-MALE" modelIndex="85418578" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-50-pin-centronics-m-male.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M08-BM08B-SRSS-TB" modelIndex="85417836" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m08-bm08b-srss-tb.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="DB25M" modelIndex="85418869" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/DB25M.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02-JST-PTH-2-KIT" modelIndex="85417838" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02-jst-pth-2-kit.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-F25-VB" modelIndex="85418872" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-f25-vb.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M03-" modelIndex="85417840" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m03-.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M04-SMD2" modelIndex="85417842" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m04-smd2.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-LITTLEBITS_FEMALE-" modelIndex="85418876" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-littlebits_female-.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="schematic">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M01-SMD" modelIndex="85417847" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m01-smd.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-SMD" modelIndex="85417849" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-smd.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02-JST-PTH-2" modelIndex="85417854" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02-jst-pth-2.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-F25-D" modelIndex="85418881" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-f25-d.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="schematic">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M01-SNAP-MALE" modelIndex="85417859" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m01-snap-male.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB25-VP" modelIndex="85418884" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db25-vp.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-MIDI_CONN_FEMALE_SUPPORT-" modelIndex="85418886" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-midi_conn_female_support-.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02--JST-2MM-SMT" modelIndex="85417868" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02--jst-2mm-smt.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M04-SMD" modelIndex="85417871" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m04-smd.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="DB25F" modelIndex="5712" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/DB25F.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="atlas-sientific_Pre-AssembledFemaleBNC" modelIndex="85412987" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/atlas-sientific_Pre-AssembledFemaleBNC.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M01-SMD-4.5X1.5" modelIndex="85417878" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m01-smd-4.5x1.5.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-POLAR_LOCK" modelIndex="85417880" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-polar_lock.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BUTTON-MAGNETIC-10MM-female" modelIndex="85418894" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-electromechanical-button-magnetic-10mm-female.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02-3.5MM_LOCK" modelIndex="85417885" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02-3.5mm_lock.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BUTTON-MAGNETIC-10MM-male" modelIndex="85418897" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-electromechanical-button-magnetic-10mm-male.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-50-PIN-CENTRONICS-F-FEMALE" modelIndex="85418653" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-50-pin-centronics-f-female.fzp">
+            <views>
+                <iconView layer="schematic">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-RA" modelIndex="85417898" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-ra.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB25-D" modelIndex="85418901" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db25-d.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02-4UCON-15767" modelIndex="85417902" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02-4ucon-15767.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M04-SCREW_LOCK" modelIndex="85417904" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m04-screw_lock.fzp">
+            <views>
+                <iconView layer="schematic">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-F25-HP" modelIndex="85418905" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-f25-hp.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02-POLAR_LOCK" modelIndex="85417907" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02-polar_lock.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-FKIT-SNAP_CONNECTOR--MALE" modelIndex="85418908" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-electromechanical-fkit-snap_connector--male.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-SMD-FEMALE-V2" modelIndex="85417910" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-smd-female-v2.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M01-SNAP-FEMALE" modelIndex="85417913" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m01-snap-female.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-RA_LOCK" modelIndex="85417916" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-ra_lock.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M10-2MMSMD" modelIndex="85417931" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m10-2mmsmd.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M11-SMD_NO_HOLES" modelIndex="85417933" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m11-smd_no_holes.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB25-V" modelIndex="85418915" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db25-v.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M03-SMD" modelIndex="85417937" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m03-smd.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-FKIT-SNAP_CONNECTOR--FEMALE" modelIndex="85418918" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-electromechanical-fkit-snap_connector--female.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-F25-H" modelIndex="85418920" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-f25-h.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="ArduinoBluetoothMatev13" modelIndex="85412932" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/ArduinoBluetoothMatev13.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="arduinoXbeere" modelIndex="85412770" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/arduinoXbeere.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-EM406" modelIndex="85417948" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-em406.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="DRV8825_breakout" modelIndex="85417952" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/DRV8825_breakout.fzp">
+            <property name="part number" value="DRV 8825"/>
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02--JST-2-PTH-NO_SILK" modelIndex="85417954" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02--jst-2-pth-no_silk.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="HC-05-male_fix" modelIndex="85416415" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/HC-05-male_fix.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M04-POLAR_LOCK" modelIndex="85417958" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m04-polar_lock.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="WeMos_D1_mini_male_headers_above_fix" modelIndex="85417960" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/WeMos-D1-mini-male-headers-above_fixed.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M05-SMD2" modelIndex="85417963" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m05-smd2.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="c04a5dd707ca537800655cb3aa4b2048" modelIndex="5714" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/din-5_midi_connector.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-SMD-STRAIGHT-COMBO" modelIndex="85417965" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-smd-straight-combo.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-DB9-FEMALE" modelIndex="85418933" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-db9-female.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M08-SMD-STRAIGHT" modelIndex="85417968" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m08-smd-straight.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="DENSO 174917 ECU socket 48pin_c9a68151309697733439e70b6fbd83fd_1" modelIndex="85418734" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/174917_DENSO-ECU-socket_48pin-040-070.fzp">
+            <property name="part number" value="174917"/>
+            <views>
+                <iconView layer="copper1">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-IPOD_CONNECTOR_MALE-" modelIndex="85418737" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-ipod_connector_male-.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M02-ROCKER" modelIndex="85417977" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m02-rocker.fzp">
+            <views>
+                <iconView layer="icon">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M03-SCREW_LOCK" modelIndex="85417990" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m03-screw_lock.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-IPOD_CONNECTOR_FEMALE-" modelIndex="85418940" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-ipod_connector_female-.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-ZUNE_CONNECTOR_MALE-" modelIndex="85418942" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-zune_connector_male-.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M05-SMD" modelIndex="85417997" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m05-smd.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="WeMos_D1_mini_fixed" modelIndex="85418000" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/WeMos-D1-mini-female-headers-above_fixed.fzp">
+            <views>
+                <iconView layer="breadboard">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-M06-SMD-STRAIGHT-ALT" modelIndex="85418005" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-m06-smd-straight-alt.fzp" flippedSMD="true">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-MIDI_CONN_FEMALE-" modelIndex="85418947" path="C:/Users/Mariu/Downloads/fritzing.0.9.3b.64.pc/fritzing-parts/core/sparkfun-connectors-midi_conn_female-.fzp">
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="generic_female_pin_header_2_100mil" modelIndex="5705" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_female_pin_header_2_100mil.fzp">
+            <property name="form" value="♀ (female)"/>
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+        <instance moduleIdRef="generic_shrouded_pin_header_10_100mil" modelIndex="5706" path="C:/Users/Mariu/AppData/Roaming/Fritzing/partfactory/0d8768c637c1c82d7379b2bfe8f765af/core/generic_shrouded_pin_header_10_100mil.fzp">
+            <property name="form" value="♂ (shrouded male)"/>
+            <views>
+                <iconView layer="">
+                    <geometry z="0" x="-1" y="-1"/>
+                </iconView>
+            </views>
+        </instance>
+    </instances>
+</module>
