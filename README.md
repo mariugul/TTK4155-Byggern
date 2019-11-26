@@ -16,3 +16,6 @@
 
 ## Solenoid and IR-diode
 ![Breadboard_solenoid](Documentation/Solenoid_bb.png) 
+
+### Schematic
+![Breadboard_solenoid](Documentation/Solenoid_schem.png)
