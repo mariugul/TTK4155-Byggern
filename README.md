@@ -5,8 +5,6 @@
 
 ![Breadboard_bird](Documentation/Images/Breadboard_bird.png) 
 
-![Breadboard_close](Documentation/Images/Breadboard_close.png) 
-
 ### Connections
 ![Breadboard_fritzing](Documentation/breadboard_bb.png) 
 
